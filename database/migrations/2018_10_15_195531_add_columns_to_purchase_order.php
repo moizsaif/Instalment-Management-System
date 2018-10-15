@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddTablePurchaseOrder extends Migration
+class AddColumnsToPurchaseOrder extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,11 @@ class AddTablePurchaseOrder extends Migration
      */
     public function up()
     {
-        Schema::create('purchase_orders', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::table('purchase_orders', function (Blueprint $table) {
             $table->bigInteger('no')->unique();
             $table->double('amount','9','2');
             $table->bigInteger('quantity');
             $table->dateTime('date')->nullable();
-            $table->timestamps();
         });
     }
 
@@ -29,6 +27,11 @@ class AddTablePurchaseOrder extends Migration
      */
     public function down()
     {
-        Schema::drop('purchase_orders');
+        Schema::table('purchase_orders', function (Blueprint $table) {
+            $table->dropColumn('no');
+            $table->dropColumn('amount');
+            $table->dropColumn('quantity');
+            $table->dropColumn('date');
+        });
     }
 }

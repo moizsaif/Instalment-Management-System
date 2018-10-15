@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddTableGrn extends Migration
+class CreateGRNsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,14 +12,9 @@ class AddTableGrn extends Migration
      */
     public function up()
     {
-        Schema::create('grns', function (Blueprint $table) {
+        Schema::create('g_r_ns', function (Blueprint $table) {
             $table->increments('id');
-            $table->bigInteger('no')->unique();
-            $table->boolean('status');
-            $table->dateTime('date')->nullable();
             $table->timestamps();
-            $table->bigInteger('accepted_qty');
-            $table->bigInteger('rejected_qty');
         });
     }
 
@@ -30,6 +25,6 @@ class AddTableGrn extends Migration
      */
     public function down()
     {
-        Schema::drop('grns');
+        Schema::drop('g_r_ns');
     }
 }
