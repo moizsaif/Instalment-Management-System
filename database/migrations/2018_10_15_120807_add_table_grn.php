@@ -14,9 +14,9 @@ class AddTableGrn extends Migration
     {
         Schema::create('grns', function (Blueprint $table) {
             $table->increments('id');
-            $table->bigInteger('no');
+            $table->bigInteger('no')->unique();
             $table->boolean('status');
-            $table->dateTime('date');
+            $table->dateTime('date')->nullable();
             $table->timestamps();
             $table->bigInteger('accepted_qty');
             $table->bigInteger('rejected_qty');

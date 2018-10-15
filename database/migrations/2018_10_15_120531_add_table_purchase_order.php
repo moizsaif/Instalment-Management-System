@@ -14,10 +14,10 @@ class AddTablePurchaseOrder extends Migration
     {
         Schema::create('purchase_orders', function (Blueprint $table) {
             $table->increments('id');
-            $table->bigInteger('no');
-            $table->double('amount');
+            $table->bigInteger('no')->unique();
+            $table->double('amount','9','2');
             $table->bigInteger('quantity');
-            $table->dateTime('date');
+            $table->dateTime('date')->nullable();
             $table->timestamps();
         });
     }
