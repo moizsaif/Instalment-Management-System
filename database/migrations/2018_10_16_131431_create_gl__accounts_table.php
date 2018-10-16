@@ -12,7 +12,7 @@ class CreateGlAccountsTable extends Migration
      */
     public function up()
     {
-        Schema::create('gl__accounts', function (Blueprint $table) {
+        Schema::create('gl_accounts', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
         });
@@ -25,6 +25,6 @@ class CreateGlAccountsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('gl__accounts');
+        Schema::drop('gl_accounts');
     }
 }
