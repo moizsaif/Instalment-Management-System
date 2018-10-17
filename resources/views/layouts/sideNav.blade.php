@@ -18,7 +18,7 @@
 
     <div class="sidebar-scroll">
         <div class="user-account">
-            <img src="img/images.png" class="img-responsive img-circle user-photo" alt="User Profile Picture">
+            <img src="img/user.png" class="img-responsive img-circle user-photo" alt="User Profile Picture">
             <div class="dropdown">
                 @if (Auth::guest())
                 @else
@@ -36,7 +36,7 @@
 
         <nav id="left-sidebar-nav" class="sidebar-nav">
             <ul id="main-menu" class="metismenu">
-                <li class="active"><a href="index.html"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
+                <li class="active"><a href="{{'/home'}}"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
                 <li class="">
                     <a href="#uiElements" class="has-arrow" aria-expanded="false"><i class="lnr lnr-file-empty"></i> <span>Sales</span></a>
                     <ul aria-expanded="true">

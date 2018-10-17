@@ -36,11 +36,9 @@
 
 <!-- Javascript -->
 <script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 <script src="vendor/metisMenu/metisMenu.js"></script>
 <script src="vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <script src="vendor/jquery-sparkline/js/jquery.sparkline.min.js"></script>
-<script src="vendor/bootstrap-progressbar/js/bootstrap-progressbar.min.js"></script>
 <script src="vendor/chartist/js/chartist.min.js"></script>
 <script src="vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.min.js"></script>
 <script src="vendor/chartist-plugin-axistitle/chartist-plugin-axistitle.min.js"></script>
