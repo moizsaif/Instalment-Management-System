@@ -1,82 +1,238 @@
-<!DOCTYPE html>
+<!--
+/**
+ * Created by PhpStorm.
+ * User: Admin
+ * Date: 17/10/2018
+ * Time: 8:37 PM
+ */
+-->
+
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Login | IMS</title>
+@include('layouts.header')
 
-    <!-- Fonts -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
+<body>
+<!-- WRAPPER -->
+<div id="wrapper">
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
+    <!-- LEFT SIDEBAR -->
+    @include('layouts.sideNav')
+    <!-- END LEFT SIDEBAR -->
 
-    <style>
-        body {
-            font-family: 'Lato';
-        }
-
-        .fa-btn {
-            margin-right: 6px;
-        }
-    </style>
-</head>
-<body id="app-layout">
-    <nav class="navbar navbar-default navbar-static-top">
-        <div class="container">
-            <div class="navbar-header">
-
-                <!-- Collapsed Hamburger -->
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                    <span class="sr-only">Toggle Navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-
-                <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    Laravel
-                </a>
-            </div>
-
-            <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
-                </ul>
-
-                <!-- Right Side Of Navbar -->
-                <ul class="nav navbar-nav navbar-right">
-                    <!-- Authentication Links -->
-                    @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}">Login</a></li>
-                        <li><a href="{{ url('/register') }}">Register</a></li>
-                    @else
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
-
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
-                            </ul>
-                        </li>
-                    @endif
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <!-- NAVBAR -->
+    @include('layouts.topBar')
+    <!-- END NAVBAR -->
 
     @yield('content')
 
-    <!-- JavaScripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+
+    <footer>
+        <p class="copyright">&copy; 2017 <a href="https://www.themeineed.com" target="_blank">Theme I Need</a>. All Rights Reserved.</p>
+    </footer>
+</div>
+<!-- END WRAPPER -->
+
+
+<!-- Javascript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="vendor/metisMenu/metisMenu.js"></script>
+<script src="vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="vendor/jquery-sparkline/js/jquery.sparkline.min.js"></script>
+<script src="vendor/bootstrap-progressbar/js/bootstrap-progressbar.min.js"></script>
+<script src="vendor/chartist/js/chartist.min.js"></script>
+<script src="vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.min.js"></script>
+<script src="vendor/chartist-plugin-axistitle/chartist-plugin-axistitle.min.js"></script>
+<script src="vendor/chartist-plugin-legend-latest/chartist-plugin-legend.js"></script>
+<script src="vendor/toastr/toastr.js"></script>
+<script src="js/common.js"></script>
+
+<script>
+    $(function() {
+
+        // sparkline charts
+        var sparklineNumberChart = function() {
+
+            var params = {
+                width: '140px',
+                height: '30px',
+                lineWidth: '2',
+                lineColor: '#20B2AA',
+                fillColor: false,
+                spotRadius: '2',
+                spotColor: false,
+                minSpotColor: false,
+                maxSpotColor: false,
+                disableInteraction: false
+            };
+
+            $('#number-chart1').sparkline('html', params);
+            $('#number-chart2').sparkline('html', params);
+            $('#number-chart3').sparkline('html', params);
+            $('#number-chart4').sparkline('html', params);
+        };
+
+        sparklineNumberChart();
+
+
+        // Traffic sources
+        var dataPie = {
+            series: [60, 40]
+        };
+
+        var labels = ['Cash', 'Installment'];
+        var sum = function(a, b) {
+            return a + b;
+        };
+
+        new Chartist.Pie('#demo-pie-chart', dataPie, {
+            height: "270px",
+            labelInterpolationFnc: function(value, idx) {
+                var percentage = Math.round(value / dataPie.series.reduce(sum) * 100) + '%';
+                return labels[idx] + ' (' + percentage + ')';
+            }
+        });
+
+
+        // line chart
+        var data = {
+            labels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            series: [
+                [200, 380, 350, 480, 410, 450, 550],
+            ]
+        };
+
+        var options = {
+            height: "200px",
+            showPoint: true,
+            showArea: true,
+            axisX: {
+                showGrid: false
+            },
+            lineSmooth: false,
+            chartPadding: {
+                top: 0,
+                right: 0,
+                bottom: 30,
+                left: 30
+            },
+            plugins: [
+                Chartist.plugins.tooltip({
+                    appendToBody: true
+                }),
+                Chartist.plugins.ctAxisTitle({
+                    axisX: {
+                        axisTitle: 'Day',
+                        axisClass: 'ct-axis-title',
+                        offset: {
+                            x: 0,
+                            y: 50
+                        },
+                        textAnchor: 'middle'
+                    },
+                    axisY: {
+                        axisTitle: 'Reach',
+                        axisClass: 'ct-axis-title',
+                        offset: {
+                            x: 0,
+                            y: -10
+                        },
+                    }
+                })
+            ]
+        };
+
+        new Chartist.Line('#demo-line-chart', data, options);
+
+
+        // sales performance chart
+        var sparklineSalesPerformance = function() {
+
+            var lastWeekData = [142, 164, 298, 384, 232, 269, 211];
+            var currentWeekData = [352, 267, 373, 222, 533, 111, 60];
+
+            $('#chart-sales-performance').sparkline(lastWeekData, {
+                fillColor: 'rgba(90, 90, 90, 0.1)',
+                lineColor: '#5A5A5A',
+                width: '' + $('#chart-sales-performance').innerWidth() + '',
+                height: '100px',
+                lineWidth: '2',
+                spotColor: false,
+                minSpotColor: false,
+                maxSpotColor: false,
+                chartRangeMin: 0,
+                chartRangeMax: 1000
+            });
+
+            $('#chart-sales-performance').sparkline(currentWeekData, {
+                composite: true,
+                fillColor: 'rgba(60, 137, 218, 0.1)',
+                lineColor: '#3C89DA',
+                lineWidth: '2',
+                spotColor: false,
+                minSpotColor: false,
+                maxSpotColor: false,
+                chartRangeMin: 0,
+                chartRangeMax: 1000
+            });
+        }
+
+        sparklineSalesPerformance();
+
+        var sparkResize;
+        $(window).on('resize', function() {
+            clearTimeout(sparkResize);
+            sparkResize = setTimeout(sparklineSalesPerformance, 200);
+        });
+
+
+        // top products
+        var dataStackedBar = {
+            labels: ['Q1', 'Q2', 'Q3'],
+            series: [
+                [800000, 1200000, 1400000],
+                [200000, 400000, 500000],
+                [100000, 200000, 400000]
+            ]
+        };
+
+        new Chartist.Bar('#chart-top-products', dataStackedBar, {
+            height: "250px",
+            stackBars: true,
+            axisX: {
+                showGrid: false
+            },
+            axisY: {
+                labelInterpolationFnc: function(value) {
+                    return (value / 1000) + 'k';
+                }
+            },
+            plugins: [
+                Chartist.plugins.tooltip({
+                    appendToBody: true
+                }),
+                Chartist.plugins.legend({
+                    legendNames: ['Phone', 'Laptop', 'PC']
+                })
+            ]
+        }).on('draw', function(data) {
+            if (data.type === 'bar') {
+                data.element.attr({
+                    style: 'stroke-width: 30px'
+                });
+            }
+        });
+
+
+        // notification popup
+        toastr.options.closeButton = true;
+        toastr.options.positionClass = 'toast-bottom-right';
+        toastr.options.showDuration = 1000;
+        toastr['info']('Hello, welcome to DiffDash, a unique admin dashboard.');
+
+    });
+</script>
+
 </body>
 </html>
