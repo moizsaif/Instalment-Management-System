@@ -12,7 +12,7 @@ class AddColumnsToGlAccounts extends Migration
      */
     public function up()
     {
-        Schema::table('Gl_Accounts', function (Blueprint $table) {
+        Schema::table('gl_accounts', function (Blueprint $table) {
             $table->integer('Code');
             $table->string('Description');
             $table->integer('LevelNo');
@@ -29,7 +29,7 @@ class AddColumnsToGlAccounts extends Migration
      */
     public function down()
     {
-        Schema::table('Gl_Accounts', function (Blueprint $table) {
+        Schema::table('gl_accounts', function (Blueprint $table) {
             $table->dropColumn('Code');
             $table->dropColumn('Description');
             $table->dropColumn('LevelNo');
