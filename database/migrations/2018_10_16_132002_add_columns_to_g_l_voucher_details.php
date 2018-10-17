@@ -13,14 +13,13 @@ class AddColumnsToGLVoucherDetails extends Migration
     public function up()
     {
         Schema::table('g_l_voucher_details', function (Blueprint $table) {
-            $table->date('invoice_date');
-            $table->double('debit','20','2');
-            $table->double('credit','20','2');
-            $table->string('cheque_no','20');
+            $table->double('debit','8','2');
+            $table->double('credit','8','2');
+            $table->char('cheque_no','20');
             $table->date('cheque_date');
-            $table->string('payee','20');
-            $table->double('transected_amount','20','2');
-            $table->double('provisional_amount','20','2');
+            $table->char('payee','20');
+            $table->double('transected_amount','8','2');
+            $table->double('provisional_amount','8','2');
         });
     }
 
@@ -32,7 +31,6 @@ class AddColumnsToGLVoucherDetails extends Migration
     public function down()
     {
         Schema::table('g_l_voucher_details', function (Blueprint $table) {
-            $table->dropColumn('invoice_date');
             $table->dropColumn('debit');
             $table->dropColumn('credit');
             $table->dropColumn('cheque_no');

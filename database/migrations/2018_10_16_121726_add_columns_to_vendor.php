@@ -13,12 +13,12 @@ class AddColumnsToVendor extends Migration
     public function up()
     {
         Schema::table('vendors', function (Blueprint $table) {
-            $table->string('name','20');
-            $table->string('contact','20');
-            $table->string('owner','20');
-            $table->string('email','30');
-            $table->string('address','50');
-            $table->string('iban','30' );
+            $table->char('name','20');
+            $table->string('contact_no','20');
+            $table->char('cnic','13');
+            $table->string('email','30')->nullable();
+            $table->string('address');
+            $table->string('iban','30')->nullable();
         });
     }
 
@@ -31,8 +31,8 @@ class AddColumnsToVendor extends Migration
     {
         Schema::table('vendors', function (Blueprint $table) {
             $table->dropColumn('name');
-            $table->dropColumn('contact');
-            $table->dropColumn('owner');
+            $table->dropColumn('contact_no');
+            $table->dropColumn('cnic');
             $table->dropColumn('email');
             $table->dropColumn('address');
             $table->dropColumn('iban');

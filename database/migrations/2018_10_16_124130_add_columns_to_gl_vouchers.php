@@ -18,7 +18,7 @@ class AddColumnsToGlVouchers extends Migration
             $table->date('year');
             $table->date('month');
             $table->double('amount','8','2');
-            $table->boolean('isapproved');
+            $table->boolean('is_approved');
             $table->string('created_by','20');
         });
     }
@@ -31,12 +31,12 @@ class AddColumnsToGlVouchers extends Migration
     public function down()
     {
         Schema::table('g_l_vouchers', function (Blueprint $table) {
-            $table->dropColumn('code');
-            $table->dropColumn('voucher_date');
+            $table->dropColumn('code')->unique();
+            $table->dropColumn('voucher_date')->nullable();
             $table->dropColumn('year');
             $table->dropColumn('month');
             $table->dropColumn('amount');
-            $table->dropColumn('isapproved');
+            $table->dropColumn('is_approved');
             $table->dropColumn('created_by');
         });
     }

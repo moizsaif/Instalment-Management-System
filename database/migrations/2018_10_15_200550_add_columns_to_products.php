@@ -13,13 +13,13 @@ class AddColumnsToProducts extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->string('code','25');
+            $table->string('code','25')->unique();
             $table->boolean('discount');
-            $table->string('name');
-            $table->string('description');
+            $table->char('name');
+            $table->string('description')->nullable();
             $table->string('model','25');
-            $table->string('color','15');
-            $table->integer('warranty');
+            $table->char('color','15');
+            $table->integer('warranty')->nullable();
             $table->boolean('warranty_status');
             $table->integer('min_qty');
             $table->integer('max_qty');

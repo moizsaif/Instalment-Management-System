@@ -18,7 +18,7 @@ class AddColumnsToProductDetails extends Migration
             $table->integer('remaining');
             $table->double('purchase_price','7','2');
             $table->double('selling_price','7','2');
-            $table->double('discounted_price','7','2');
+            $table->double('discounted_price','7','2')->nullable();
         });
     }
 

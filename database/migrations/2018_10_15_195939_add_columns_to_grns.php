@@ -13,11 +13,11 @@ class AddColumnsToGrns extends Migration
     public function up()
     {
         Schema::table('g_r_ns', function (Blueprint $table) {
-            $table->bigInteger('no')->unique();
+            $table->Integer('no')->unique();
             $table->boolean('status');
             $table->dateTime('date')->nullable();
-            $table->bigInteger('accepted_qty');
-            $table->bigInteger('rejected_qty');
+            $table->Integer('accepted_qty');
+            $table->Integer('rejected_qty');
         });
     }
 

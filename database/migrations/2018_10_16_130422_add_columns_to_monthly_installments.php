@@ -13,12 +13,12 @@ class AddColumnsToMonthlyInstallments extends Migration
     public function up()
     {
         Schema::table('monthly_installments', function (Blueprint $table) {
-            $table->integer('Year');
-            $table->integer('Month');
-            $table->date('DueDate');
-            $table->integer('Amount');
-            $table->integer('ReceivedAmount');
-            $table->boolean('Status');
+            $table->integer('year');
+            $table->integer('month');
+            $table->date('due_date');
+            $table->double('amount','8','2');
+            $table->double('received_amount','8','2');
+            $table->boolean('status');
         });
     }
 
@@ -30,12 +30,12 @@ class AddColumnsToMonthlyInstallments extends Migration
     public function down()
     {
         Schema::table('monthly_installments', function (Blueprint $table) {
-            $table->dropColumn('Year');
-            $table->dropColumn('Month');
-            $table->dropColumn('DueDate');
-            $table->dropColumn('Amount');
-            $table->dropColumn('ReceivedAmount');
-            $table->dropColumn('Status');
+            $table->dropColumn('year');
+            $table->dropColumn('month');
+            $table->dropColumn('due_date');
+            $table->dropColumn('amount');
+            $table->dropColumn('received_amount');
+            $table->dropColumn('status');
         });
     }
 }

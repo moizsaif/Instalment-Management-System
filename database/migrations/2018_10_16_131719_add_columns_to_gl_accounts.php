@@ -13,12 +13,11 @@ class AddColumnsToGlAccounts extends Migration
     public function up()
     {
         Schema::table('gl_accounts', function (Blueprint $table) {
-            $table->integer('Code');
-            $table->string('Description');
-            $table->integer('LevelNo');
-            $table->boolean('isTransAllow');
-            $table->string('Alias');
-
+            $table->string('code','20')->unique();
+            $table->string('description')->nullable();
+            $table->integer('level_no');
+            $table->boolean('is_trans_allowed');
+            $table->string('alias','30');
         });
     }
 
@@ -30,12 +29,11 @@ class AddColumnsToGlAccounts extends Migration
     public function down()
     {
         Schema::table('gl_accounts', function (Blueprint $table) {
-            $table->dropColumn('Code');
-            $table->dropColumn('Description');
-            $table->dropColumn('LevelNo');
-            $table->dropColumn('isTransAllow');
-            $table->dropColumn('Alias');
-
+            $table->dropColumn('code');
+            $table->dropColumn('description');
+            $table->dropColumn('level_no');
+            $table->dropColumn('is_trans_allowed');
+            $table->dropColumn('alias');
         });
     }
 }
