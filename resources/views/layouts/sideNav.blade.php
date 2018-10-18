@@ -1,12 +1,3 @@
-<!--
-/**
- * Created by PhpStorm.
- * User: Admin
- * Date: 17/10/2018
- * Time: 10:30 PM
- */
--->
-
 <!-- LEFT SIDEBAR -->
 <div id="left-sidebar" class="sidebar">
     <button type="button" class="btn btn-xs btn-link btn-toggle-fullwidth">

@@ -1,12 +1,3 @@
-<!--
-/**
- * Created by PhpStorm.
- * User: Admin
- * Date: 17/10/2018
- * Time: 8:37 PM
- */
--->
-
 <!doctype html>
 <html lang="en">
 

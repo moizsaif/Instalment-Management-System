@@ -1,8 +1,10 @@
-@extends('layouts.app')
-
-<!-- Main Content -->
-@section('content')
-<div class="container">
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Password Reset | IMS</title>
+</head>
+<body>
+<div class="container-fluid">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
@@ -36,6 +38,8 @@
                                 <button type="submit" class="btn btn-primary">
                                     <i class="fa fa-btn fa-envelope"></i> Send Password Reset Link
                                 </button>
+                                <br><br>
+                                <span class="alert-link strong">Remembered your Password ! <a href="{{url('/login')}}">Login</a></span>
                             </div>
                         </div>
                     </form>
@@ -44,4 +48,5 @@
         </div>
     </div>
 </div>
-@endsection
+</body>
+</html>

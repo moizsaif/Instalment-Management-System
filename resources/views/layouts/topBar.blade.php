@@ -1,12 +1,3 @@
-<!--
-/**
- * Created by PhpStorm.
- * User: Admin
- * Date: 17/10/2018
- * Time: 10:31 PM
- */
--->
-
 <!-- NAVBAR -->
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">

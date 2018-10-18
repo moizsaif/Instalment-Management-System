@@ -1,10 +1,3 @@
-/**
- * Created by PhpStorm.
- * User: Admin
- * Date: 17/10/2018
- * Time: 10:36 PM
- */
-
 <head>
     <title>IMS System</title>
     <meta charset="utf-8">
