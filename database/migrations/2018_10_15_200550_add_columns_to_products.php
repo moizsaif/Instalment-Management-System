@@ -13,6 +13,7 @@ class AddColumnsToProducts extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
+            $table->Integer('grn_id')->unsigned();
             $table->string('code','25')->unique();
             $table->boolean('discount');
             $table->char('name');

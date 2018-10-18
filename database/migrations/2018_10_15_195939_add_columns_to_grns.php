@@ -13,6 +13,7 @@ class AddColumnsToGrns extends Migration
     public function up()
     {
         Schema::table('g_r_ns', function (Blueprint $table) {
+            $table->Integer('po_id')->unsigned()->unique();
             $table->Integer('no')->unique();
             $table->boolean('status');
             $table->dateTime('date')->nullable();

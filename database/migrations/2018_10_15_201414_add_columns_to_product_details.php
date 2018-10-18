@@ -13,6 +13,9 @@ class AddColumnsToProductDetails extends Migration
     public function up()
     {
         Schema::table('product_details', function (Blueprint $table) {
+            $table->Integer('pr_id')->unsigned();
+            $table->Integer('grn_id')->unsigned();
+            $table->Integer('v_id')->unsigned();
             $table->integer('qty');
             $table->integer('sold');
             $table->integer('remaining');

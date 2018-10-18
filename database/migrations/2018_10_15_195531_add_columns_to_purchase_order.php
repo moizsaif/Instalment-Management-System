@@ -13,6 +13,7 @@ class AddColumnsToPurchaseOrder extends Migration
     public function up()
     {
         Schema::table('purchase_orders', function (Blueprint $table) {
+            $table->Integer('v_id')->unsigned();
             $table->Integer('no')->unique();
             $table->double('amount','9','2');
             $table->Integer('quantity');
