@@ -16,9 +16,9 @@ class AddColumnsToShop extends Migration
 
             $table->char('name','20');
             $table->integer('contact_no');
-            $table->integer('owner_no');
-            $table->string('email','30');
-            $table->string('address','50');
+            $table->integer('owner_no')->nullable();
+            $table->string('email','30')->nullable();
+            $table->string('address');
         });
     }
 
