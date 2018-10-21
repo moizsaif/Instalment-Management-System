@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\PurchaseOrder;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-class PurchaseOrderController extends Controller
+class GRNController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,7 @@ class PurchaseOrderController extends Controller
      */
     public function index()
     {
-        $PO=\App\PurchaseOrder::all();
-        return view('home',compact('PurchaseOrder'));
+        //
     }
 
     /**
@@ -38,16 +36,17 @@ class PurchaseOrderController extends Controller
      */
     public function store(Request $request)
     {
-        $PO=new \App\PurchaseOrder;
-        $PO->no=$request ->get('no');
-        $PO->amount=$request ->get('amount');
-        $PO->quantity=$request ->get('quantity');
+        $grn=new \App\GRN;
+        $grn->no=$request ->get('no');
+        $grn->status=$request ->get('status');
+        $grn->accepted_qty=$request ->get('accepted_qty');
+        $grn->rejected_qty=$request ->get('rejected_qty');
         $date=date_create($request ->get('date'));
         $format = date_format($date,"Y-m-d");
-        $PO->date=strtotime($format);
-        $PO->save();
+        $grn->date=strtotime($format);
+        $grn->save();
 
-        return redirect('PurchaseOrder')->with('success','information has been added');
+        return redirect('GRN')->with('success','information has been added');
     }
 
     /**
@@ -81,12 +80,13 @@ class PurchaseOrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $PO= \App\PurchaseOrder::find($id);
-        $PO->no=$request->get('no');
-        $PO->amount=$request->get('amount');
-        $PO->quantity=$request->get('quantity');
-        $PO->save();
-        return redirect('PurchaseOrder');
+        $grn= \App\GRN::find($id);
+        $grn->no=$request->get('no');
+        $grn->status=$request->get('status');
+        $grn->accepted_qty=$request->get('accepted_qty');
+        $grn->rejected_qty=$request->get('rejected_qty');
+        $grn->save();
+        return redirect('GRN');
     }
 
     /**
@@ -97,8 +97,8 @@ class PurchaseOrderController extends Controller
      */
     public function destroy($id)
     {
-        $PO = \App\PurchaseOrder::find($id);
-        $PO->delete();
-        return redirect('PurchaseOrder')->with('success','Information has been  deleted');
+        $grn = \App\GRN::find($id);
+        $grn->delete();
+        return redirect('GRN0')->with('success','Information has been  deleted');
     }
 }
