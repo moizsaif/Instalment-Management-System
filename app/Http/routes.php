@@ -21,3 +21,4 @@ Route::get('/home', 'HomeController@index');
 
 Route::resource('PurchaseOrder', 'PurchaseOrderController');
 Route::resource('GRN','GRNController');
+Route::resource('Product','ProductController');
