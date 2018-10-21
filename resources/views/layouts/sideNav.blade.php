@@ -51,7 +51,7 @@
                         <li class=""><a href="productForm.html">Add</a></li>
                         <li class=""><a href="productForm.html">Edit Details</a></li>
                         <li class=""><a href="views\PurchaseOrder.blade.php">Order Placement</a></li>
-                        <li class=""><a href="#">Update GRN</a></li>
+                        <li class=""><a href="\Edit_GRN.blade.php">Update GRN</a></li>
                     </ul>
                 </li>
                 <li class="">
