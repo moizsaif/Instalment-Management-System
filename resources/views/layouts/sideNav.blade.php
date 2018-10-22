@@ -9,7 +9,7 @@
 
     <div class="sidebar-scroll">
         <div class="user-account">
-            <img src="img/user.png" class="img-responsive img-circle user-photo" alt="User Profile Picture">
+            <img src="{{ URL::asset('img/user.png') }}" class="img-responsive img-circle user-photo" alt="User Profile Picture">
             <div class="dropdown">
                 @if (Auth::guest())
                 @else
@@ -38,18 +38,25 @@
                 <li class="">
                     <a href="#uiElements" class="has-arrow" aria-expanded="false"><i class="lnr lnr-file-empty"></i> <span>Accounts</span></a>
                     <ul aria-expanded="true">
-                        <li class=""><a href="#">Add</a></li>
-                        <li class=""><a href="#">View</a></li>
-                        <li class=""><a href="#">Update</a></li>
-                        <li class=""><a href="#">View Voucher</a></li>
-                        <li class=""><a href="#">Edit Voucher</a></li>
+                        <li class=""><a href="{{ url('/accounts/create') }}">Add</a></li>
+                        <li class=""><a href="{{ url('/accounts') }}">View</a></li>
+                        <li class=""><a href="#">Delete</a></li>
+                    </ul>
+                </li>
+                <li class="">
+                    <a href="#uiElements" class="has-arrow" aria-expanded="false"><i class="lnr lnr-file-empty"></i> <span>Voucher</span></a>
+                    <ul aria-expanded="true">
+                        <li class=""><a href="{{ url('/vouchers/create') }}">Add</a></li>
+                        <li class=""><a href="{{ url('/vouchers/') }}">View</a></li>
+                        <li class=""><a href="#">Delete</a></li>
                     </ul>
                 </li>
                 <li class="">
                     <a href="#uiElements" class="has-arrow" aria-expanded="false"><i class="lnr lnr-file-empty"></i> <span>Product</span></a>
                     <ul aria-expanded="true">
-                        <li class=""><a href="productForm.html">Add</a></li>
-                        <li class=""><a href="productForm.html">Edit Details</a></li>
+                        <li class=""><a href="#">Add</a></li>
+                        <li class=""><a href="#">View</a></li>
+                        <li class=""><a href="#">Delete</a></li>
                         <li class=""><a href="#">Order Placement</a></li>
                         <li class=""><a href="#">Update GRN</a></li>
                     </ul>

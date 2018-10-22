@@ -15,14 +15,11 @@
         <meta http-equiv="Refresh" content="4; url={{'/home'}}">
     @endif
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <!-- VENDOR CSS -->
     <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
-    <!-- MAIN CSS -->
     <link rel="stylesheet" href="css/main.css">
-    <!-- ICONS -->
-    <link rel="apple-touch-icon" sizes="76x76" href="img/apple-icon.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="img/favicon.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="">
+    <link rel="icon" type="image/png" sizes="96x96" href="">
 </head>
 
 <body>

@@ -14,6 +14,8 @@ class AddColumnsToGlVouchers extends Migration
     {
         Schema::table('g_l_vouchers', function (Blueprint $table) {
             $table->string('code','20');
+            $table->integer('type_id')->unsigned()->nullable();
+            $table->integer('acc_id')->unsigned()->nullable();
             $table->date('voucher_date');
             $table->date('year');
             $table->date('month');
