@@ -21,5 +21,5 @@ Route::get('/home', 'HomeController@index');
 
 Route::resource('accounts','GLAccountController');
 
-//Route::resource('vouchers','GLVoucherController');
+Route::resource('vouchers','GLVoucherController');
 

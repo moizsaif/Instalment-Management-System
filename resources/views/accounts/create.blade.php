@@ -4,7 +4,7 @@
         <h1 class="page-title">Accounts Form</h1>
     </div>
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-10 col-lg-6">
             <div class="panel-content">
 
                 <form class="form-auth-small" role="form" method="POST" action="{{ url('/accounts') }}">
@@ -64,8 +64,8 @@
                             <input id="is_trans_allowed" name="is_trans_allowed" type="checkbox"><span>Transaction Allowed</span>
                         </label>
                         <span class="input-group-btn">
-                        <button class="btn btn-primary" type="submit">Save</button>
-					</span>
+                            <button class="btn btn-primary" type="submit">Save</button>
+					    </span>
                     </div>
 
                 </form>

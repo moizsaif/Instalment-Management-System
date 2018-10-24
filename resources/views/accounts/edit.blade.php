@@ -4,7 +4,7 @@
         <h1 class="page-title">Accounts Form</h1>
     </div>
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-10 col-lg-6">
             <div class="panel-content">
 
                 <form class="form-auth-small" role="form" method="POST" action="/accounts/{{$account->id}}">
@@ -23,7 +23,7 @@
                         @endif
 
                     </div>
-                    <div class="form-group{{ $errors->has('alias') ? ' has-error' : '' }}">
+                    <div class="form-group{{ $errors->has('code') ? ' has-error' : '' }}">
                         <label for="code" class="control-label sr-only">Code</label>
                         <input type="text" class="form-control input-lg" id="code" name="code" placeholder="Code"
                                value="{{ $account->code }}">
@@ -35,7 +35,7 @@
                         @endif
 
                     </div>
-                    <div class="form-group{{ $errors->has('alias') ? ' has-error' : '' }}">
+                    <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
                         <label for="description" class="control-label sr-only">Description</label>
                         <input type="text" class="form-control input-lg" id="description" name="description" placeholder="Description"
                                value="{{ $account->description }}">
@@ -47,7 +47,7 @@
                         @endif
 
                     </div>
-                    <div class="form-group{{ $errors->has('alias') ? ' has-error' : '' }}">
+                    <div class="form-group{{ $errors->has('level_no') ? ' has-error' : '' }}">
                         <label for="level_no" class="control-label sr-only">Level Number</label>
                         <input type="number" class="form-control input-lg" id="level_no" name="level_no" placeholder="Level Number"
                                value="{{ $account->level_no }}">

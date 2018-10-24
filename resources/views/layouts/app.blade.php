@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{ URL::asset('vendor/toastr/toastr.min.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('vendor/chartist/css/chartist.min.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('bootstrap-datepicker/css/bootstrap-datepicker3.min.css')}}">
     <link rel="stylesheet" href="{{ URL::asset('css/main.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('vendor/metisMenu/metisMenu.css') }}">
     <link rel="apple-touch-icon" sizes="76x76" href="">
@@ -61,6 +62,7 @@
 <script src="{{ URL::asset('vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.min.js') }}"></script>
 <script src="{{ URL::asset('vendor/chartist-plugin-axistitle/chartist-plugin-axistitle.min.js') }}"></script>
 <script src="{{ URL::asset('vendor/chartist-plugin-legend-latest/chartist-plugin-legend.js') }}"></script>
+<script src="{{ URL::asset('vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
 <script src="{{ URL::asset('vendor/toastr/toastr.js') }}"></script>
 <script src="{{ URL::asset('js/common.js') }}"></script>
 
@@ -240,6 +242,10 @@
             }
         });
 
+        // Date picker
+        $('.inline-datepicker').datepicker({
+            todayHighlight: true
+        });
 
         // notification popup
         toastr.options.closeButton = true;
