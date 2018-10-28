@@ -28,17 +28,20 @@
                                value="{{ Auth::user()->name }}"><br>
                     </div>
 
-                    <div class="form-group">
-                        <input data-provide="datepicker" data-date-autoclose="true" class="form-control input-lg"
-                               name="voucher_date" id="voucher_date" class="form-control">
+                    <div class="form-group input-group">
+                        <input data-provide="datepicker" data-date-autoclose="true" class="form-control"
+                               data-date-format="yyyy-mm-dd" name="voucher_date" id="voucher_date">
+                        <span class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </span>
                     </div>
 
-
-                    <div class="form-group input-group">
-                        <label class="fancy-checkbox">
-                            <input id="is_approved" name="is_approved" type="checkbox">
+                    <div class="form-group">
+                        <label>
+                            <input data-onstyle="success" data-offstyle="danger" data-toggle="toggle"
+                                   name="is_approved" value="1" type="checkbox">
                             <span>Approved</span>
-                        </label>
+                        </label><br><br>
                         <span class="input-group-btn">
                             <button class="btn btn-primary" type="submit">Save</button>
 					    </span>
@@ -47,9 +50,4 @@
             </div>
         </div>
     </div>
-    <script>
-        $(function(){
-
-        });
-    </script>
 @endsection

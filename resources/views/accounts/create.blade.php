@@ -34,6 +34,18 @@
                         @endif
 
                     </div>
+                    <div class="form-group{{ $errors->has('opening_balance') ? ' has-error' : '' }}">
+                        <label for="opening_balance" class="control-label sr-only">Opening Balance</label>
+                        <input type="text" class="form-control input-lg" id="opening_balance" name="opening_balance" placeholder="Opening Balance"
+                               value="{{ old('opening_balance') }}">
+
+                        @if ($errors->has('opening_balance'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('opening_balance') }}</strong>
+                            </span>
+                        @endif
+
+                    </div>
                     <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
                         <label for="description" class="control-label sr-only">Description</label>
                         <input type="text" class="form-control input-lg" id="description" name="description" placeholder="Description"
@@ -46,9 +58,10 @@
                         @endif
 
                     </div>
+
                     <div class="form-group{{ $errors->has('level_no') ? ' has-error' : '' }}">
                         <label for="level_no" class="control-label sr-only">Level Number</label>
-                        <input type="number" class="form-control input-lg" id="level_no" name="level_no" placeholder="Level Number"
+                        <input type="text" class="form-control input-lg" id="level_no" name="level_no" placeholder="Level Number"
                                value="{{ old('level_no') }}">
 
                         @if ($errors->has('level_no'))
@@ -59,10 +72,12 @@
 
                     </div>
 
-                    <div class="form-group input-group">
-                        <label class="fancy-checkbox">
-                            <input id="is_trans_allowed" name="is_trans_allowed" type="checkbox"><span>Transaction Allowed</span>
-                        </label>
+                    <div class="form-group">
+                        <label>
+                            <input data-onstyle="success" data-offstyle="danger" data-toggle="toggle"
+                                   name="allow_transac" value="1" type="checkbox">
+                            <span>Allow Transaction</span>
+                        </label><br><br>
                         <span class="input-group-btn">
                             <button class="btn btn-primary" type="submit">Save</button>
 					    </span>

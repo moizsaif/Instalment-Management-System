@@ -13,10 +13,11 @@ class Gl_Account extends Model
         'code',
         'description',
         'level_number',
-        'is_trans_allowed'
+        'allow_transac',
+        'opening_balance'
     ];
 
-    public function glvouchers(){
-        return $this->hasMany('App\GLVoucher');
+    public function glvoucherdetails(){
+        return $this->hasMany('App\GLVoucherDetail');
     }
 }

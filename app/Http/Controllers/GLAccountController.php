@@ -9,11 +9,11 @@ use App\Http\Requests;
 
 class GLAccountController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $accounts = Gl_Account::all();
@@ -38,8 +38,20 @@ class GLAccountController extends Controller
      */
     public function store(Request $request)
     {
-        Gl_Account::create($request->all());
-        return redirect('/accounts');
+//        Gl_Account::create($request->all());
+//        return redirect('/accounts');
+
+        $account = new Gl_Account();
+        $account->code = $request->code;
+        $account->alias = $request->alias;
+        $account->description = $request->description;
+        $account->level_no = $request->level_no;
+        $account->allow_transac = $request->allow_transac;
+        $account->level_no = $request->level_no;
+        $account->opening_balance = $request->opening_balance;
+
+        $account->save();
+        return redirect('/accounts/');
     }
 
     /**
@@ -76,11 +88,13 @@ class GLAccountController extends Controller
     public function update(Request $request, $id)
     {
         $account = Gl_Account::findOrFail($id);
-        $account->code = $request-> code;
-        $account->description = $request-> description;
-        $account->level_no = $request-> level_no;
-        $account->is_trans_allowed = $request-> is_trans_allowed;
-        $account->level_no = $request-> level_no;
+        $account->code = $request->code;
+        $account->alias = $request->alias;
+        $account->description = $request->description;
+        $account->level_no = $request->level_no;
+        $account->allow_transac = $request->allow_transac;
+        $account->level_no = $request->level_no;
+        $account->opening_balance = $request->opening_balance;
 
         $account->save();
         return redirect('/accounts/');

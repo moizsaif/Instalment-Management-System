@@ -2,6 +2,7 @@
 @section('content')
     <div class="section-heading">
         <h1 class="page-title">Accounts List</h1>
+        <a href="{{ url('/accounts/create') }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Add</a>
     </div>
     <div class="row">
         <div class="col-md-10">
@@ -11,6 +12,7 @@
                     <tr>
                         <th>Code</th>
                         <th>Alias</th>
+                        <th>Opening Balance</th>
                         <th>Description</th>
                         <th>Level Number</th>
                         <th>Transaction Allowed</th>
@@ -21,9 +23,10 @@
                         <tr>
                             <td><a href={{route('accounts.show',$account->id)}}/>{{$account->code}}</td>
                             <td>{{$account->alias}}</td>
+                            <td>{{$account->opening_balance}}</td>
                             <td>{{$account->description}}</td>
                             <td>{{$account->level_no}}</td>
-                            <td>{{$account->is_trans_allowed}}</td>
+                            <td>{{$account->allow_transac}}</td>
                         </tr>
                     @endforeach
 

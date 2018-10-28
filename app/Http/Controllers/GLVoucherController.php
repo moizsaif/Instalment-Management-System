@@ -9,6 +9,10 @@ use App\Http\Requests;
 
 class GLVoucherController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -38,7 +42,19 @@ class GLVoucherController extends Controller
      */
     public function store(Request $request)
     {
-        GL_Voucher::create($request->all());
+        //$voucher = GL_Voucher::create($request->all());
+        $voucher = new GL_Voucher();
+
+        $voucher->code = $request-> code;
+        $voucher->voucher_date = $request-> voucher_date;
+        $date = strtotime($request->voucher_date);
+
+        $voucher->year = date("Y",$date);
+        $voucher->month = date("M",$date);
+        $voucher->is_approved = $request-> is_approved;
+        $voucher->created_by = $request->created_by;
+        $voucher->save();
+
         return redirect('/vouchers');
     }
 
@@ -78,7 +94,13 @@ class GLVoucherController extends Controller
         $voucher = GL_Voucher::findOrFail($id);
         $voucher->code = $request-> code;
         $voucher->voucher_date = $request-> voucher_date;
+
+        $date = strtotime($request->voucher_date);
+
+        $voucher->year = date("Y",$date);
+        $voucher->month = date("M",$date);
         $voucher->is_approved = $request-> is_approved;
+        $voucher->created_by = $request->created_by;
 
         $voucher->save();
         return redirect('/vouchers/');

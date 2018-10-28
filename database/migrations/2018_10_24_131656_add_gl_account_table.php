@@ -16,9 +16,10 @@ class AddGlAccountTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('code','20')->unique();
+            $table->double('opening_balance','8','2');
             $table->string('description')->nullable();
             $table->integer('level_no');
-            $table->boolean('is_trans_allowed');
+            $table->boolean('allow_transac')->nullable()->default(false);
             $table->string('alias','30');
         });
     }

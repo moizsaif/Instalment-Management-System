@@ -16,13 +16,12 @@ class AddGlVoucherDetailTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->integer('voucher_no')->unsigned()->nullable();
+            $table->integer('acc_id')->unsigned()->nullable();
             $table->double('debit','8','2');
             $table->double('credit','8','2');
             $table->char('cheque_no','20');
             $table->date('cheque_date');
             $table->char('payee','20');
-            $table->double('transected_amount','8','2');
-            $table->double('provisional_amount','8','2');
         });
     }
 

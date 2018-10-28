@@ -13,7 +13,9 @@
             <div class="dropdown">
                 @if (Auth::guest())
                 @else
-                    <a href="#" class="dropdown-toggle user-name" data-toggle="dropdown">Hello, <strong>{{ Auth::user()->name }}</strong> <i class="fa fa-caret-down"></i></a>
+                    <a href="#" class="dropdown-toggle user-name" data-toggle="dropdown">Hello, <strong>{{ Auth::user()->name }}</strong>
+                        <i class="fa fa-caret-down"></i>
+                    </a>
                     <ul class="dropdown-menu dropdown-menu-right account">
                         <li><a href="#">My Profile</a></li>
                         <li><a href="#">Settings</a></li>
@@ -38,19 +40,19 @@
                 <li class="">
                     <a href="#uiElements" class="has-arrow" aria-expanded="false"><i class="lnr lnr-file-empty"></i> <span>Accounts</span></a>
                     <ul aria-expanded="true">
-                        <li class=""><a href="{{ url('/accounts/create') }}">Add</a></li>
-                        <li class=""><a href="{{ url('/accounts') }}">View</a></li>
-                        <li class=""><a href="#">Delete</a></li>
+                        <li class=""><a href="{{ url('/accounts/') }}">List</a></li>
+                        <li class=""><a href="{{ url('/vouchers/') }}">Vouchers</a></li>
+                        <li class=""><a href="{{ url('/vouchersType/') }}">Voucher Types</a></li>
                     </ul>
                 </li>
-                <li class="">
-                    <a href="#uiElements" class="has-arrow" aria-expanded="false"><i class="lnr lnr-file-empty"></i> <span>Voucher</span></a>
-                    <ul aria-expanded="true">
-                        <li class=""><a href="{{ url('/vouchers/create') }}">Add</a></li>
-                        <li class=""><a href="{{ url('/vouchers/') }}">View</a></li>
-                        <li class=""><a href="#">Delete</a></li>
-                    </ul>
-                </li>
+                {{--<li class="">--}}
+                    {{--<a href="#uiElements" class="has-arrow" aria-expanded="false"><i class="lnr lnr-file-empty"></i> <span>Voucher</span></a>--}}
+                    {{--<ul aria-expanded="true">--}}
+                        {{--<li class=""><a href="{{ url('/vouchers/create') }}">Add</a></li>--}}
+                        {{--<li class=""><a href="{{ url('/vouchers/') }}">View</a></li>--}}
+                        {{--<li class=""><a href="#">Delete</a></li>--}}
+                    {{--</ul>--}}
+                {{--</li>--}}
                 <li class="">
                     <a href="#uiElements" class="has-arrow" aria-expanded="false"><i class="lnr lnr-file-empty"></i> <span>Product</span></a>
                     <ul aria-expanded="true">
@@ -81,26 +83,6 @@
                         <li class=""><a href="#">Delete PO</a></li>
                         <li class=""><a href="#">Delete Product</a></li>
                         <li class=""><a href="#">Delete Voucher</a></li>
-                    </ul>
-                </li>
-                <li class="">
-                    <a href="#uiElements" class="has-arrow" aria-expanded="false"><i class="lnr lnr-file-empty"></i> <span>t</span></a>
-                    <ul aria-expanded="true">
-                        <li class=""><a href="#">t</a></li>
-                        <li class=""><a href="#">t</a></li>
-                        <li class=""><a href="#">t</a></li>
-                    </ul>
-                </li>
-                <li class="">
-                    <a href="#subPages" class="has-arrow" aria-expanded="false"><i class="lnr lnr-file-empty"></i> <span>Pages</span></a>
-                    <ul aria-expanded="true">
-                        <li class=""><a href="page-profile.html">User Profile</a></li>
-                        <li class=""><a href="page-login.html">Login</a></li>
-                        <li class=""><a href="page-register.html">Register</a></li>
-                        <li class=""><a href="page-lockscreen.html">Lockscreen</a></li>
-                        <li class=""><a href="page-forgot-password.html">Forgot Password</a></li>
-                        <li class=""><a href="page-404.html">Page 404</a></li>
-                        <li class=""><a href="page-500.html">Page 500</a></li>
                     </ul>
                 </li>
             </ul>

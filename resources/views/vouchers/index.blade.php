@@ -2,13 +2,14 @@
 @section('content')
     <div class="section-heading">
         <h1 class="page-title">Vouchers List</h1>
+        <a href="{{ url('/vouchers/create') }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Add</a>
     </div>
     <div class="row">
         <div class="col-md-10">
             <div class="panel-content">
                 <table class="table table-striped">
                     <thead>
-                    <tr>
+                    <tr class="text-center">
                         <th>Code</th>
                         <th>Date Created</th>
                         <th>Date</th>

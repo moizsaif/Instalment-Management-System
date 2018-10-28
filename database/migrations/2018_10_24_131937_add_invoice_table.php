@@ -17,7 +17,7 @@ class AddInvoiceTable extends Migration
             $table->timestamps();
             $table->integer('no');
             $table->date('date');
-            $table->double('total_amount','20','2');
+            $table->double('total_amount','8','2');
         });
     }
 

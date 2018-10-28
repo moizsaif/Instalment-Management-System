@@ -35,6 +35,19 @@
                         @endif
 
                     </div>
+                    <div class="form-group{{ $errors->has('opening_balance') ? ' has-error' : '' }}">
+                        <label for="code" class="control-label sr-only">Code</label>
+                        <input type="text" class="form-control input-lg" id="opening_balance" name="opening_balance"
+                               placeholder="Opening Balance"
+                               value="{{ $account->opening_balance }}">
+
+                        @if ($errors->has('opening_balance'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('opening_balance') }}</strong>
+                            </span>
+                        @endif
+
+                    </div>
                     <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
                         <label for="description" class="control-label sr-only">Description</label>
                         <input type="text" class="form-control input-lg" id="description" name="description" placeholder="Description"
@@ -60,13 +73,18 @@
 
                     </div>
 
-                    <div class="form-group input-group">
-                        <label class="fancy-checkbox">
-                            <input id="is_trans_allowed" name="is_trans_allowed" type="checkbox"><span>Transaction Allowed</span>
-                        </label>
+                    <div class="form-group">
+                        <div class="fancy-checkbox">
+                            <label>
+                                <input data-onstyle="success" data-offstyle="danger" data-toggle="toggle"
+                                       name="allow_transac" value="1" type="checkbox">
+
+                                <span>Allow Transaction</span>
+                            </label>
+                        </div><br>
                         <span class="input-group-btn">
-                        <button class="btn btn-primary" type="submit">Save</button>
-					</span>
+                            <button class="btn btn-primary" type="submit">Save</button>
+					    </span>
                     </div>
 
                 </form>

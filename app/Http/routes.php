@@ -23,3 +23,5 @@ Route::resource('accounts','GLAccountController');
 
 Route::resource('vouchers','GLVoucherController');
 
+Route::resource('vouchersType','GLVoucherTypeController');
+

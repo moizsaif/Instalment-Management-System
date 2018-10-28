@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ URL::asset('vendor/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('vendor/font-awesome/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('vendor/linearicons/style.css') }}">
@@ -65,6 +66,7 @@
 <script src="{{ URL::asset('vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
 <script src="{{ URL::asset('vendor/toastr/toastr.js') }}"></script>
 <script src="{{ URL::asset('js/common.js') }}"></script>
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 
 <script>
     $(function() {
@@ -242,10 +244,6 @@
             }
         });
 
-        // Date picker
-        $('.inline-datepicker').datepicker({
-            todayHighlight: true
-        });
 
         // notification popup
         toastr.options.closeButton = true;
