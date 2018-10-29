@@ -11,7 +11,8 @@ class GLVoucherType extends Model
     protected $fillable = [
         'name',
         'code',
-        'locked'
+        'locked',
+        'last_serial_no'
     ];
 
     public function vouchers(){

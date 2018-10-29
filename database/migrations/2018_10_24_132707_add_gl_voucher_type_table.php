@@ -16,7 +16,8 @@ class AddGlVoucherTypeTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->char('code');
-            $table->boolean('locked')->nullable()->default(true);
+            $table->integer('last_serial_no');
+            $table->boolean('locked')->default(true);
             $table->timestamps();
         });
     }

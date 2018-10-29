@@ -1,4 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <h2><a href="{{route('vouchers.edit', $voucher->id)}}">{{$voucher->code}}</a></h2>
+@section('pageTitle', 'Voucher')
+    <h2><a href="{{route('vouchers.edit', $voucher->id)}}">{{$voucher->no}}</a></h2>
+    <h2> {{$voucher->type->name}} </h2>
 @endsection

@@ -15,6 +15,7 @@ class AddMonthlyInstallmantTable extends Migration
         Schema::create('monthly_installments', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->integer('no');
             $table->integer('year');
             $table->integer('month');
             $table->date('due_date');

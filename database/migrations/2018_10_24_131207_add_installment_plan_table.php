@@ -14,6 +14,7 @@ class AddInstallmentPlanTable extends Migration
     {
         Schema::create('installment_plans', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('no');
             $table->timestamps();
             $table->date('month');
             $table->double('amount','8','2');

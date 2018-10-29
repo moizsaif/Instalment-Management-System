@@ -12,7 +12,8 @@ class GL_Voucher extends Model
         'code',
         'voucher_date',
         'is_approved',
-        'created_by'
+        'created_by',
+        'type_id'
     ];
 
     public function type(){

@@ -15,13 +15,13 @@ class AddGlVoucherTable extends Migration
         Schema::create('gl_vouchers', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('code','20')->unique();
+            $table->integer('no')->unique();
             $table->integer('type_id')->unsigned()->nullable();
             $table->date('voucher_date');
             $table->integer('year');
             $table->string('month');
             $table->double('amount','8','2');
-            $table->boolean('is_approved')->nullable()->default(false);
+            $table->boolean('is_approved')->default(false);
             $table->string('created_by','20');
         });
     }

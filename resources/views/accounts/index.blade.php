@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+@section('pageTitle', 'Accounts')
     <div class="section-heading">
         <h1 class="page-title">Accounts List</h1>
         <a href="{{ url('/accounts/create') }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Add</a>

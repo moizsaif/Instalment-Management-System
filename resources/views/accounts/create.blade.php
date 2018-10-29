@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+@section('pageTitle', 'Account')
     <div class="section-heading">
         <h1 class="page-title">Accounts Form</h1>
     </div>
@@ -11,7 +12,7 @@
                     {{ csrf_field() }}
 
                     <div class="form-group{{ $errors->has('alias') ? ' has-error' : '' }}">
-                        <label for="alias" class="control-label sr-only">alias</label>
+                        <label for="alias" class="control-label">Alias</label>
                         <input type="text" class="form-control input-lg" id="alias" name="alias" placeholder="Alias"
                                value="{{ old('alias') }}">
 
@@ -23,7 +24,7 @@
 
                     </div>
                     <div class="form-group{{ $errors->has('code') ? ' has-error' : '' }}">
-                        <label for="code" class="control-label sr-only">Code</label>
+                        <label for="code" class="control-label">Code</label>
                         <input type="text" class="form-control input-lg" id="code" name="code" placeholder="Code"
                                value="{{ old('code') }}">
 
@@ -35,7 +36,7 @@
 
                     </div>
                     <div class="form-group{{ $errors->has('opening_balance') ? ' has-error' : '' }}">
-                        <label for="opening_balance" class="control-label sr-only">Opening Balance</label>
+                        <label for="opening_balance" class="control-label">Opening Balance</label>
                         <input type="text" class="form-control input-lg" id="opening_balance" name="opening_balance" placeholder="Opening Balance"
                                value="{{ old('opening_balance') }}">
 
@@ -47,7 +48,7 @@
 
                     </div>
                     <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
-                        <label for="description" class="control-label sr-only">Description</label>
+                        <label for="description" class="control-label">Description</label>
                         <input type="text" class="form-control input-lg" id="description" name="description" placeholder="Description"
                                value="{{ old('description') }}">
 
@@ -60,8 +61,8 @@
                     </div>
 
                     <div class="form-group{{ $errors->has('level_no') ? ' has-error' : '' }}">
-                        <label for="level_no" class="control-label sr-only">Level Number</label>
-                        <input type="text" class="form-control input-lg" id="level_no" name="level_no" placeholder="Level Number"
+                        <label for="level_no" class="control-label">Level Number</label>
+                        <input readonly type="text" class="form-control input-lg" id="level_no" name="level_no"
                                value="{{ old('level_no') }}">
 
                         @if ($errors->has('level_no'))
@@ -74,9 +75,9 @@
 
                     <div class="form-group">
                         <label>
+                            <label for="allow_transac" class="control-label">Allow Transaction</label>
                             <input data-onstyle="success" data-offstyle="danger" data-toggle="toggle"
                                    name="allow_transac" value="1" type="checkbox">
-                            <span>Allow Transaction</span>
                         </label><br><br>
                         <span class="input-group-btn">
                             <button class="btn btn-primary" type="submit">Save</button>

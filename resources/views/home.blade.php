@@ -1,7 +1,6 @@
 @extends('layouts.app')
-
+@section('pageTitle', 'Home')
 @section('content')
-
 
 
     <!-- WEBSITE ANALYTICS -->

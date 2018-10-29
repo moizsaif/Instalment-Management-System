@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\GL_Voucher;
+use App\GLVoucherType;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -31,7 +32,8 @@ class GLVoucherController extends Controller
      */
     public function create()
     {
-        return view('vouchers.create');
+        $voucherTypes = GLVoucherType::all();
+        return view('vouchers.create',compact('voucherTypes'));
     }
 
     /**
@@ -45,15 +47,25 @@ class GLVoucherController extends Controller
         //$voucher = GL_Voucher::create($request->all());
         $voucher = new GL_Voucher();
 
-        $voucher->code = $request-> code;
+        $voucher->no = $request-> no;
         $voucher->voucher_date = $request-> voucher_date;
         $date = strtotime($request->voucher_date);
 
         $voucher->year = date("Y",$date);
         $voucher->month = date("M",$date);
-        $voucher->is_approved = $request-> is_approved;
+        if($request-> is_approved == NULL){
+            $voucher->is_approved=false;
+        }else{
+            $voucher->is_approved=true;
+        }
         $voucher->created_by = $request->created_by;
+        $voucher->type_id = $request->type_id;
         $voucher->save();
+
+        //Updating Last Serial Number on Voucher Types Table
+        $voucherType = GLVoucherType::findOrFail($request->type_id);
+        $voucherType->last_serial_no = $voucherType->last_serial_no + 1;
+        $voucherType->save();
 
         return redirect('/vouchers');
     }
@@ -79,7 +91,8 @@ class GLVoucherController extends Controller
     public function edit($id)
     {
         $voucher = GL_Voucher::findOrFail($id);
-        return view('vouchers.edit',compact('voucher'));
+        $voucherTypes = GLVoucherType::all();
+        return view('vouchers.edit',compact('voucher','voucherTypes'));
     }
 
     /**
@@ -92,14 +105,18 @@ class GLVoucherController extends Controller
     public function update(Request $request, $id)
     {
         $voucher = GL_Voucher::findOrFail($id);
-        $voucher->code = $request-> code;
+        $voucher->no = $request-> no;
         $voucher->voucher_date = $request-> voucher_date;
 
         $date = strtotime($request->voucher_date);
 
         $voucher->year = date("Y",$date);
         $voucher->month = date("M",$date);
-        $voucher->is_approved = $request-> is_approved;
+        if($request-> is_approved == NULL){
+            $voucher->is_approved=false;
+        }else{
+            $voucher->is_approved=true;
+        }
         $voucher->created_by = $request->created_by;
 
         $voucher->save();
