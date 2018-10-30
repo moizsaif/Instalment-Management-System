@@ -5,90 +5,77 @@
         <h1 class="page-title">Accounts Form</h1>
     </div>
     <div class="row">
-        <div class="col-md-10 col-lg-6">
-            <div class="panel-content">
+        <form class="form-auth-small" role="form" method="POST" action="/accounts/{{$account->id}}" data-parsley-validate novalidate>
+            <input type="hidden" name="_method" value="PUT">
+            {{ csrf_field() }}
 
-                <form class="form-auth-small" role="form" method="POST" action="/accounts/{{$account->id}}">
-                    {{ csrf_field() }}
-                    <input type="hidden" name="_method" value="PUT">
-
-                    <div class="form-group{{ $errors->has('alias') ? ' has-error' : '' }}">
-                        <label for="alias" class="control-label">Alias</label>
-                        <input type="text" class="form-control input-lg" id="alias" name="alias" placeholder="Alias"
-                               value="{{ $account->alias }}">
-
-                        @if ($errors->has('alias'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('alias') }}</strong>
-                            </span>
-                        @endif
-
-                    </div>
+            <div class="col-lg-4 col-md-5 col-sm-6">
+                <div class="panel-content">
                     <div class="form-group{{ $errors->has('code') ? ' has-error' : '' }}">
-                        <label for="code" class="control-label ">Code</label>
-                        <input type="text" class="form-control input-lg" id="code" name="code" placeholder="Code"
-                               value="{{ $account->code }}">
-
+                        <label for="code" class="control-label">Code</label>
+                        <input type="text" class="form-control" id="code" name="code"
+                               value="{{ $account->code }}" required>
                         @if ($errors->has('code'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('code') }}</strong>
                             </span>
                         @endif
-
                     </div>
                     <div class="form-group{{ $errors->has('opening_balance') ? ' has-error' : '' }}">
-                        <label for="opening_balance" class="control-label ">Opening Balance</label>
-                        <input type="text" class="form-control input-lg" id="opening_balance" name="opening_balance"
-                               placeholder="Opening Balance"
-                               value="{{ $account->opening_balance }}">
-
+                        <label for="opening_balance" class="control-label">Opening Balance</label>
+                        <input type="text" class="form-control" id="opening_balance" name="opening_balance"
+                               value="{{ $account->opening_balance }}" required>
                         @if ($errors->has('opening_balance'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('opening_balance') }}</strong>
                             </span>
                         @endif
-
-                    </div>
-                    <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
-                        <label for="description" class="control-label ">Description</label>
-                        <input type="text" class="form-control input-lg" id="description" name="description" placeholder="Description"
-                               value="{{ $account->description }}">
-
-                        @if ($errors->has('description'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('description') }}</strong>
-                            </span>
-                        @endif
-
                     </div>
                     <div class="form-group{{ $errors->has('level_no') ? ' has-error' : '' }}">
-                        <label for="level_no" class="control-label ">Level Number</label>
-                        <input readonly type="text" class="form-control input-lg" id="level_no" name="level_no"
-                               value="{{ $account->level_no }}">
+                        <label for="level_no" class="control-label">Level Number</label>
+                        <input readonly type="text" class="form-control" id="level_no" name="level_no"
+                               value="{{ $account->level_no }}" required>
 
                         @if ($errors->has('level_no'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('level_no') }}</strong>
                             </span>
                         @endif
-
                     </div>
-
-                    <div class="form-group">
-                        <div class="fancy-checkbox">
-                            <label>
-                                <span>Allow Transaction</span>
-                                <input data-onstyle="success" data-offstyle="danger" data-toggle="toggle"
-                                       name="allow_transac" value="1" type="checkbox">
-                            </label>
-                        </div><br>
-                        <span class="input-group-btn">
-                            <button class="btn btn-primary" type="submit">Save</button>
-					    </span>
-                    </div>
-
-                </form>
+                </div>
             </div>
-        </div>
+
+            <div class="col-lg-4 col-md-5 col-sm-6">
+                <div class="panel-content">
+                    <div class="form-group{{ $errors->has('alias') ? ' has-error' : '' }}">
+                        <label for="alias" class="control-label">Alias</label>
+                        <input type="text" class="form-control" id="alias" name="alias"
+                               value="{{ $account->alias }}" required>
+                        @if ($errors->has('alias'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('alias') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                    <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
+                        <label for="description" class="control-label">Description</label>
+                        <input type="text" class="form-control" id="description" name="description"
+                               value="{{ $account->description }}" required>
+
+                        @if ($errors->has('description'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('description') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                    <div class="form-group">
+                        <input data-onstyle="success" data-offstyle="danger" data-toggle="toggle"
+                               data-on="Allowed" data-off="Not Allowed"
+                               name="allow_transac" value="1" type="checkbox">
+                        <button style="float:right" class="btn btn-primary" type="submit">Save</button>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
 @endsection

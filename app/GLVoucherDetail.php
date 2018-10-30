@@ -9,6 +9,8 @@ class GLVoucherDetail extends Model
     protected $table = 'gl_voucher_details';
 
     protected $fillable = [
+        'acc_id',
+        'voucher_no',
         'debit',
         'credit',
         'cheque_no',
@@ -17,9 +19,9 @@ class GLVoucherDetail extends Model
     ];
 
     public function voucher(){
-        return $this->belongsTo('App\GLVoucher');
+        return $this->belongsTo('App\GL_Voucher');
     }
     public function account(){
-        return $this->belongsTo('App\GLAccount');
+        return $this->belongsTo('App\GL_Account');
     }
 }

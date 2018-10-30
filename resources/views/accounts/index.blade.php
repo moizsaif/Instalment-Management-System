@@ -19,7 +19,7 @@
                         <th>Transaction Allowed</th>
                     </tr>
                     </thead>
-                    <tbody class="text-center">
+                    <tbody>
                     @foreach($accounts as $account)
                         <tr>
                             <td><a href={{route('accounts.show',$account->id)}}/>{{$account->code}}</td>

@@ -19,7 +19,7 @@ class AddGlAccountTable extends Migration
             $table->double('opening_balance','8','2');
             $table->string('description')->nullable();
             $table->integer('level_no');
-            $table->boolean('allow_transac')->nullable()->default(false);
+            $table->boolean('allow_transac')->default(false);
             $table->string('alias','30');
         });
     }

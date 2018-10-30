@@ -46,7 +46,11 @@ class GLAccountController extends Controller
         $account->alias = $request->alias;
         $account->description = $request->description;
         $account->level_no = $request->level_no;
-        $account->allow_transac = $request->allow_transac;
+        if($request-> allow_transac == NULL){
+            $account->allow_transac=false;
+        }else{
+            $account->allow_transac=true;
+        }
         $account->level_no = $request->level_no;
         $account->opening_balance = $request->opening_balance;
 
@@ -92,7 +96,11 @@ class GLAccountController extends Controller
         $account->alias = $request->alias;
         $account->description = $request->description;
         $account->level_no = $request->level_no;
-        $account->allow_transac = $request->allow_transac;
+        if($request-> allow_transac == NULL){
+            $account->allow_transac=false;
+        }else{
+            $account->allow_transac=true;
+        }
         $account->level_no = $request->level_no;
         $account->opening_balance = $request->opening_balance;
 

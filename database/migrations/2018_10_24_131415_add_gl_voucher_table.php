@@ -16,7 +16,7 @@ class AddGlVoucherTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->integer('no')->unique();
-            $table->integer('type_id')->unsigned()->nullable();
+            $table->integer('type_id')->unsigned();
             $table->date('voucher_date');
             $table->integer('year');
             $table->string('month');

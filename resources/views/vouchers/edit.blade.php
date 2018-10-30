@@ -5,23 +5,12 @@
         <h1 class="page-title">Vouchers Form</h1>
     </div>
     <div class="row">
-        <form class="form-auth-small" role="form" method="POST" action="/vouchers/{{$voucher->id}}">
+        <form class="form-auth-small" role="form" method="POST" action="/vouchers/{{$voucher->id}}" data-parsley-validate novalidate>
             {{ csrf_field() }}
             <input type="hidden" name="_method" value="PUT">
 
             <div class="col-lg-4 col-md-5 col-sm-6">
                 <div class="panel-content">
-                    <div class="form-group{{ $errors->has('no') ? ' has-error' : '' }}">
-                        <label for="no" class="control-label">Number</label>
-                        <input type="text" class="form-control" id="no" name="no"
-                               value="{{ $voucher->no }}">
-
-                        @if ($errors->has('no'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('no') }}</strong>
-                            </span>
-                        @endif
-                    </div>
                     <label for="voucher_date" class="control-label">Voucher Date</label>
                     <div class="form-group input-group">
                         <input data-provide="datepicker" data-date-autoclose="true" class="form-control"
@@ -33,11 +22,25 @@
                     </div>
                     <div class="form-group">
                         <label class="control-label">Type</label>
-                        <select class="form-control" id="type_id" name="type_id">
+                        <select class="form-control" id="type_id" name="type_id" required>
+                            <option selected="selected" value="">Select Voucher Type</option>
                             @foreach($voucherTypes as $voucherType)
-                                <option value="{{$voucherType->id}}">{{$voucherType->name}}</option>
+                                @if($voucherType->locked==0)
+                                    <option value="{{$voucherType->id}}">{{$voucherType->name}}</option>
+                                @endif
                             @endforeach
                         </select>
+                    </div>
+                    <div class="form-group{{ $errors->has('no') ? ' has-error' : '' }}">
+                        <label for="no" class="control-label">Number</label>
+                        <input readonly type="text" class="form-control" id="no" name="no"
+                               value="{{ $voucher->no }}">
+
+                        @if ($errors->has('no'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('no') }}</strong>
+                            </span>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -49,16 +52,35 @@
                                value="{{ $voucher->created_by }}"><br>
                     </div>
                     <div class="form-group">
-                        <label for="is_approved" class="control-label">Is Approved</label>
                         <input data-onstyle="success" data-offstyle="danger" data-toggle="toggle"
+                               data-on="Approved" data-off="Un-Approved"
                                name="is_approved" value="1" type="checkbox">
+                        <button style="float:right" class="btn btn-primary" type="submit">Save</button>
                     </div>
-                    <div class="form-group">
-                        <button class="btn btn-primary" type="submit">Save</button>
-                    </div>
-
                 </div>
             </div>
         </form>
     </div>
+@endsection
+
+@section('page-script')
+    <script>
+        document.getElementById("type_id").onclick=function () {
+            var serials = [];
+
+            @foreach ($voucherTypes as $voucherType)
+            @if($voucherType->locked==0)
+            serials.push('{{ $voucherType->last_serial_no }}');
+            @else
+            serials.push('0')
+                    @endif
+                    @endforeach
+
+            var type_id = document.getElementById("type_id").value;
+            document.getElementById("no").value = serials[type_id-1];
+        };
+        document.getElementById("add").onclick=function () {
+
+        };
+    </script>
 @endsection

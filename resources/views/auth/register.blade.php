@@ -44,7 +44,8 @@
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="control-label sr-only">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="{{ old('email') }}">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Email"
+                                   value="{{ old('email') }}" required>
 
                             @if ($errors->has('email'))
                                 <span class="help-block">

@@ -15,7 +15,7 @@ class AddGlVoucherTypeTable extends Migration
         Schema::create('g_l_voucher_types', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->char('code');
+            $table->char('code')->unique();
             $table->integer('last_serial_no');
             $table->boolean('locked')->default(true);
             $table->timestamps();

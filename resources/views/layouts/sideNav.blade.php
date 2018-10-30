@@ -9,7 +9,8 @@
 
     <div class="sidebar-scroll">
         <div class="user-account">
-            <img src="{{ URL::asset('img/user.png') }}" class="img-responsive img-circle user-photo" alt="User Profile Picture">
+            <img src="{{ URL::asset('img/user.png') }}" class="img-responsive img-circle user-photo" alt="User Profile Picture"
+            width="150" height="150">
             <div class="dropdown">
                 @if (Auth::guest())
                 @else

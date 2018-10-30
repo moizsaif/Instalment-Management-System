@@ -10,7 +10,7 @@
             <div class="panel-content">
                 <table class="table table-striped">
                     <thead>
-                    <tr class="text-center">
+                    <tr>
                         <th>Number</th>
                         <th>Type</th>
                         <th>Date Created</th>
@@ -21,7 +21,7 @@
                         <th>Created By</th>
                     </tr>
                     </thead>
-                    <tbody class="text-center">
+                    <tbody>
                     @foreach($vouchers as $voucher)
                         <tr>
                             <td><a href={{route('vouchers.show',$voucher->id)}}/>{{$voucher->no}}</td>

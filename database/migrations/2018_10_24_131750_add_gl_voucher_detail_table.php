@@ -15,8 +15,8 @@ class AddGlVoucherDetailTable extends Migration
         Schema::create('gl_voucher_details', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->integer('voucher_no')->unsigned()->nullable();
-            $table->integer('acc_id')->unsigned()->nullable();
+            $table->integer('voucher_id')->unsigned();
+            $table->integer('acc_id')->unsigned();
             $table->double('debit','8','2');
             $table->double('credit','8','2');
             $table->char('cheque_no','20');

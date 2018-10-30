@@ -23,7 +23,7 @@ class DefineRelationshipsOnAccounts extends Migration
                 ->onDelete('cascade');
         });
         Schema::table('gl_voucher_details', function (Blueprint $table) {
-            $table->foreign('voucher_no')
+            $table->foreign('voucher_id')
                 ->references('id')->on('gl_vouchers')
                 ->onDelete('cascade');
         });
@@ -44,7 +44,7 @@ class DefineRelationshipsOnAccounts extends Migration
             $table->dropForeign(['acc_id']);
         });
      Schema::table('gl_voucher_details', function (Blueprint $table) {
-         $table->dropForeign(['voucher_no']);
+         $table->dropForeign(['voucher_id']);
      });
     }
 }
