@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-@section('pageTitle', 'Account')
+@section('pageTitle', 'New Account')
     <div class="section-heading">
         <h1 class="page-title">Accounts Form</h1>
     </div>
@@ -32,7 +32,7 @@
                     <div class="form-group{{ $errors->has('level_no') ? ' has-error' : '' }}">
                         <label for="level_no" class="control-label">Level Number</label>
                         <input readonly type="text" class="form-control" id="level_no" name="level_no"
-                               value="{{ old('level_no') }}" required>
+                               value="{{ old('level_no') }}">
 
                         @if ($errors->has('level_no'))
                             <span class="help-block">

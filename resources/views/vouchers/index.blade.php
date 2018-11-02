@@ -41,3 +41,20 @@
         </div>
     </div>
 @endsection
+@section('page-script')
+    <script>
+        $(function () {
+            var notify='Voucher added/updated';
+            // notification popup
+
+            @if(session()->has('success'))
+                toastr.options.closeButton = true;
+                toastr.options.closeButton = true;
+                toastr.options.positionClass = 'toast-bottom-right';
+                toastr.options.showDuration = 1000;
+                toastr['success'](notify);
+            @endif
+        });
+    </script>
+@endsection
+

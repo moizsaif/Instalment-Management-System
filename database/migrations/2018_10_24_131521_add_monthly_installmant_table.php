@@ -15,13 +15,14 @@ class AddMonthlyInstallmantTable extends Migration
         Schema::create('monthly_installments', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->integer('no');
-            $table->integer('year');
-            $table->integer('month');
+            $table->integer('plan_no')->unsigned();
+            $table->integer('no')->unique();
+            $table->date('year');
+            $table->date('month');
             $table->date('due_date');
             $table->double('amount','8','2');
             $table->double('received_amount','8','2');
-            $table->boolean('status');
+            $table->boolean('status')->default(false);
         });
     }
 

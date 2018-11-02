@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-@section('pageTitle', 'Account')
+@section('pageTitle', 'Edit Account')
     <div class="section-heading">
         <h1 class="page-title">Accounts Form</h1>
     </div>

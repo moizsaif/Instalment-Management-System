@@ -4,11 +4,6 @@ use Illuminate\Database\Seeder;
 
 class VoucherTypeTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
         DB::table('g_l_voucher_types')->insert([[

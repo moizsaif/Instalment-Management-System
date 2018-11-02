@@ -22,11 +22,6 @@ class DefineRelationshipsOnPoGrnPr extends Migration
                 ->references('id')->on('purchase_orders')
                 ->onDelete('cascade');
         });
-        Schema::table('products', function (Blueprint $table) {
-            $table->foreign('grn_id')
-                ->references('id')->on('g_r_ns')
-                ->onDelete('cascade');
-        });
         Schema::table('product_details', function (Blueprint $table) {
             $table->foreign('pr_id')
                 ->references('id')->on('products')
@@ -52,9 +47,6 @@ class DefineRelationshipsOnPoGrnPr extends Migration
         });
         Schema::table('g_r_ns', function (Blueprint $table) {
             $table->dropForeign(['po_id']);
-        });
-        Schema::table('products', function (Blueprint $table) {
-            $table->dropForeign(['grn_id']);
         });
         Schema::table('product_details', function (Blueprint $table) {
             $table->dropForeign(['pr_id']);

@@ -17,7 +17,7 @@ class AddVendorTable extends Migration
             $table->timestamps();
             $table->char('name','20');
             $table->string('contact_no','20');
-            $table->char('cnic','13');
+            $table->char('cnic','13')->nullable();
             $table->string('email','30')->nullable();
             $table->string('address');
             $table->string('iban','30')->nullable();

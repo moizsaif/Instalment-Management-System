@@ -73,7 +73,7 @@ class GLVoucherController extends Controller
         //Adding Voucher transaction details
         $voucherDetail = new GLVoucherDetail();
 
-        return redirect('/vouchers');
+        return redirect('/vouchers')->with('success');
     }
 
     /**
@@ -112,27 +112,16 @@ class GLVoucherController extends Controller
     public function update(Request $request, $id)
     {
         $voucher = GL_Voucher::findOrFail($id);
-        $voucher->no = $request-> no;
-        $voucher->voucher_date = $request-> voucher_date;
 
-        $date = strtotime($request->voucher_date);
-
-        $voucher->year = date("Y",$date);
-        $voucher->month = date("M",$date);
-        if($request-> is_approved == NULL){
-            $voucher->is_approved=false;
+        if($request->is_approved == NULL){
+            $voucher->is_approved = false;
         }else{
-            $voucher->is_approved=true;
+            $voucher->is_approved = true;
         }
-        $voucher->created_by = $request->created_by;
+
         $voucher->save();
 
-        //Updating Last Serial Number on Voucher Types Table
-        $voucherType = GLVoucherType::findOrFail($request->type_id);
-        $voucherType->last_serial_no = $voucherType->last_serial_no + 1;
-        $voucherType->save();
-
-        return redirect('/vouchers/');
+        return redirect('/vouchers/')->with('success');
     }
 
     /**

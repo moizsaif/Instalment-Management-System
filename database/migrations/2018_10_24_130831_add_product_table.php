@@ -15,7 +15,6 @@ class AddProductTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->Integer('grn_id')->unsigned()->nullable();
             $table->string('code','25')->unique();
             $table->boolean('discount');
             $table->char('name');

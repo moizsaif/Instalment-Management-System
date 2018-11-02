@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-@section('pageTitle', 'Voucher Type')
+@section('pageTitle', 'Edit Voucher Type')
     <div class="section-heading">
         <h1 class="page-title">Voucher Types Form</h1>
     </div>

@@ -21,8 +21,8 @@ class PurchaseOrderController extends Controller
      */
     public function index()
     {
-        $PO=\App\PurchaseOrder::all();
-        return view('home',compact('PurchaseOrder'));
+        $PO=PurchaseOrder::all();
+        return view('',compact('PurchaseOrder'));
     }
 
     /**
@@ -43,7 +43,7 @@ class PurchaseOrderController extends Controller
      */
     public function store(Request $request)
     {
-        $PO=new \App\PurchaseOrder;
+        $PO = new PurchaseOrder();
         $PO->no=$request ->get('no');
         $PO->amount=$request ->get('amount');
         $PO->quantity=$request ->get('quantity');

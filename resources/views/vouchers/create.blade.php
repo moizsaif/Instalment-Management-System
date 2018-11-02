@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-@section('pageTitle', 'Voucher')
+@section('pageTitle', 'Add Voucher')
     <div class="section-heading">
         <h2 class="page-title">Voucher Form</h2>
     </div>
@@ -34,7 +34,7 @@
                     <div class="form-group{{ $errors->has('no') ? ' has-error' : '' }}">
                         <label for="no" class="control-label">Number</label>
                         <input readonly type="text" class="form-control" id="no" name="no"
-                               value="{{ old('no') }}" required>
+                               value="{{ old('no') }}">
 
                         @if ($errors->has('no'))
                             <span class="help-block">

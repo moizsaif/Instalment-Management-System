@@ -15,18 +15,17 @@ class AddInstallmentPlanTable extends Migration
         Schema::create('installment_plans', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('no');
+            $table->integer('customer_no')->unsigned();
+            $table->integer('pr_no')->unsigned();
             $table->timestamps();
-            $table->date('month');
             $table->double('amount','8','2');
-            $table->double('received_amount','8','2');
             $table->double('additional_amount','8','2');
             $table->double('total_amount','8','2');
             $table->double('down_payment','8','2');
             $table->integer('total_months');
             $table->integer('paid_months');
-            $table->date('start_year');
-            $table->date('start_month');
-            $table->boolean('approved_status');
+            $table->date('start_date');
+            $table->boolean('approved_status')->default(false);
         });
     }
 

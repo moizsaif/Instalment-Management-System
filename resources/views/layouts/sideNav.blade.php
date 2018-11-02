@@ -32,18 +32,18 @@
             <ul id="main-menu" class="metismenu">
                 <li class="active"><a href="{{'/home'}}"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
                 <li class="">
-                    <a href="#uiElements" class="has-arrow" aria-expanded="false"><i class="lnr lnr-file-empty"></i> <span>Sales</span></a>
+                    <a href="#uiElements" class="has-arrow" aria-expanded="false"><i class="lnr lnr-printer"></i> <span>Sales</span></a>
                     <ul aria-expanded="true">
-                        <li class=""><a href="#">Cash Sales</a></li>
-                        <li class=""><a href="#">Installment Sales</a></li>
+                        <li class=""><a href="{{ url('/accounts/') }}"><i class="lnr lnr-tag"></i><span>Cash Sales</span></a></li>
+                        <li class=""><a href="{{ url('/accounts/') }}"><i class="lnr lnr-cart"></i><span>Installment Sales</span></a></li>
                     </ul>
                 </li>
                 <li class="">
-                    <a href="#uiElements" class="has-arrow" aria-expanded="false"><i class="lnr lnr-file-empty"></i> <span>Accounts</span></a>
+                    <a href="#uiElements" class="has-arrow" aria-expanded="false"><i class="fa fa-line-chart"></i> <span>Accounting</span></a>
                     <ul aria-expanded="true">
-                        <li class=""><a href="{{ url('/accounts/') }}">List</a></li>
-                        <li class=""><a href="{{ url('/vouchers/') }}">Vouchers</a></li>
-                        <li class=""><a href="{{ url('/vouchersType/') }}">Voucher Types</a></li>
+                        <li class=""><a href="{{ url('/accounts/') }}"><i class="lnr lnr-list"></i><span>Accounts</span></a></li>
+                        <li class=""><a href="{{ url('/vouchers/') }}"><i class="lnr lnr-layers"></i><span>Vouchers</span></a></li>
+                        <li class=""><a href="{{ url('/vouchersType/') }}"><i class="lnr lnr-layers"></i><span>Voucher Types</span></a></li>
                     </ul>
                 </li>
                 {{--<li class="">--}}
@@ -55,28 +55,23 @@
                     {{--</ul>--}}
                 {{--</li>--}}
                 <li class="">
-                    <a href="#uiElements" class="has-arrow" aria-expanded="false"><i class="lnr lnr-file-empty"></i> <span>Product</span></a>
+                    <a href="#uiElements" class="has-arrow" aria-expanded="false"><i class="fa fa-database"></i> <span>Inventory</span></a>
                     <ul aria-expanded="true">
-                        <li class=""><a href="#">Add</a></li>
-                        <li class=""><a href="#">View</a></li>
-                        <li class=""><a href="#">Delete</a></li>
-                        <li class=""><a href="#">Order Placement</a></li>
-                        <li class=""><a href="#">Update GRN</a></li>
+                        <li class=""><a href="{{ url('/products/') }}"><i class="lnr lnr-list"></i><span>Products</span></a></li>
+                        <li class=""><a href="{{ url('/purchaseOrders/') }}"><i class="lnr lnr-pencil"></i><span>Order Placement</span></a></li>
+                        <li class=""><a href="{{ url('/grns/') }}"><i class="lnr lnr-pencil"></i><span>Receive Note</span></a></li>
                     </ul>
                 </li>
                 <li class="">
-                    <a href="#uiElements" class="has-arrow" aria-expanded="false"><i class="lnr lnr-file-empty"></i> <span>Installment</span></a>
+                    <a href="#uiElements" class="has-arrow" aria-expanded="false"><i class="fa fa-calendar"></i> <span>Installment</span></a>
                     <ul aria-expanded="true">
-                        <li class=""><a href="#">Generate Plan</a></li>
-                        <li class=""><a href="#">Customer Profile</a></li>
-                        <li class=""><a href="#">Reporting</a></li>
-                        <li class=""><a href="#">Monthly Payment</a></li>
-                        <li class=""><a href="#">Partial Payment</a></li>
-                        <li class=""><a href="#">Update Payments</a></li>
+                        <li class=""><a href="#"><i class="lnr lnr-pencil"></i><span>Generate Plan</span></a></li>
+                        <li class=""><a href="#"><i class="lnr lnr-user"></i><span>Customer Profile</span></a></li>
+                        <li class=""><a href="#"><i class="lnr lnr-chart-bars"></i><span>Reporting</span></a></li>
                     </ul>
                 </li>
                 <li class="">
-                    <a href="#uiElements" class="has-arrow" aria-expanded="false"><i class="lnr lnr-file-empty"></i> <span>Admin</span></a>
+                    <a href="#uiElements" class="has-arrow" aria-expanded="false"><i class="lnr lnr-user"></i> <span>Admin</span></a>
                     <ul aria-expanded="true">
                         <li class=""><a href="#">Add Retailers</a></li>
                         <li class=""><a href="#">Edit Retailers</a></li>
