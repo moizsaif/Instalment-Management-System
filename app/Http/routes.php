@@ -28,6 +28,8 @@ Route::resource('/accounts','GLAccountController');
 
 Route::resource('vouchers','GLVoucherController');
 
+Route::resource('/installments','InstallmentPlanController');
+
 //Route::resource('/products','ProductController');
 
 Route::resource('/grns','GRNController');

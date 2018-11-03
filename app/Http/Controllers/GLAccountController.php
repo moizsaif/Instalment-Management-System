@@ -40,7 +40,6 @@ class GLAccountController extends Controller
     {
 //        Gl_Account::create($request->all());
 //        return redirect('/accounts');
-
         $account = new Gl_Account();
         $account->code = $request->code;
         $account->alias = $request->alias;
