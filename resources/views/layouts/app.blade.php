@@ -68,6 +68,7 @@
 <script src="{{ URL::asset('vendor/chartist-plugin-legend-latest/chartist-plugin-legend.js') }}"></script>
 <script src="{{ URL::asset('vendor/toastr/toastr.js') }}"></script>
 <script src="{{ URL::asset('js/common.js') }}"></script>
+<script src="{{ URL::asset('js/grid.js') }}"></script>
 <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 <script src="{{ URL::asset('vendor/parsleyjs/js/parsley.min.js') }}"></script>
 @yield('page-script')
