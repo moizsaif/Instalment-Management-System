@@ -16,6 +16,9 @@ class AddPurchaseOrderTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->Integer('v_id')->unsigned()->nullable();
+            $table->Integer('gl_accounts_id')->unsigned()->nullable();
+            $table->Integer('grn_id')->unsigned()->nullable();
+            $table->Integer('pr_id')->unsigned()->nullable();
             $table->Integer('no')->unique();
             $table->double('amount','9','2');
             $table->Integer('quantity');

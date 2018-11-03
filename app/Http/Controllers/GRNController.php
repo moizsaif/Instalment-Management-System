@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\GRN;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -19,7 +20,8 @@ class GRNController extends Controller
      */
     public function index()
     {
-        //
+        $grn=GRN::all();
+        return view('grn.index',compact('grn'));
     }
 
     /**
@@ -29,7 +31,7 @@ class GRNController extends Controller
      */
     public function create()
     {
-        return view('create');
+        return view('grn.create');
     }
 
     /**
@@ -40,17 +42,8 @@ class GRNController extends Controller
      */
     public function store(Request $request)
     {
-        $grn=new \App\GRN;
-        $grn->no=$request ->get('no');
-        $grn->status=$request ->get('status');
-        $grn->accepted_qty=$request ->get('accepted_qty');
-        $grn->rejected_qty=$request ->get('rejected_qty');
-        $date=date_create($request ->get('date'));
-        $format = date_format($date,"Y-m-d");
-        $grn->date=strtotime($format);
-        $grn->save();
-
-        return redirect('GRN')->with('success','information has been added');
+        GRN::create($request->all());
+        return redirect('/grn');
     }
 
     /**
@@ -61,7 +54,8 @@ class GRNController extends Controller
      */
     public function show($id)
     {
-        return view('show');
+        $grn = GRN::findOrFail($id);
+        return view('grn.show', compact('grn'));
     }
 
     /**
@@ -72,7 +66,8 @@ class GRNController extends Controller
      */
     public function edit($id)
     {
-        return view('edit');
+        $grn = GRN::findOrFail($id);
+        return view('grn.edit',compact('grn'));
     }
 
     /**
@@ -84,13 +79,13 @@ class GRNController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $grn= \App\GRN::find($id);
-        $grn->no=$request->get('no');
-        $grn->status=$request->get('status');
-        $grn->accepted_qty=$request->get('accepted_qty');
-        $grn->rejected_qty=$request->get('rejected_qty');
+        $grn= GRN::findorFail($id);
+        $grn->no=$request->no;
+        $grn->status=$request->status;
+        $grn->accepted_qty=$request->accepted_qty;
+        $grn->rejected_qty=$request->rejected_qty;
         $grn->save();
-        return redirect('GRN');
+        return redirect('/grn/');
     }
 
     /**
@@ -101,8 +96,9 @@ class GRNController extends Controller
      */
     public function destroy($id)
     {
-        $grn = \App\GRN::find($id);
+        /*$grn = GRN::findorFail($id);
         $grn->delete();
-        return redirect('GRN0')->with('success','Information has been  deleted');
-    }
+        return redirect('GRN')->with('success','Information has been  deleted');
+    */
+        }
 }
