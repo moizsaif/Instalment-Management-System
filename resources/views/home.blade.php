@@ -273,6 +273,10 @@
 
 @endsection
 @section('page-script')
+    <script src="{{ URL::asset('vendor/chartist/js/chartist.min.js') }}"></script>
+    <script src="{{ URL::asset('vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.min.js') }}"></script>
+    <script src="{{ URL::asset('vendor/chartist-plugin-axistitle/chartist-plugin-axistitle.min.js') }}"></script>
+    <script src="{{ URL::asset('vendor/chartist-plugin-legend-latest/chartist-plugin-legend.js') }}"></script>
     <script>
         $(function() {
 
@@ -459,3 +463,4 @@
         });
     </script>
 @endsection
+

@@ -11,7 +11,7 @@
                 <div class="panel-content">
                     <div class="form-group{{ $errors->has('code') ? ' has-error' : '' }}">
                         <label for="code" class="control-label">Code</label>
-                        <input type="text" class="form-control" id="code" name="code"
+                        <input type="text" class="form-control" name="code"
                                value="{{ old('code') }}" required>
                         @if ($errors->has('code'))
                             <span class="help-block">
@@ -21,7 +21,7 @@
                     </div>
                     <div class="form-group{{ $errors->has('opening_balance') ? ' has-error' : '' }}">
                         <label for="opening_balance" class="control-label">Opening Balance</label>
-                        <input type="text" class="form-control" id="opening_balance" name="opening_balance"
+                        <input type="text" class="form-control" name="opening_balance"
                                value="{{ old('opening_balance') }}" required data-parsley-length="[1,8]">
                         @if ($errors->has('opening_balance'))
                             <span class="help-block">
@@ -31,7 +31,7 @@
                     </div>
                     <div class="form-group{{ $errors->has('level_no') ? ' has-error' : '' }}">
                         <label for="level_no" class="control-label">Level Number</label>
-                        <input readonly type="text" class="form-control" id="level_no" name="level_no"
+                        <input readonly type="text" class="form-control" name="level_no"
                                value="{{ old('level_no') }}">
 
                         @if ($errors->has('level_no'))
@@ -47,7 +47,7 @@
                 <div class="panel-content">
                     <div class="form-group{{ $errors->has('alias') ? ' has-error' : '' }}">
                         <label for="alias" class="control-label">Alias</label>
-                        <input type="text" class="form-control" id="alias" name="alias"
+                        <input type="text" class="form-control" name="alias"
                                value="{{ old('alias') }}" required>
                         @if ($errors->has('alias'))
                             <span class="help-block">
@@ -57,7 +57,7 @@
                     </div>
                     <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
                         <label for="description" class="control-label">Description</label>
-                        <input type="text" class="form-control" id="description" name="description"
+                        <input type="text" class="form-control" name="description"
                                value="{{ old('description') }}" required>
 
                         @if ($errors->has('description'))

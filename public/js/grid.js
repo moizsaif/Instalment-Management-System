@@ -16,46 +16,6 @@
         }
     });
 
-  /**
-  * Transforms a grid that contains data, and allows to do calculations con form elements
-  * in a simple way. Example:
-  * <table id="grid">
-  *   <tr>
-  *     <th col="price" summary="min">Price</th>
-  *     <th col="quantity">Quantity</th>
-  *     <th col="discount">Discount</th>
-  *     <th col="subtotal" formula="price*quantity+(1-0.9(discount))" summary="sum">Subtotal</th>
-  *   </tr>
-  *   <tr>
-  *     <td><input type="text" name="det[0][quantity]" /></td>
-  *     <td><input type="text" name="det[0][price]" /></td>
-  *     <td><input type="checkbox" name="det[0][discount]" /></td>
-  *     <td> </td>
-  *   </tr>
-  * </table>
-  *
-  * And then you execute $('#grid').grider();
-  *
-  * @attr col: Defines the col name, it is a unique identifier for that col in the table
-  *
-  * @attr summary: Defines the type of calculation it will be done on the column,
-  * operations that can be done are "sum", "avg", "max", "min" and "count"
-  *
-  * @attr formula: Calculates the formula with the columns you defined, right now it does simple calculations, 
-  * the formula is evaluated eval(formula), to calculate
-  *
-  * Configurations for the config variable
-  * @param boolean config['initCalc'] Defines if formula should make calculations when it initializes, in case that you already did calculations server side
-  *
-  * @param boolean config['addRow'] Defines if the add row link will appear
-  * @param string config['addRowText'] Text that will display to add rows
-  * @param boolean config['delRow'] Defines if it will appear the delete link to delete a row
-  * @param string config['delRowText'] Text that will be displayed for deleting a row
-  * @param boolean config['countRow'] Indicates if it will do count the rows, necessary for adding and deleting rows
-  * @param integer config['countRowCol'] Defines the column in which the count will be displayed, defauls = 0
-  * @param boolean config['countRowAdd'] Indicates if it will be able to add Row
-  * @param boolean config['rails'] accepts the use of rails nested attributes
-  */
     $.Grider = function(table, config) {
 
         /**

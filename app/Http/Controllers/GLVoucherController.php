@@ -63,7 +63,7 @@ class GLVoucherController extends Controller
         }else{
             $voucher->is_approved=true;
         }
-        $voucher->save();
+        //$voucher->save();
 
         //Updating Last Serial Number on Voucher Types Table
         $voucherType = GLVoucherType::findOrFail($request->type_id);
@@ -72,6 +72,10 @@ class GLVoucherController extends Controller
 
         //Adding Voucher transaction details
         $voucherDetail = new GLVoucherDetail();
+
+        $accountName = $request->acc_id[0];
+        $debit = $request->debit[0];
+        $credit = $request->credit[0];
 
         return redirect('/vouchers')->with('success');
     }

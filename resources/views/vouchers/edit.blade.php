@@ -14,7 +14,7 @@
                     <label for="voucher_date" class="control-label">Voucher Date</label>
                     <div class="form-group input-group">
                         <input data-date-autoclose="true" class="form-control"
-                               data-date-format="yyyy-mm-dd" name="voucher_date" id="voucher_date"
+                               data-date-format="yyyy-mm-dd" name="voucher_date"
                                readonly value="{{ $voucher->voucher_date }}">
                         <span class="input-group-addon">
                             <i class="fa fa-calendar"></i>
@@ -22,13 +22,13 @@
                     </div>
                     <div class="form-group">
                         <label class="control-label">Type</label>
-                        <select readonly="" class="form-control" id="type_id" name="type_id">
+                        <select readonly="" class="form-control" name="type_id">
                             <option selected="selected" value="">{{ $voucher->type->name }}</option>
                         </select>
                     </div>
                     <div class="form-group{{ $errors->has('no') ? ' has-error' : '' }}">
                         <label for="no" class="control-label">Number</label>
-                        <input readonly type="text" class="form-control" id="no" name="no"
+                        <input readonly type="text" class="form-control" name="no"
                                value="{{ $voucher->no }}">
 
                         @if ($errors->has('no'))
@@ -43,7 +43,7 @@
                 <div class="panel-content">
                     <div class="form-group">
                         <label for="created_by" class="control-label">Created By</label>
-                        <input readonly type="text" class="form-control" id="created_by" name="created_by"
+                        <input readonly type="text" class="form-control" name="created_by"
                                value="{{ $voucher->created_by }}"><br>
                     </div>
                     <div class="form-group">
@@ -60,22 +60,6 @@
 
 @section('page-script')
     <script>
-        {{--document.getElementById("type_id").onclick=function () {--}}
-            {{--var serials = [];--}}
 
-            {{--@foreach ($voucherTypes as $voucherType)--}}
-            {{--@if($voucherType->locked==0)--}}
-            {{--serials.push('{{ $voucherType->last_serial_no }}');--}}
-            {{--@else--}}
-            {{--serials.push('0')--}}
-                    {{--@endif--}}
-                    {{--@endforeach--}}
-
-            {{--var type_id = document.getElementById("type_id").value;--}}
-            {{--document.getElementById("no").value = serials[type_id-1];--}}
-        {{--};--}}
-        document.getElementById("add").onclick=function () {
-
-        };
     </script>
 @endsection

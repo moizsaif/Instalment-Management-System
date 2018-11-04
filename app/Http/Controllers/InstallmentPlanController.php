@@ -6,6 +6,7 @@ use App\InstallmentPlan;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use PhpParser\Node\Expr\Array_;
 
 class InstallmentPlanController extends Controller
 {
@@ -27,7 +28,7 @@ class InstallmentPlanController extends Controller
      */
     public function create()
     {
-        return view('installments.creates');
+        return view('installments.create');
     }
 
     /**
@@ -38,7 +39,9 @@ class InstallmentPlanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        return view('installments.index');
+
     }
 
     /**

@@ -13,7 +13,7 @@
 
                     <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                         <label for="name" class="control-label">Name</label>
-                        <input type="text" class="form-control" id="name" name="name"
+                        <input type="text" class="form-control" name="name"
                                value="{{ old('name') }}" required>
 
                         @if ($errors->has('name'))
@@ -25,7 +25,7 @@
 
                     <div class="form-group{{ $errors->has('code') ? ' has-error' : '' }}">
                         <label for="code" class="control-label">Code</label>
-                        <input type="text" class="form-control" id="code" name="code"
+                        <input type="text" class="form-control" name="code"
                                value="{{ old('code') }}" required data-parsley-length="[2,4]">
 
 
@@ -33,7 +33,7 @@
 
                     <div class="form-group{{ $errors->has('last_serial_no') ? ' has-error' : '' }}">
                         <label for="last_serial_no" class="control-label">Last Serial Number</label>
-                        <input type="text" class="form-control" id="last_serial_no" name="last_serial_no"
+                        <input type="text" class="form-control" name="last_serial_no"
                                value="{{ old('last_serial_no') }}" required>
 
                         @if ($errors->has('last_serial_no'))

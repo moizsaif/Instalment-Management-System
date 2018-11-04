@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{{ URL::asset('css/main.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('vendor/metisMenu/metisMenu.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('vendor/parsleyjs/css/parsley.css') }}">
+    @yield('page-style')
     <link rel="apple-touch-icon" sizes="76x76" href="">
     <link rel="icon" type="image/png" sizes="96x96" href="">
 </head>
@@ -62,13 +63,8 @@
 <script src="{{ URL::asset('vendor/bootstrap-progressbar/js/bootstrap-progressbar.min.js') }}"></script>
 <script src="{{ URL::asset('vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
 <script src="{{ URL::asset('vendor/metisMenu/metisMenu.js') }}"></script>
-<script src="{{ URL::asset('vendor/chartist/js/chartist.min.js') }}"></script>
-<script src="{{ URL::asset('vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.min.js') }}"></script>
-<script src="{{ URL::asset('vendor/chartist-plugin-axistitle/chartist-plugin-axistitle.min.js') }}"></script>
-<script src="{{ URL::asset('vendor/chartist-plugin-legend-latest/chartist-plugin-legend.js') }}"></script>
 <script src="{{ URL::asset('vendor/toastr/toastr.js') }}"></script>
 <script src="{{ URL::asset('js/common.js') }}"></script>
-<script src="{{ URL::asset('js/grid.js') }}"></script>
 <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 <script src="{{ URL::asset('vendor/parsleyjs/js/parsley.min.js') }}"></script>
 @yield('page-script')
