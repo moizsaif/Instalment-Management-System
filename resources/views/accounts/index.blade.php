@@ -1,4 +1,12 @@
 @extends('layouts.app')
+@section('page-style')
+    <style>
+        .data{
+            width: 50px;
+            text-align: center;
+            padding-top: 1px;
+        }
+    </style>
 @section('content')
 @section('pageTitle', 'Accounts')
     <div class="section-heading">
@@ -29,9 +37,9 @@
                             <td>{{$account->level_no}}</td>
                             <td>
                                 @if($account->allow_transac==1)
-                                    <text class="btn-success">Yes</text>
+                                    <p class="btn-success data">Yes</p>
                                 @else
-                                    <text class="btn-danger">No</text>
+                                    <p class="btn-danger data">No</p>
                                 @endif</td>
                             </td>
                         </tr>

@@ -20,6 +20,6 @@ class GL_Voucher extends Model
         return $this->belongsTo('App\GLVoucherType');
     }
     public function details(){
-        return $this->hasMany('App\GLVoucherDetail');
+        return $this->hasMany('App\GLVoucherDetail','voucher_id');
     }
 }
