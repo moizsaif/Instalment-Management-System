@@ -27,7 +27,13 @@
                             <td>{{$account->opening_balance}}</td>
                             <td>{{$account->description}}</td>
                             <td>{{$account->level_no}}</td>
-                            <td>{{$account->allow_transac}}</td>
+                            <td>
+                                @if($account->allow_transac==1)
+                                    <text class="btn-success">Yes</text>
+                                @else
+                                    <text class="btn-danger">No</text>
+                                @endif</td>
+                            </td>
                         </tr>
                     @endforeach
 

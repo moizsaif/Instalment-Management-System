@@ -1,154 +1,55 @@
 @extends('layouts.app')
 @section('content')
-@section('pageTitle', 'Installments')
+@section('pageTitle', 'Installment Plans')
 
-    {{--<table>--}}
-        {{--<thead>--}}
-            {{--<tr>--}}
-                {{--<th></th>--}}
-            {{--</tr>--}}
-        {{--</thead>--}}
-        {{--<tbody>--}}
-            {{--<tr>--}}
-                {{--<td></td>--}}
-            {{--</tr>--}}
-        {{--</tbody>--}}
-    {{--</table>--}}
-
-<table border="1" id="table1" >
-    <tr>
-        <th class="testClass" style="display:none"></th>
-        <th col="product" class="testClass">Product</th>
-        <th col="price" summary="max" class="testClass">Price</th>
-        <th col="quantity" summary="avg" class="testClass">Quantity</th>
-        <th col="discount" class="testClass">Discount</th>
-        <th class="testClass" style="display:none"></th>
-        <th col="subtotal" formula="price*quantity*(1 - 0.10 * discount)" summary="sum" class="testClass">Subtotal</th>
-    </tr>
-    <tr>
-        <td style="display:none"></td>
-        <td>
-            <select name="det[0][item]" >
-                <option value="1">Computer</option>
-                <option value="2">Iphone</option>
-                <option value="3">Mouse</option>
-                <option value="4">Keyboard</option>
-                <option value="5">Screen</option>
-                <option value="6">USB Memmory</option>
-                <option value="7">CD Burner</option>
-                <option value="8">Hard Drive</option>
-                <option value="9">Motherboard</option>
-                <option value="10">Case</option>
-            </select>
-        </td>
-        <td>
-            <input name="det[0][price]" type="text" class="num" value="10" />
-        </td>
-        <td>
-            <input name="det[0][quantity]" type="text" class="num" value="1" />
-        </td>
-        <td>
-            <input name="det[0][discount]" type="checkbox" />
-        </td>
-        <td style="display:none"></td>
-        <td class="num">
-        </td>
-    </tr>
-    <tr>
-        <td style="display:none"></td>
-        <td>
-            <select name="det[1][item]" >
-                <option value="1">Computer</option>
-                <option value="2">Iphone</option>
-                <option value="3">Mouse</option>
-                <option value="4">Keyboard</option>
-                <option value="5">Screen</option>
-                <option value="6">USB Memmory</option>
-                <option value="7">CD Burner</option>
-                <option value="8">Hard Drive</option>
-                <option value="9">Motherboard</option>
-                <option value="10">Case</option>
-            </select>
-        </td>
-        <td>
-            <input name="det[1][price]" type="text" class="num" value="2.33" />
-        </td>
-        <td>
-            <input name="det[1][quantity]" type="text" class="num" value="3" />
-        </td>
-        <td>
-            <input name="det[1][discount]" type="checkbox" />
-        </td>
-        <td style="display:none"></td>
-        <td class="num">
-        </td>
-    </tr>
-    <tr>
-        <td style="display:none"></td>
-        <td>
-            <select name="det[2][item]" >
-                <option value="1">Computer</option>
-                <option value="2">Iphone</option>
-                <option value="3">Mouse</option>
-                <option value="4">Keyboard</option>
-                <option value="5">Screen</option>
-                <option value="6">USB Memmory</option>
-                <option value="7">CD Burner</option>
-                <option value="8">Hard Drive</option>
-                <option value="9">Motherboard</option>
-                <option value="10">Case</option>
-            </select>
-        </td>
-        <td>
-            <input name="det[2][price]" type="text" class="num" value="5.5" />
-        </td>
-        <td>
-            <input name="det[2][quantity]" type="text" class="num" value="2" />
-        </td>
-        <td>
-            <input name="det[2][discount]" type="checkbox" />
-        </td>
-        <td style="display:none"></td>
-        <td class="num">
-        </td>
-    </tr>
-
-</table>
-
-<input type="submit" value="Submit" id="submit1" disabled="true"/>
-<a id="button1" href="#">Convert Table 1</a>
-<h4>Code to convert table1</h4>
-
+<div class="section-heading">
+    <h1 class="page-title">Installment Plans</h1>
+    <a href="{{ url('/installments/create') }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Add</a>
+</div>
+<div class="row">
+    <div class="col-md-10">
+        <div class="panel-content">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Customer</th>
+                    <th>Product Price</th>
+                    <th>Total Amount</th>
+                    <th>Down Payment</th>
+                    <th>No of Months</th>
+                    <th>Paid Months</th>
+                    <th>Approved</th>
+                    <th>Completed</th>
+                </tr>
+                </thead>
+                <tbody>installments
+                @foreach($installments as $installment)
+                    <tr>
+                        <td><a href={{route('installments.show',$installment->id)}}/>{{$installment->no}}</td>
+                        <td>{{$installment->customer_no}}</td>
+                        <td>{{$installment->amount}}</td>
+                        <td>{{$installment->total_amount}}</td>
+                        <td>{{$installment->down_payment}}</td>
+                        <td>{{$installment->total_months}}</td>
+                        <td>{{$installment->paid_months}}</td>
+                        <td>{{$installment->approved_status}}</td>
+                        <td>
+                            @if($installment->total_months == $installment->paid_months)
+                                <text class="btn-group-sm btn-success">Completed
+                            @else <text class="btn-group-sm btn-warning">In-Complete
+                            @endif
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
 
 @endsection
 @section('page-script')
-    <script>
-        $(document).ready(function(){
-            Grider = {
-                defaults : {
-                    initCalc: true,
-                    addRow: true,
-                    addRowWithTab: true,
-                    delRow: true,
-                    decimals: 2,
-                    addRowText: '<caption><a href="#">Add Row</a></caption>',
-                    delRowText: '<td><a href="#" class="delete">delete</a></td>',
-                    countRow: false,
-                    countRowCol: 0,
-                    countRowText: '#',
-                    countRowAdd: false,
-                    addedRow: false
-                }
-            }
 
-            //$('#submit1').hide();
-            $('#button1').click(function(){
-                $('#table1').grider({countRow: true, countRowAdd: true});
-                $(this).hide();
-                $('#submit1').attr('disabled', false)
-            });
-        });
-
-    </script>
 @endsection

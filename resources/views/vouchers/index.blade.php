@@ -13,7 +13,6 @@
                     <tr>
                         <th>Number</th>
                         <th>Type</th>
-                        <th>Date Created</th>
                         <th>Date</th>
                         <th>Year</th>
                         <th>Month</th>
@@ -25,12 +24,16 @@
                     @foreach($vouchers as $voucher)
                         <tr>
                             <td><a href={{route('vouchers.show',$voucher->id)}}/>{{$voucher->no}}</td>
-                            <td><a href={{route('vouchersType.show',$voucher->type->id)}}/>{{$voucher->type->code}}</td>
-                            <td>{{$voucher->created_at}}</td>
+                            <td><a href={{route('vouchersType.show',$voucher->type->id)}}/>{{$voucher->type->name}}</td>
                             <td>{{$voucher->voucher_date}}</td>
                             <td>{{$voucher->year}}</td>
                             <td>{{$voucher->month}}</td>
-                            <td>{{$voucher->is_approved}}</td>
+                            <td>
+                                @if($voucher->is_approved==1)
+                                    <text class="btn-success">Yes</text>
+                                @else
+                                    <text class="btn-danger">No</text>
+                                @endif</td>
                             <td>{{$voucher->created_by}}</td>
                         </tr>
                     @endforeach

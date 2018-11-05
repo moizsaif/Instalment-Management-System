@@ -14,7 +14,7 @@
 
                     <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                         <label for="name" class="control-label">Name</label>
-                        <input type="text" class="form-control input-lg" id="name" name="name"
+                        <input type="text" class="form-control input-lg" name="name"
                                placeholder="Name" value="{{ $voucherType->name }}" required>
 
                         @if ($errors->has('name'))
@@ -26,7 +26,7 @@
 
                     <div class="form-group{{ $errors->has('code') ? ' has-error' : '' }}">
                         <label for="code" class="control-label">Code</label>
-                        <input type="text" class="form-control input-lg" id="code" name="code"
+                        <input type="text" class="form-control input-lg" name="code"
                                placeholder="Code" value="{{ $voucherType->code }}"
                                required data-parsley-length="[2,4]">
 
@@ -39,7 +39,7 @@
 
                     <div class="form-group{{ $errors->has('last_serial_no') ? ' has-error' : '' }}">
                         <label for="last_serial_no" class="control-label">Last Serial Number</label>
-                        <input type="text" class="form-control" id="last_serial_no" name="last_serial_no"
+                        <input type="text" class="form-control" name="last_serial_no"
                                value="{{ $voucherType->last_serial_no }}" required>
 
                         @if ($errors->has('last_serial_no'))
