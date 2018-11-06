@@ -28,7 +28,9 @@ Route::resource('/vouchersType','GLVoucherTypeController');
 Route::resource('/installments','InstallmentPlanController');
 
 Route::resource('/products','ProductController');
+
 Route::resource('/productdetails','ProductDetailsController');
+
 Route::resource('/grns','GRNController');
 
 Route::resource('/purchaseOrders','PurchaseOrderController');

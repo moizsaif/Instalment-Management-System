@@ -21,8 +21,8 @@
                     <tr>
                         <th>Code</th>
                         <th>Alias</th>
-                        <th>Opening Balance</th>
-                        <th>Description</th>
+                        <th>Current Balance</th>
+                        <th>Name</th>
                         <th>Level Number</th>
                         <th>Transaction Allowed</th>
                     </tr>
@@ -32,8 +32,8 @@
                         <tr>
                             <td><a href={{route('accounts.show',$account->id)}}/>{{$account->code}}</td>
                             <td>{{$account->alias}}</td>
-                            <td>{{$account->opening_balance}}</td>
-                            <td>{{$account->description}}</td>
+                            <td>{{$account->current_balance}}</td>
+                            <td>{{$account->name}}</td>
                             <td>{{$account->level_no}}</td>
                             <td>
                                 @if($account->allow_transac==1)

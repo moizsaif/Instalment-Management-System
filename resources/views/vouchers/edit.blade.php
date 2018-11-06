@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('page-style')
-    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ URL::asset('vendor/bootstrap/css/toggle.css') }}">
 @endsection
 @section('content')
 @section('pageTitle', 'Edit Voucher')
@@ -62,5 +62,5 @@
 @endsection
 
 @section('page-script')
-    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+    <script src="{{ URL::asset('vendor/bootstrap/js/toggle.js') }}"></script>
 @endsection

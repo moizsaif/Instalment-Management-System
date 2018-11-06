@@ -11,10 +11,11 @@ class Gl_Account extends Model
     protected $fillable = [
         'alias',
         'code',
-        'description',
+        'name',
         'level_number',
         'allow_transac',
-        'opening_balance'
+        'opening_balance',
+        'current_balance'
     ];
 
     public function glvoucherdetails(){

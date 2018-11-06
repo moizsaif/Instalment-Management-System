@@ -95,11 +95,13 @@ class GLVoucherController extends Controller
         //Adding Voucher transaction details
         foreach ($accountIds as $account){
             $voucherDetail = new GLVoucherDetail();
+            $account = Gl_Account::findOrFail($account);
 
             $voucherDetail->acc_id = $account;
             $voucherDetail->voucher_id = $voucher->id;
             if($transac[$i] == 0){
                 $voucherDetail->debit = $amount[$i];
+                //$account
                 $voucherDetail->credit = 0;
             }
             else{

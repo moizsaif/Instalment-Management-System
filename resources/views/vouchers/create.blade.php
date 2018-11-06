@@ -1,15 +1,14 @@
 @extends('layouts.app')
 @section('page-style')
-    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    {{--<link rel="stylesheet" href="{{ URL::asset('vendor/jquery-choosen/css/prism.css') }}">--}}
+    <link rel="stylesheet" href="{{ URL::asset('vendor/jquery-choosen/css/chosen.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('vendor/bootstrap/css/toggle.css') }}">
 <style>
     #acc{
         width: 90%;
     }
-    #trnsactype{
-        width: 100px;
-    }
-    #amount{
-        width: 100px;
+    .amount{
+        width: 75%;
     }
 </style>
 @endsection
@@ -21,7 +20,7 @@
     <div class="row">
         <form class="form-auth-small" role="form" method="POST" action="{{ url('/vouchers') }}" data-parsley-validate novalidate>
             {{ csrf_field() }}
-            <div class="col-lg-4 col-md-5 col-sm-6">
+            <div class="col-lg-5 col-md-5 col-sm-6">
                 <div class="panel-content">
 
                     <label for="voucher_date" class="control-label">Voucher Date</label>
@@ -59,7 +58,7 @@
 
                 </div>
             </div>
-            <div class="col-lg-4 col-md-5 col-sm-6">
+            <div class="col-lg-5 col-md-5 col-sm-6">
                 <div class="panel-content">
 
                     <div class="form-group">
@@ -77,7 +76,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-9 col-md-10 col-sm-10">
+            <div class="col-lg-8 col-md-10 col-sm-10">
                 <div class="panel-content">
                     <h4>Voucher Details</h4>
                     <button type="button" id="add-row" class="btn btn-success">Add Row</button>
@@ -93,7 +92,30 @@
                         </tr>
                         </thead>
                         <tbody>
-
+                        <tr>
+                            <td>
+                                <select id='acc' class='chosen-select' name='acc_id[]' required>
+                                    <option value=''>Select Account</option>
+                                       @foreach($accounts as $account)
+                                           @if($account->allow_transac==1)
+                                              <option value={{$account->id}}>{{$account->name}}</option>
+                                           @endif
+                                       @endforeach
+                                </select>
+                            </td>
+                            <td>
+                                <select id='' class='amount chosen-select' name='transac_type[]' required>
+                                    <option value=''>Select Transaction</option>
+                                    <option value='0'>Debit</option>
+                                    <option value='1'>Credit</option></select></td>
+                            <td>
+                                <input id='amount' type='text' class='form-control amount' id='amount' name='amount[]'
+                                       required value='{{ old('amount') }}'>
+                            </td>
+                            <td>
+                                <input type='checkbox' name='record'>
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>
@@ -103,7 +125,10 @@
 @endsection
 
 @section('page-script')
-    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+    <script src="{{ URL::asset('vendor/bootstrap/js/toggle.js') }}"></script>
+    <script src="{{ URL::asset('vendor/jquery-choosen/js/chosen.jquery.js') }}"></script>
+    <script src="{{ URL::asset('vendor/jquery-choosen/js/init.js') }}"></script>
+    {{--<script src="{{ URL::asset('vendor/jquery-choosen/js/prism.js') }}"></script>--}}
     <script>
 
         $(document).ready(function(){
@@ -127,15 +152,15 @@
                 var markup = "<tr><td><select id='acc' class='form-control' name='acc_id[]' required>" +
                     "   @foreach($accounts as $account)" +
                     "       @if($account->allow_transac==1)" +
-                    "           <option value={{$account->id}}>{{$account->description}}</option>" +
+                    "           <option value={{$account->id}}>{{$account->name}}</option>" +
                     "       @endif" +
                     "   @endforeach" +
                     "</select></td><td>" +
-                    "<select id='' class='form-control' name='transac_type[]' required>" +
-                    "<option value=''>Select Transaction Type</option>" +
+                    "<select id='' class='form-control amount' name='transac_type[]' required>" +
+                    "<option value=''>Select Transaction</option>" +
                     "<option value='0'>Debit</option>" +
                     "<option value='1'>Credit</option></select></td>" +
-                    "<td><input type='text' class='form-control' id='amount' name='amount[]' required" +
+                    "<td><input id='amount' type='text' class='form-control amount' id='amount' name='amount[]' required" +
                     "       value='{{ old('amount') }}'></td>" +
                     "<td><input type='checkbox' name='record'></td></tr>";
                 $("table tbody").append(markup);
