@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('page-style')
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+@endsection
 @section('content')
 @section('pageTitle', 'New Account')
     <div class="section-heading">
@@ -20,12 +23,12 @@
                         @endif
                     </div>
                     <div class="form-group{{ $errors->has('opening_balance') ? ' has-error' : '' }}">
-                        <label for="opening_balance" class="control-label">Opening Balance</label>
-                        <input type="text" class="form-control" name="opening_balance"
-                               value="{{ old('opening_balance') }}" required data-parsley-length="[1,8]">
-                        @if ($errors->has('opening_balance'))
+                        <label for="opening_balance" class="control-label">Current Balance</label>
+                        <input type="text" class="form-control" name="current_balance"
+                               value="{{ old('current_balance') }}" required data-parsley-length="[1,8]">
+                        @if ($errors->has('current_balance'))
                             <span class="help-block">
-                                <strong>{{ $errors->first('opening_balance') }}</strong>
+                                <strong>{{ $errors->first('current_balance') }}</strong>
                             </span>
                         @endif
                     </div>
@@ -48,21 +51,21 @@
                     <div class="form-group{{ $errors->has('alias') ? ' has-error' : '' }}">
                         <label for="alias" class="control-label">Alias</label>
                         <input type="text" class="form-control" name="alias"
-                               value="{{ old('alias') }}" required>
+                               value="{{ old('alias') }}" >
                         @if ($errors->has('alias'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('alias') }}</strong>
                             </span>
                         @endif
                     </div>
-                    <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
-                        <label for="description" class="control-label">Description</label>
-                        <input type="text" class="form-control" name="description"
-                               value="{{ old('description') }}" required>
+                    <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                        <label for="name" class="control-label">name</label>
+                        <input type="text" class="form-control" name="name"
+                               value="{{ old('name') }}" required>
 
-                        @if ($errors->has('description'))
+                        @if ($errors->has('name'))
                             <span class="help-block">
-                                <strong>{{ $errors->first('description') }}</strong>
+                                <strong>{{ $errors->first('name') }}</strong>
                             </span>
                         @endif
                     </div>
@@ -80,4 +83,7 @@
             </div>
         </form>
     </div>
+@endsection
+@section('page-script')
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 @endsection

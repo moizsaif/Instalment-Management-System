@@ -30,7 +30,9 @@ Route::resource('vouchers','GLVoucherController');
 
 Route::resource('/installments','InstallmentPlanController');
 
-//Route::resource('/products','ProductController');
+Route::resource('/products','ProductController');
+
+Route::resource('/productdetails','ProductDetailsController');
 
 Route::resource('/grns','GRNController');
 

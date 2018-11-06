@@ -1,4 +1,14 @@
 @extends('layouts.app')
+@section('page-style')
+<style>
+    .data{
+        width: 80px;
+        height: 25px;
+        text-align: center;
+        padding-top: 2px;
+    }
+</style>
+@endsection
 @section('content')
 @section('pageTitle', 'Voucher Types')
     <div class="section-heading">
@@ -23,7 +33,12 @@
                             <td><a href={{route('vouchersType.show',$vouchersType->id)}}/>{{$vouchersType->code}}</td>
                             <td>{{$vouchersType->name}}</td>
                             <td>{{$vouchersType->last_serial_no}}</td>
-                            <td>{{$vouchersType->locked}}</td>
+                            <td>
+                                @if($vouchersType->locked==1)
+                                    <p class="btn-danger data">Locked</p>
+                                @else
+                                    <p class="btn-success data">Un-Locked</p>
+                                @endif</td>
                         </tr>
                     @endforeach
 

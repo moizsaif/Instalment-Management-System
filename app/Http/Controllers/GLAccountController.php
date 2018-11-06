@@ -43,7 +43,7 @@ class GLAccountController extends Controller
         $account = new Gl_Account();
         $account->code = $request->code;
         $account->alias = $request->alias;
-        $account->description = $request->description;
+        $account->name = $request->name;
         $account->level_no = $request->level_no;
         if($request-> allow_transac == NULL){
             $account->allow_transac=false;
@@ -51,7 +51,7 @@ class GLAccountController extends Controller
             $account->allow_transac=true;
         }
         $account->level_no = $request->level_no;
-        $account->opening_balance = $request->opening_balance;
+        $account->current_balance = $request->current_balance;
 
         $account->save();
         return redirect('/accounts/');
@@ -93,7 +93,7 @@ class GLAccountController extends Controller
         $account = Gl_Account::findOrFail($id);
         $account->code = $request->code;
         $account->alias = $request->alias;
-        $account->description = $request->description;
+        $account->name = $request->name;
         $account->level_no = $request->level_no;
         if($request-> allow_transac == NULL){
             $account->allow_transac=false;
@@ -101,7 +101,7 @@ class GLAccountController extends Controller
             $account->allow_transac=true;
         }
         $account->level_no = $request->level_no;
-        $account->opening_balance = $request->opening_balance;
+        $account->current_balance = $request->current_balance;
 
         $account->save();
         return redirect('/accounts/');

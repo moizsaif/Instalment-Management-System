@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class GLVoucherType extends Model
 {
-    //protected $table = 'gl_voucher_type';
+    protected $table = 'g_l_voucher_types';
 
     protected $fillable = [
         'name',

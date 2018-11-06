@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('page-style')
+    <link rel="stylesheet" href="{{ URL::asset('vendor/bootstrap/css/toggle.css') }}">
+@endsection
 @section('content')
 @section('pageTitle', 'Add Voucher Type')
     <div class="section-heading">
@@ -44,7 +47,7 @@
                     </div>
 
                     <div class="form-group">
-                        <input data-onstyle="success" data-offstyle="danger" data-toggle="toggle"
+                        <input data-onstyle="danger" data-offstyle="success" data-toggle="toggle"
                                data-on="Locked" data-off="Un-Locked"
                                name="locked" value="1" type="checkbox">
                         <button style="float:right" class="btn btn-primary" type="submit">Save</button>
@@ -53,4 +56,7 @@
             </div>
         </div>
     </div>
+@endsection
+@section('page-script')
+    <script src="{{ URL::asset('vendor/bootstrap/js/toggle.js') }}"></script>
 @endsection

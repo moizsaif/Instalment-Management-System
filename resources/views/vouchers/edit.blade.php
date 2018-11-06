@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('page-style')
+    <link rel="stylesheet" href="{{ URL::asset('vendor/bootstrap/css/toggle.css') }}">
+@endsection
 @section('content')
 @section('pageTitle', 'Edit Voucher')
     <div class="section-heading">
@@ -59,7 +62,5 @@
 @endsection
 
 @section('page-script')
-    <script>
-
-    </script>
+    <script src="{{ URL::asset('vendor/bootstrap/js/toggle.js') }}"></script>
 @endsection

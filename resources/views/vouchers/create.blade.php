@@ -1,14 +1,14 @@
 @extends('layouts.app')
 @section('page-style')
+    {{--<link rel="stylesheet" href="{{ URL::asset('vendor/jquery-choosen/css/prism.css') }}">--}}
+    <link rel="stylesheet" href="{{ URL::asset('vendor/jquery-choosen/css/chosen.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('vendor/bootstrap/css/toggle.css') }}">
 <style>
-    #select{
-        width: 50%;
+    #acc{
+        width: 90%;
     }
-    #credit{
-        width: 15%;
-    }
-    #debit{
-        width: 15%;
+    .amount{
+        width: 75%;
     }
 </style>
 @endsection
@@ -20,7 +20,7 @@
     <div class="row">
         <form class="form-auth-small" role="form" method="POST" action="{{ url('/vouchers') }}" data-parsley-validate novalidate>
             {{ csrf_field() }}
-            <div class="col-lg-4 col-md-5 col-sm-6">
+            <div class="col-lg-5 col-md-5 col-sm-6">
                 <div class="panel-content">
 
                     <label for="voucher_date" class="control-label">Voucher Date</label>
@@ -35,7 +35,7 @@
                     <div class="form-group">
                         <label class="control-label">Type</label>
                         <select class="form-control" id="type_id" name="type_id" required>
-                            <option selected="selected" value="">Select Voucher Type</option>
+                            <option value="">Select Voucher Type</option>
                             @foreach($voucherTypes as $voucherType)
                                 @if($voucherType->locked==0)
                                     <option value="{{$voucherType->id}}">{{$voucherType->name}}</option>
@@ -58,7 +58,7 @@
 
                 </div>
             </div>
-            <div class="col-lg-4 col-md-5 col-sm-6">
+            <div class="col-lg-5 col-md-5 col-sm-6">
                 <div class="panel-content">
 
                     <div class="form-group">
@@ -76,23 +76,46 @@
                 </div>
             </div>
 
-            <div class="col-lg-9 col-md-11 col-sm-12">
+            <div class="col-lg-8 col-md-10 col-sm-10">
                 <div class="panel-content">
                     <h4>Voucher Details</h4>
-                    <button type="button" class="add-row btn btn-success">Add Row</button>
-                    <button type="button" class="delete-row btn btn-danger">Delete Row</button>
+                    <button type="button" id="add-row" class="btn btn-success">Add Row</button>
+                    <button type="button" id="delete-row" class="btn btn-danger">Delete Row</button>
 
                     <table class="table table-striped">
                         <thead>
                         <tr>
-                            <th>Select</th>
                             <th>Account</th>
-                            <th>Debit</th>
-                            <th>Credit</th>
+                            <th>Transaction</th>
+                            <th>Amount</th>
+                            <th>Select</th>
                         </tr>
                         </thead>
                         <tbody>
-
+                        <tr>
+                            <td>
+                                <select id='acc' class='chosen-select' name='acc_id[]' required>
+                                    <option value=''>Select Account</option>
+                                       @foreach($accounts as $account)
+                                           @if($account->allow_transac==1)
+                                              <option value={{$account->id}}>{{$account->name}}</option>
+                                           @endif
+                                       @endforeach
+                                </select>
+                            </td>
+                            <td>
+                                <select id='' class='amount chosen-select' name='transac_type[]' required>
+                                    <option value=''>Select Transaction</option>
+                                    <option value='0'>Debit</option>
+                                    <option value='1'>Credit</option></select></td>
+                            <td>
+                                <input id='amount' type='text' class='form-control amount' id='amount' name='amount[]'
+                                       required value='{{ old('amount') }}'>
+                            </td>
+                            <td>
+                                <input type='checkbox' name='record'>
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>
@@ -102,7 +125,12 @@
 @endsection
 
 @section('page-script')
+    <script src="{{ URL::asset('vendor/bootstrap/js/toggle.js') }}"></script>
+    <script src="{{ URL::asset('vendor/jquery-choosen/js/chosen.jquery.js') }}"></script>
+    <script src="{{ URL::asset('vendor/jquery-choosen/js/init.js') }}"></script>
+    {{--<script src="{{ URL::asset('vendor/jquery-choosen/js/prism.js') }}"></script>--}}
     <script>
+
         $(document).ready(function(){
 
             document.getElementById("type_id").onclick=function () {
@@ -120,28 +148,27 @@
                 document.getElementById("no").value = serials[type_id-1];
             };
 
-            $(".add-row").click(function(){
-                var markup = "<tr>" +
-                    "<td><input type='checkbox' name='record'></td>" +
-                    "<td id='select'><select name='acc_id[]'>" +
-                    "   @foreach($accounts as $account)\n" +
-                    "       @if($account->allow_transac==1)\n" +
-                    "           <option value=\"{{$account->id}}\">{{$account->description}}</option>\n" +
-                    "       @endif\n" +
-                    "   @endforeach\n" +
-                    "</select></td>"+
-                    "<td id='debit'>" +
-                    "<input type='text' class='form-control' name='debit[]'\n" +
-                    "                                   value='{{ old('debit') }}'></td>" +
-                    "<td id='credit'>" +
-                    "<input type='text' class='form-control' name='credit[]'\n" +
-                    "                                   value='{{ old('credit') }}'></td>" +
-                    "</td></tr>";
+            $("#add-row").click(function(){
+                var markup = "<tr><td><select id='acc' class='form-control' name='acc_id[]' required>" +
+                    "   @foreach($accounts as $account)" +
+                    "       @if($account->allow_transac==1)" +
+                    "           <option value={{$account->id}}>{{$account->name}}</option>" +
+                    "       @endif" +
+                    "   @endforeach" +
+                    "</select></td><td>" +
+                    "<select id='' class='form-control amount' name='transac_type[]' required>" +
+                    "<option value=''>Select Transaction</option>" +
+                    "<option value='0'>Debit</option>" +
+                    "<option value='1'>Credit</option></select></td>" +
+                    "<td><input id='amount' type='text' class='form-control amount' id='amount' name='amount[]' required" +
+                    "       value='{{ old('amount') }}'></td>" +
+                    "<td><input type='checkbox' name='record'></td></tr>";
                 $("table tbody").append(markup);
             });
 
+
             // Find and remove selected table rows
-            $(".delete-row").click(function(){
+            $("#delete-row").click(function(){
                 $("table tbody").find('input[name="record"]').each(function(){
                     if($(this).is(":checked")){
                         $(this).parents("tr").remove();
@@ -149,6 +176,8 @@
                 });
             });
         });
+
+        
     </script>
 @endsection
 

@@ -9,6 +9,8 @@ use App\GLVoucherType;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use phpDocumentor\Reflection\Types\Integer;
+use PhpParser\Node\Expr\Array_;
 
 class GLVoucherController extends Controller
 {
@@ -63,19 +65,56 @@ class GLVoucherController extends Controller
         }else{
             $voucher->is_approved=true;
         }
-        //$voucher->save();
+        $voucher->save();
 
         //Updating Last Serial Number on Voucher Types Table
         $voucherType = GLVoucherType::findOrFail($request->type_id);
         $voucherType->last_serial_no = $voucherType->last_serial_no + 1;
         $voucherType->save();
 
-        //Adding Voucher transaction details
-        $voucherDetail = new GLVoucherDetail();
 
-        $accountName = $request->acc_id[0];
-        $debit = $request->debit[0];
-        $credit = $request->credit[0];
+
+        $accountIds = Array();
+        $amount = Array();
+        $transac = Array();
+//        $accountIds=0;
+//        $amount =0;
+//        $transac =0;
+
+        foreach ($request->acc_id as $d){
+            $accountIds[] = $d;
+        }
+        foreach ($request->amount as $d){
+            $amount[] = $d;
+        }
+        foreach ($request->transac_type as $d){
+            $transac[] = $d;
+        }//0 for Debit & 1 for Credit
+
+        $i=0;
+        //Adding Voucher transaction details
+        foreach ($accountIds as $account){
+            $voucherDetail = new GLVoucherDetail();
+            $account = Gl_Account::findOrFail($account);
+
+            $voucherDetail->acc_id = $account;
+            $voucherDetail->voucher_id = $voucher->id;
+            if($transac[$i] == 0){
+                $voucherDetail->debit = $amount[$i];
+                //$account
+                $voucherDetail->credit = 0;
+            }
+            else{
+                $voucherDetail->credit = $amount[$i];
+                $voucherDetail->debit = 0;
+            }
+
+            $voucherDetail->cheque_no = "";
+            $voucherDetail->cheque_date = "";
+            $voucherDetail->payee = "";
+            $i++;
+            $voucherDetail->save();
+        }
 
         return redirect('/vouchers')->with('success');
     }
