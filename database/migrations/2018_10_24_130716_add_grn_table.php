@@ -21,6 +21,8 @@ class AddGrnTable extends Migration
             $table->dateTime('date')->nullable();
             $table->Integer('accepted_qty');
             $table->Integer('rejected_qty');
+            $table->String('received_by')->nullable();
+            $table->String('checked_by')->nullable();
         });
     }
 
