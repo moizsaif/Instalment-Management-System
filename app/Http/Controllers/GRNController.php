@@ -21,7 +21,7 @@ class GRNController extends Controller
     public function index()
     {
         $grn=GRN::all();
-        return view('grn.index',compact('grn'));
+        return view('grns.index',compact('grn'));
     }
 
     /**
@@ -31,7 +31,7 @@ class GRNController extends Controller
      */
     public function create()
     {
-        return view('grn.create');
+        return view('grns.create');
     }
 
     /**
@@ -42,8 +42,18 @@ class GRNController extends Controller
      */
     public function store(Request $request)
     {
-        GRN::create($request->all());
-        return redirect('/grn');
+        $grn= new GRN();
+        $grn->po_id=$request->po_id;
+        $grn->no=$request->no;
+        $grn->date=$request->date;
+        $grn->status=$request->status;
+        $grn->accepted_qty=$request->accepted_qty;
+        $grn->rejected_qty=$request->rejected_qty;
+        $grn->received_by=$request->received_by;
+        $grn->checked_by=$request->checked_by;
+        $grn->no=$request->no;
+        $grn->save();
+        return redirect('/grns/');
     }
 
     /**
@@ -55,7 +65,7 @@ class GRNController extends Controller
     public function show($id)
     {
         $grn = GRN::findOrFail($id);
-        return view('grn.show', compact('grn'));
+        return view('grns.show', compact('grn'));
     }
 
     /**
@@ -67,7 +77,7 @@ class GRNController extends Controller
     public function edit($id)
     {
         $grn = GRN::findOrFail($id);
-        return view('grn.edit',compact('grn'));
+        return view('grns.edit',compact('grn'));
     }
 
     /**
@@ -80,12 +90,17 @@ class GRNController extends Controller
     public function update(Request $request, $id)
     {
         $grn= GRN::findorFail($id);
+        $grn->po_id=$request->po_id;
         $grn->no=$request->no;
+        $grn->date=$request->date;
         $grn->status=$request->status;
         $grn->accepted_qty=$request->accepted_qty;
         $grn->rejected_qty=$request->rejected_qty;
+        $grn->received_by=$request->received_by;
+        $grn->checked_by=$request->checked_by;
+        $grn->no=$request->no;
         $grn->save();
-        return redirect('/grn/');
+        return redirect('/grns/');
     }
 
     /**
@@ -96,8 +111,8 @@ class GRNController extends Controller
      */
     public function destroy($id)
     {
-        /*$grn = GRN::findorFail($id);
-        $grn->delete();
+        /*$grns = GRN::findorFail($id);
+        $grns->delete();
         return redirect('GRN')->with('success','Information has been  deleted');
     */
         }

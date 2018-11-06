@@ -14,5 +14,7 @@ class PurchaseOrder extends Model
         'quantity',
         'date',
         ];
-
+    public function vouchers(){
+        return $this->hasMany('App\GRN');
+    }
 }

@@ -11,7 +11,11 @@ class GRN extends Model
         'no',
         'status',
         'accepted_qty',
-        'rejected_qty'
+        'rejected_qty',
+        'received_by',
+        'checked_by',
     ];
-
+    public function type(){
+        return $this->belongsTo('App\PurchaseOrder');
+    }
 }

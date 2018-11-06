@@ -19,6 +19,8 @@ class GRNsTableSeeder extends Seeder
                 'date' => '01-01-2018',
                 'accepted_qty' => '10',
                 'rejected_qty' => '10',
+                'received_by' =>'ali khan',
+                'checked_by' =>'ali khan',
             ]
         ]);
     }
