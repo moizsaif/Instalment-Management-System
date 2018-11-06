@@ -19,9 +19,9 @@ class GLVoucherDetail extends Model
     ];
 
     public function voucher(){
-        return $this->belongsTo('App\GL_Voucher');
+        return $this->belongsTo('App\GL_Voucher','voucher_id');
     }
     public function account(){
-        return $this->belongsTo('App\GL_Account');
+        return $this->belongsTo('App\GL_Account','acc_id');
     }
 }

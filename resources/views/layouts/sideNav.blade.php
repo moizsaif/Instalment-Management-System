@@ -43,17 +43,8 @@
                     <ul aria-expanded="true">
                         <li class=""><a href="{{ url('/accounts/') }}"><i class="lnr lnr-list"></i><span>Accounts</span></a></li>
                         <li class=""><a href="{{ url('/vouchers/') }}"><i class="lnr lnr-layers"></i><span>Vouchers</span></a></li>
-                        <li class=""><a href="{{ url('/vouchersType/') }}"><i class="lnr lnr-layers"></i><span>Voucher Types</span></a></li>
                     </ul>
                 </li>
-                {{--<li class="">--}}
-                    {{--<a href="#uiElements" class="has-arrow" aria-expanded="false"><i class="lnr lnr-file-empty"></i> <span>Voucher</span></a>--}}
-                    {{--<ul aria-expanded="true">--}}
-                        {{--<li class=""><a href="{{ url('/vouchers/create') }}">Add</a></li>--}}
-                        {{--<li class=""><a href="{{ url('/vouchers/') }}">View</a></li>--}}
-                        {{--<li class=""><a href="#">Delete</a></li>--}}
-                    {{--</ul>--}}
-                {{--</li>--}}
                 <li class="">
                     <a href="#uiElements" class="has-arrow" aria-expanded="false"><i class="fa fa-database"></i> <span>Inventory</span></a>
                     <ul aria-expanded="true">

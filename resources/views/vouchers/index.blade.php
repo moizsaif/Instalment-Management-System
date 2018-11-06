@@ -1,9 +1,20 @@
 @extends('layouts.app')
+@section('page-style')
+    <style>
+        .data{
+            width: 50px;
+            text-align: center;
+            padding-top: 1px;
+        }
+    </style>
+@endsection
 @section('content')
 @section('pageTitle', 'Vouchers')
     <div class="section-heading">
         <h1 class="page-title">Vouchers List</h1>
         <a href="{{ url('/vouchers/create') }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Add</a>
+        <a href="{{ url('/vouchersType/') }}" class="btn btn-warning btn-lg" role="button" aria-disabled="true">Types</a>
+        <a href="{{ url('/vouchersType/create') }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Add Voucher Type</a>
     </div>
     <div class="row">
         <div class="col-md-10">
@@ -30,9 +41,9 @@
                             <td>{{$voucher->month}}</td>
                             <td>
                                 @if($voucher->is_approved==1)
-                                    <text class="btn-success">Yes</text>
+                                    <p class="btn-success data">Yes</p>
                                 @else
-                                    <text class="btn-danger">No</text>
+                                    <p class="btn-danger data">No</p>
                                 @endif</td>
                             <td>{{$voucher->created_by}}</td>
                         </tr>
