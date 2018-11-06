@@ -8,7 +8,7 @@ class ProductsTableSeeder extends Seeder
     {
         DB::table('products')->insert([
             [
-                'code' => 'white',
+                'code' => '2',
                 'discount' => '0',
                 'name' => 'Laptop',
                 'description' => 'HP Envy 15 Core-i7 8GB 1TB',
