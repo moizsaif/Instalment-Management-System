@@ -10,15 +10,19 @@ class ProductDetail extends Model
     //protected $table = 'productdetails';
 
     protected $fillable = [
-        'pr_id',
-        'grn_id',
-        'v_id',
+        'code',
+        'description',
+        'model',
+        'color',
         'qty',
-        'sold',
-        'remaining',
+        'warranty',
+        'warranty_status',
+        'min_qty',
+        'max_qty',
         'purchase_price',
         'selling_price',
-        'discounted_price'
+        'discount',
+        'discounted_price',
     ];
     public function productdetail(){
         return $this->hasMany('App\ProductDetails');

@@ -16,15 +16,10 @@ class AddProductTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('code','25')->unique();
-            $table->boolean('discount');
             $table->char('name');
-            $table->string('description')->nullable();
-            $table->string('model','25');
-            $table->char('color','15');
-            $table->integer('warranty')->nullable();
-            $table->boolean('warranty_status');
-            $table->integer('min_qty');
-            $table->integer('max_qty');
+            $table->double('selling_price','7','2');
+            $table->integer('sold');
+            $table->integer('remaining');
         });
     }
 

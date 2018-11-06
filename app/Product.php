@@ -10,16 +10,12 @@ class Product extends Model
 
     protected $fillable = [
         'code',
-        'discount',
         'name',
-        'description',
-        'model',
-        'color',
-        'warranty_status',
-        'warranty',
-        'min_qty',
-        'max_qty'
+        'selling_price',
+        'sold',
+        'remaining'
     ];
+
 
     public function productdetail(){
         return $this->hasMany('App\Product');

@@ -1,113 +1,80 @@
 @extends('layouts.app')
 @section('content')
 @section('pageTitle','ProductDetails')
-    <div class="section-heading">
-        <h1 class="page-title">Product Detail Form</h1>
-    </div>
-    <div class="row">
-        <div class="col-md-10">
+<div class="section-heading">
+    <h1 class="page-title">Product Form</h1>
+</div>
+<div class="row">
+
+    <div class="col-lg-4 col-md-5 col-sm-6">
             <div class="panel-content">
 
-                <form class="form-auth-small" role="form" method="POST" action="{{ url('/productdetail') }}">
-                    {{ csrf_field() }}
+                <div class="form-group{{ $errors->has('code') ? ' has-error' : '' }}">
+                    <label  for="code" class="control-label">Code</label>
+                    <input type="number" class="form-control input-lg" id="code" name="code"
+                           value="{{ old('code') }}">
 
-                    <div class="form-group{{ $errors->has('product_id') ? ' has-error' : '' }}">
-                        <label for="product_id" class="control-label sr-only">Product_ID</label>
-                        <input type="number" class="form-control input-lg" id="product_id" name="product_id" placeholder="Product_id"
-                               value="{{$productdetail->product_id}}">
-
-                        @if ($errors->has('product_id'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('product_id') }}</strong>
+                    @if ($errors->has('code'))
+                        <span class="help-block">
+                                <strong>{{ $errors->first('code') }}</strong>
                             </span>
-                        @endif
+                    @endif
 
-                    </div>
-                    <div class="form-group{{ $errors->has('qty') ? ' has-error' : '' }}">
-                        <label for="qty" class="control-label sr-only">Quantity</label>
-                        <input type="number" class="form-control input-lg" id="qty" name="qty" placeholder="Qty"
-                               value="{{$productdetail->qty}}">
+                </div>
 
-                        @if ($errors->has('qty'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('qty') }}</strong>
-                            </span>
-                        @endif
-                    </div>
+                <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                    <label for="name" class="control-label ">Name</label>
+                    <input type="text" class="form-control input-lg" id="name" name="name"
+                           value="{{ old('name') }}">
 
-                    <div class="form-group{{ $errors->has('sold') ? ' has-error' : '' }}">
-                        <label for="sold" class="control-label sr-only">Sold</label>
-                        <input type="number" class="form-control input-lg" id="sold" name="sold" placeholder="Sold"
-                               value="{{$productdetail->sold}}">
-
-                        @if ($errors->has('sold'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('sold') }}</strong>
-                            </span>
-                        @endif
-                    </div>
-                    <div class="form-group{{ $errors->has('remaining') ? ' has-error' : '' }}">
-                        <label for="remaining" class="control-label sr-only">Remaining Quantity</label>
-                        <input type="number" class="form-control input-lg" id="remaining" name="remaining" placeholder="Remaining"
-                               value="{{$productdetail->remaining}}">
-
-                        @if ($errors->has('remaining'))
-                            <span class="help-block">
+                    @if ($errors->has('name'))
+                        <span class="help-block">
                                 <strong>{{ $errors->first('name') }}</strong>
                             </span>
-                        @endif
+                    @endif
 
-                    </div>
-                    <div class="form-group{{ $errors->has('dateadded') ? ' has-error' : '' }}">
-                        <label for="dateadded" class="control-label sr-only">DateAdded</label>
-                        <input type="number" class="form-control input-lg" id="dateadded" name="dateadded" placeholder="DateAdded"
-                               value="{{$productdetail->dateadded}}">
+                </div>
+                <div class="form-group{{ $errors->has('sellingprice') ? ' has-error' : '' }}">
+                    <label for="sellingprice" class="control-label ">Selling Price</label>
+                    <input type="number" class="form-control input-lg" id="sellingprice" name="sellingprice"
+                           value="{{ old('sellingprice') }}">
 
-                        @if ($errors->has('dateadded'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('dateadded') }}</strong>
-                            </span>
-                        @endif
-
-                    </div>
-                    <div class="form-group{{ $errors->has('purchaseprice') ? ' has-error' : '' }}">
-                        <label for="purchaseprice" class="control-label sr-only">Purchase Price</label>
-                        <input type="number" class="form-control input-lg" id="purchaseprice" name="purchaseprice" placeholder="PurchasePrice"
-                               value="{{$productdetail->purchaseprice}}">
-
-                        @if ($errors->has('purchaseprice'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('purchaseprice') }}</strong>
-                            </span>
-                        @endif
-
-                    </div>
-                    <div class="form-group{{ $errors->has('sellingprice') ? ' has-error' : '' }}">
-                        <label for="sellingprice" class="control-label sr-only">Selling Price</label>
-                        <input type="number" class="form-control input-lg" id="sellingprice" name="sellingprice" placeholder="SellingPrice"
-                               value="{{ $productdetail->sellingprice}}">
-
-                        @if ($errors->has('sellingprice'))
-                            <span class="help-block">
+                    @if ($errors->has('sellingprice'))
+                        <span class="help-block">
                                 <strong>{{ $errors->first('sellingprice') }}</strong>
                             </span>
-                        @endif
-                    </div>
-                    <div class="form-group{{ $errors->has('discountedprice') ? ' has-error' : '' }}">
-                        <label for="discountedprice" class="control-label sr-only">Discounted Price</label>
-                        <input type="number" class="form-control input-lg" id="discountedprice" name="discountedprice" placeholder="DiscountedPrice"
-                               value="{{ $productdetail->discountedprice}}">
+                </div>
+                <div class="form-group{{ $errors->has('sold') ? ' has-error' : '' }}">
+                    <label for="sold" class="control-label ">Sold</label>
+                    <input type="number" class="form-control input-lg" id="sold" name="sold"
+                           value="{{ old('sold') }}">
 
-                        @if ($errors->has('discountedprice'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('discountedprice') }}</strong>
+                    @if ($errors->has('sold'))
+                        <span class="help-block">
+                                <strong>{{ $errors->first('sold') }}</strong>
                             </span>
-                        @endif
+                    @endif
+                </div>
+                <div class="form-group{{ $errors->has('remaining') ? ' has-error' : '' }}">
+                    <label for="remaining" class="control-label">Remaining Quantity</label>
+                    <input type="number" class="form-control input-lg" id="remaining" name="remaining"
+                           value="{{ old('name') }}">
 
-                    </div>
+                    @if ($errors->has('remaining'))
+                        <span class="help-block">
+                                <strong>{{ $errors->first('name') }}</strong>
+                            </span>
+                    @endif
 
-                </form>
+                </div>
+                <div>
+                        <span class="input-group-btn">
+                        <button class="btn btn-primary" type="submit">Save</button>
+					</span>
+                </div>
             </div>
         </div>
-    </div>
+</div>
+
+
 @endsection

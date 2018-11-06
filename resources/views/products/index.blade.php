@@ -12,30 +12,20 @@
                     <thead>
                     <tr>
                         <th>Code</th>
-                        <th>Discount</th>
                         <th>Name</th>
-                        <th>Description</th>
-                        <th>Model</th>
-                        <th>Color</th>
-                        <th>Warranty Status</th>
-                        <th>Warranty</th>
-                        <th>Minimum Quantity</th>
-                        <th>Maximum Quantity</th>
+                        <th>Selling_price</th>
+                        <th>Sold</th>
+                        <th>Remaining</th>
                     </tr>
                     </thead>
                     <tbody class="text-center">
                     @foreach($products as $product)
                         <tr>
-                            <td><a href={{route('productdetails.create',$product->id)}}/>{{$product->code}}</td>
-                            <td>{{$product->discount}}</td>
+                            <td><a href={{route('productdetails.index',$product->id)}}/>{{$product->code}}</td>
                             <td>{{$product->name}}</td>
-                            <td>{{$product->description}}</td>
-                            <td>{{$product->model}}</td>
-                            <td>{{$product->color}}</td>
-                            <td>{{$product->warranty_status}}</td>
-                            <td>{{$product->warranty}}</td>
-                            <td>{{$product->min_qty}}</td>
-                            <td>{{$product->max_qty}}</td>
+                            <td>{{$product->selling_price}}</td>
+                            <td>{{$product->sold}}</td>
+                            <td>{{$product->remaining}}</td>
                         </tr>
                     @endforeach
 
