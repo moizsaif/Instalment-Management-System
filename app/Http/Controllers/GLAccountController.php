@@ -27,7 +27,8 @@ class GLAccountController extends Controller
      */
     public function create()
     {
-        return view('accounts.create');
+        $accounts = Gl_Account::all();
+        return view('accounts.create', compact('accounts'));
     }
 
     /**
@@ -41,17 +42,36 @@ class GLAccountController extends Controller
 //        Gl_Account::create($request->all());
 //        return redirect('/accounts');
         $account = new Gl_Account();
-        $account->code = $request->code;
         $account->alias = $request->alias;
         $account->name = $request->name;
-        $account->level_no = $request->level_no;
         if($request-> allow_transac == NULL){
             $account->allow_transac=false;
         }else{
             $account->allow_transac=true;
         }
-        $account->level_no = $request->level_no;
-        $account->current_balance = $request->current_balance;
+
+        $lvl = $request->level_no;
+        $account->level_no = $lvl;
+        if ($lvl == 4) {
+            $code = $request->code;
+            $init = $request->l3;
+            $account->code = $init . "-" . $code;
+        } elseif ($lvl == 3) {
+            $code = $request->code;
+            $init = $request->l2;
+
+            $account->code = $init . "-" . $code;
+        } elseif ($lvl == 2) {
+            $code = $request->code;
+            $init = $request->l1;
+
+            $account->code = $init . "-" . $code;
+        } elseif ($lvl == 1) {
+            $code = $request->code;
+            $account->code = $code;
+        } else {
+            //
+        }
 
         $account->save();
         return redirect('/accounts/');
@@ -91,17 +111,13 @@ class GLAccountController extends Controller
     public function update(Request $request, $id)
     {
         $account = Gl_Account::findOrFail($id);
-        $account->code = $request->code;
         $account->alias = $request->alias;
         $account->name = $request->name;
-        $account->level_no = $request->level_no;
         if($request-> allow_transac == NULL){
             $account->allow_transac=false;
         }else{
             $account->allow_transac=true;
         }
-        $account->level_no = $request->level_no;
-        $account->current_balance = $request->current_balance;
 
         $account->save();
         return redirect('/accounts/');

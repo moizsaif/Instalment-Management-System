@@ -14,14 +14,13 @@ class DatabaseSeeder extends Seeder
         $this->call(UserTableSeeder::class);
         $this->call(VendorsTableSeeder::class);
         $this->call(VoucherTypeTableSeeder::class);
-        $this->call(VoucherTableSeeder::class);
+        //$this->call(VoucherTableSeeder::class);
+        //$this->call(VoucherDetailsTableSeeder::class);
 
         Eloquent::unguard();
-        $path = 'database/ims_gl_accounts.sql';
+        $path = 'database/SQL Queries/ims_gl_accounts.sql';
         DB::unprepared(file_get_contents($path));
         $this->command->info('Accounts table seeded');
-
-        $this->call(VoucherDetailsTableSeeder::class);
 
         $this->call(PurchaseOrdersTableSeeder::class);
         $this->call(GRNsTableSeeder::class);

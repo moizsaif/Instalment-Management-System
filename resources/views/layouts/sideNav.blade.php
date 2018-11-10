@@ -56,7 +56,8 @@
                 <li class="">
                     <a href="#uiElements" class="has-arrow" aria-expanded="false"><i class="fa fa-calendar"></i> <span>Installment</span></a>
                     <ul aria-expanded="true">
-                        <li class=""><a href="#"><i class="lnr lnr-pencil"></i><span>Generate Plan</span></a></li>
+                        <li class=""><a href="{{ url('/installments/') }}"><i class="lnr lnr-pencil"></i><span>Generate Plan</span></a>
+                        </li>
                         <li class=""><a href="#"><i class="lnr lnr-user"></i><span>Customer Profile</span></a></li>
                         <li class=""><a href="#"><i class="lnr lnr-chart-bars"></i><span>Reporting</span></a></li>
                     </ul>

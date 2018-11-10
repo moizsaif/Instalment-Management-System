@@ -18,11 +18,18 @@
         <h2 class="page-title">Voucher Form</h2>
     </div>
     <div class="row">
-        <form class="form-auth-small" role="form" method="POST" action="{{ url('/vouchers') }}" data-parsley-validate novalidate>
+        <form onsubmit="return check(this)" class="form-auth-small" role="form" method="POST"
+              action="{{ url('/vouchers') }}" data-parsley-validate novalidate>
             {{ csrf_field() }}
             <div class="col-lg-5 col-md-5 col-sm-6">
                 <div class="panel-content">
-
+                    @if($reason != null)
+                        <div class="alert alert-warning alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                            <i class="fa fa-warning"></i> {{$reason}}
+                        </div>
+                    @endif
                     <label for="voucher_date" class="control-label">Voucher Date</label>
                     <div class="form-group input-group">
                         <input data-provide="datepicker" data-date-autoclose="true" class="form-control"
@@ -71,7 +78,9 @@
                         <input data-onstyle="success" data-offstyle="danger" data-toggle="toggle"
                                data-on="Approved" data-off="Un-Approved"
                                name="is_approved" value="1" type="checkbox">
-                        <button style="float:right" class="btn btn-primary" type="submit">Save</button>
+                        <button onClick="return check();" style="float:right" class="btn btn-primary" type="submit">
+                            Save
+                        </button>
                     </div>
                 </div>
             </div>
@@ -130,6 +139,9 @@
     <script src="{{ URL::asset('vendor/jquery-choosen/js/init.js') }}"></script>
     {{--<script src="{{ URL::asset('vendor/jquery-choosen/js/prism.js') }}"></script>--}}
     <script>
+        // function check(){
+        //     alert("Hi");
+        // }
 
         $(document).ready(function(){
 
@@ -148,15 +160,17 @@
                 document.getElementById("no").value = serials[type_id-1];
             };
 
-            $("#add-row").click(function(){
-                var markup = "<tr><td><select id='acc' class='form-control' name='acc_id[]' required>" +
+            $("#add-row").on("click", function () {
+                var markup = "<tr><td><select id='acc' class='chosen-select' name='acc_id[]' required>" +
                     "   @foreach($accounts as $account)" +
                     "       @if($account->allow_transac==1)" +
                     "           <option value={{$account->id}}>{{$account->name}}</option>" +
                     "       @endif" +
                     "   @endforeach" +
-                    "</select></td><td>" +
-                    "<select id='' class='form-control amount' name='transac_type[]' required>" +
+                    "</select>" +
+                    "</td>" +
+                    "<td>" +
+                    "<select id='acc' class='chosen-select' name='transac_type[]' required>" +
                     "<option value=''>Select Transaction</option>" +
                     "<option value='0'>Debit</option>" +
                     "<option value='1'>Credit</option></select></td>" +

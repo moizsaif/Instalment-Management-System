@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('page-style')
-    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ URL::asset('vendor/bootstrap/css/toggle.css') }}">
 @endsection
 @section('content')
 @section('pageTitle', 'Edit Account')
@@ -17,20 +17,10 @@
                     <div class="form-group{{ $errors->has('code') ? ' has-error' : '' }}">
                         <label for="code" class="control-label">Code</label>
                         <input type="text" class="form-control" name="code"
-                               value="{{ $account->code }}" required>
+                               readonly value="{{ $account->code }}" required>
                         @if ($errors->has('code'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('code') }}</strong>
-                            </span>
-                        @endif
-                    </div>
-                    <div class="form-group{{ $errors->has('current_balance') ? ' has-error' : '' }}">
-                        <label for="current_balance" class="control-label">Currrent Balance</label>
-                        <input type="text" class="form-control" name="current_balance"
-                               value="{{ $account->current_balance }}" required>
-                        @if ($errors->has('current_balance'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('current_balance') }}</strong>
                             </span>
                         @endif
                     </div>
@@ -61,7 +51,7 @@
                         @endif
                     </div>
                     <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                        <label for="name" class="control-label">name</label>
+                        <label for="name" class="control-label">Name</label>
                         <input type="text" class="form-control" name="name"
                                value="{{ $account->name }}" required>
 
@@ -83,5 +73,5 @@
     </div>
 @endsection
 @section('page-script')
-    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+    <script src="{{ URL::asset('vendor/bootstrap/js/toggle.js') }}"></script>
 @endsection

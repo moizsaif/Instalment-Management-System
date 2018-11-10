@@ -14,7 +14,7 @@
     <tbody>
     @foreach($voucher->details as $details)
         <tr>
-            <td><a href="{{route('accounts.show', $details->acc_id)}}">{{$details->account->description}}</a></td>
+            <td><a href="{{route('accounts.show', $details->acc_id)}}">{{$details->account->name}}</a></td>
             <td>{{$details->debit}}</td>
             <td>{{$details->credit}}</td>
         </tr>
