@@ -19,12 +19,15 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
+Route::resource('purchaseorder','PurchaseOrderController');
+
+Route::resource('grn','GRNController');
+
+Route::resource('accounts','GLAccountController');
 Route::resource('/accounts','GLAccountController');
 
-Route::resource('/vouchers','GLVoucherController');
-
-Route::resource('/vouchersType','GLVoucherTypeController');
-
+Route::resource('vouchers','GLVoucherController');
+Route::resource('vouchersType','GLVoucherTypeController');
 Route::resource('/installments','InstallmentPlanController');
 
 Route::resource('/products','ProductController');

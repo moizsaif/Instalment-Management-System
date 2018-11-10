@@ -22,7 +22,7 @@ class PurchaseOrderController extends Controller
     public function index()
     {
         $PO=PurchaseOrder::all();
-        return view('',compact('PurchaseOrder'));
+        return view('purchaseOrders.index',compact('PO'));
     }
 
     /**
@@ -32,7 +32,7 @@ class PurchaseOrderController extends Controller
      */
     public function create()
     {
-        return view('create');
+        return view('purchaseOrders.create');
     }
 
     /**
@@ -52,7 +52,7 @@ class PurchaseOrderController extends Controller
         $PO->date=strtotime($format);
         $PO->save();
 
-        return redirect('PurchaseOrder')->with('success','information has been added');
+        return redirect('/purchaseOrders/');
     }
 
     /**
@@ -63,7 +63,8 @@ class PurchaseOrderController extends Controller
      */
     public function show($id)
     {
-        return view('show');
+        $PO = PurchaseOrder::findOrFail($id);
+        return view('purchaseOrders.show', compact('PO'));
     }
 
     /**
@@ -74,7 +75,8 @@ class PurchaseOrderController extends Controller
      */
     public function edit($id)
     {
-        return view('edit');
+        $PO = PurchaseOrder::findOrFail($id);
+        return view('purchaseOrders.edit', compact('PO'));
     }
 
     /**
@@ -86,12 +88,15 @@ class PurchaseOrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $PO= \App\PurchaseOrder::find($id);
+        $PO= PurchaseOrder::findorFail($id);
         $PO->no=$request->get('no');
         $PO->amount=$request->get('amount');
         $PO->quantity=$request->get('quantity');
+        $date=date_create($request ->get('date'));
+        $format = date_format($date,"Y-m-d");
+        $PO->date=strtotime($format);
         $PO->save();
-        return redirect('PurchaseOrder');
+        return redirect('/purchaseOrders/');
     }
 
     /**
@@ -102,8 +107,8 @@ class PurchaseOrderController extends Controller
      */
     public function destroy($id)
     {
-        $PO = \App\PurchaseOrder::find($id);
+        $PO = PurchaseOrder::findorFail($id);
         $PO->delete();
-        return redirect('PurchaseOrder')->with('success','Information has been  deleted');
+        return redirect('/purchaseOrders/')->with('success','Information has been  deleted');
     }
 }

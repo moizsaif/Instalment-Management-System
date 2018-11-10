@@ -1,9 +1,6 @@
 @extends('layouts.app')
 @section('content')
 @section('page-style')
-    <link rel="stylesheet" href="{{ URL::asset('vendor/jquery-choosen/css/prism.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('vendor/jquery-choosen/css/chosen.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('vendor/bootstrap/css/toggle.css') }}">
     <style>
         #Desc{
             width: 10%;
@@ -145,8 +142,8 @@
         </div>
         <div class="col-lg-9 col-md-11 col-sm-12">
             <div class="panel-content">
-                <button type="button" class="add-row btn btn-success" id="add-row">Add Row</button>
-                <button type="button" class="delete-row btn btn-danger" id="delete-row">Delete Row</button>
+                <button type="button" class="add-row btn btn-success">Add Row</button>
+                <button type="button" class="delete-row btn btn-danger">Delete Row</button>
 
             </div>
         </div>
@@ -187,44 +184,51 @@
 
     </form>
 </div>
-@endsection
+
 @section('page-script')
-    <script src="{{ URL::asset('vendor/bootstrap/js/toggle.js') }}"></script>
-    <script src="{{ URL::asset('vendor/jquery-choosen/js/chosen.jquery.js') }}"></script>
-    <script src="{{ URL::asset('vendor/jquery-choosen/js/init.js') }}"></script>
-    <script src="{{ URL::asset('vendor/jquery-choosen/js/prism.js') }}"></script>
     <script>
+        $(document).ready(function(){
 
 
-        $(".add-row").click(function(){
-            var r = "<tr>" +
-                "<td id='Desc'>" +
-                "<input type='text' class='form-control' name='Description[]' placeholder='type' required " +
-                "                                   value='{{ old('dsc') }}'></td>" +
-                "<td id='Uni.Price'>" +
-                "<input type='text' class='form-control' name='u_price[]' placeholder='type' required" +
-                "                                   value='{{ old('u_price') }}'></td>" +
-                "<td id='Ordrd.Qty'>" +
-                "<input type='text' class='form-control' name='u_qty[]' placeholder='type' required" +
-                "                                   value='{{ old('u_qty') }}'></td>" +
-                "<td id='Acc.Qty'>" +
-                "<input type='text' class='form-control' name='Acc.Qty[]' placeholder='type' required" +
-                "                                   value='{{ old('accepted_qty') }}'></td>" +
-                "<td id='Rej.Qty'>" +
-                "<input type='text' class='form-control' name='Rej.Qty[]' placeholder='type' required" +
-                "                                   value='{{ old('rejected_qty') }}'></td>" +
-                "<td><input type='checkbox' name='chk'></td></tr>";
-            $("table tbody").append(r);
-        });
+            document.getElementById("po_id").onclick=function () {
+                let x = [];
 
-        // Find and remove selected table rows
-        $(".delete-row").click(function(){
-            $("table tbody").find('input[name="chk"]').each(function(){
-                $(this).parents("tr").remove();
+                x.push("po_id");
+
+                let po_id = document.getElementById("po_id").value;
+                document.getElementById("no").value = x[po_id-1];
+            };
+
+            $(".add-row").click(function(){
+                let r = "<tr>" +
+                    "<td id='Desc'>" +
+                    "<input type='text' class='form-control' name='Description[]'\n" +
+                    "                                   value='{{ old('dsc') }}'></td>" +
+                    "<td id='Uni.Price'>" +
+                    "<input type='text' class='form-control' name='u_price[]'\n" +
+                    "                                   value='{{ old('u_price') }}'></td>" +
+                    "<td id='Ordrd.Qty'>" +
+                    "<input type='text' class='form-control' name='u_qty[]'\n" +
+                    "                                   value='{{ old('u_qty') }}'></td>" +
+                    "<td id='Acc.Qty'>" +
+                    "<input type='text' class='form-control' name='Acc.Qty[]'\n" +
+                    "                                   value='{{ old('accepted_qty') }}'></td>" +
+                    "<td id='Rej.Qty'>" +
+                    "<input type='text' class='form-control' name='Rej.Qty[]'\n" +
+                    "                                   value='{{ old('rejected_qty') }}'></td>" +
+                    "</td></tr>";
+                $("table tbody").append(r);
+            });
+
+            // Find and remove selected table rows
+            $(".delete-row").click(function(){
+                $("table tbody").find('input[name="desc"]').each(function(){
+                    $(this).parents("tr").remove();
+                });
             });
         });
     </script>
 @endsection
-
+@endsection
 
 

@@ -23,18 +23,7 @@
                     @endif
 
                 </div>
-                <div class="form-group{{ $errors->has('discount') ? ' has-error' : '' }}">
-                    <label for="discount" class="control-label">Discount</label>
-                    <input type="number" class="form-control input-lg" id="discount" name="discount"
-                           value="{{ old('discount') }}">
 
-                    @if ($errors->has('discount'))
-                        <span class="help-block">
-                                <strong>{{ $errors->first('discount') }}</strong>
-                            </span>
-                    @endif
-
-                </div>
                 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                     <label for="name" class="control-label ">Name</label>
                     <input type="text" class="form-control input-lg" id="name" name="name"
@@ -47,97 +36,44 @@
                     @endif
 
                 </div>
-                <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
-                    <label for="description" class="control-label ">Description</label>
-                    <input type="text" class="form-control input-lg" id="description" name="description"
+                <div class="form-group{{ $errors->has('selling_price') ? ' has-error' : '' }}">
+                    <label for="selling_price" class="control-label ">Selling Price</label>
+                    <input type="number" class="form-control input-lg" id="selling_price" name="selling_price"
+                           value="{{ old('selling_price') }}">
+
+                    @if ($errors->has('selling_price'))
+                        <span class="help-block">
+                                <strong>{{ $errors->first('selling_price') }}</strong>
+                            </span>
+                        @endif
+                </div>
+                <div class="form-group{{ $errors->has('sold') ? ' has-error' : '' }}">
+                    <label for="sold" class="control-label ">Sold</label>
+                    <input type="number" class="form-control input-lg" id="sold" name="sold"
+                           value="{{ old('sold') }}">
+
+                    @if ($errors->has('sold'))
+                        <span class="help-block">
+                                <strong>{{ $errors->first('sold') }}</strong>
+                            </span>
+                    @endif
+                </div>
+                <div class="form-group{{ $errors->has('remaining') ? ' has-error' : '' }}">
+                    <label for="remaining" class="control-label">Remaining Quantity</label>
+                    <input type="number" class="form-control input-lg" id="remaining" name="remaining"
                            value="{{ old('name') }}">
 
-                    @if ($errors->has('description'))
+                    @if ($errors->has('remaining'))
                         <span class="help-block">
-                                <strong>{{ $errors->first('name') }}</strong>
+                                <strong>{{ $errors->first('remaining') }}</strong>
                             </span>
                     @endif
 
                 </div>
-                <div class="form-group{{ $errors->has('model') ? ' has-error' : '' }}">
-                    <label for="model" class="control-label ">Model</label>
-                    <input type="text" class="form-control input-lg" id="model" name="model"
-                           value="{{ old('model') }}">
-
-                    @if ($errors->has('model'))
-                        <span class="help-block">
-                                <strong>{{ $errors->first('model') }}</strong>
-                            </span>
-                    @endif
-                </div>
-            </div>
-        </div>
-                    <div class="col-lg-4 col-md-5 col-sm-6">
-                        <div class="panel-content">
-
-
-                <div class="form-group{{ $errors->has('color') ? ' has-error' : '' }}">
-                    <label for="color" class="control-label ">Color</label>
-                    <input type="text" class="form-control input-lg" id="color" name="color"
-                           value="{{ old('color') }}">
-
-                    @if ($errors->has('color'))
-                        <span class="help-block">
-                                <strong>{{ $errors->first('color') }}</strong>
-                            </span>
-                    @endif
-
-                </div>
-                            <div class="form-group{{ $errors->has('min_qty') ? ' has-error' : '' }}">
-                                <label for="min_qty" class="control-label">Minimum Quantity</label>
-                                <input type="number" class="form-control input-lg" id="min_qty" name="min_qty"
-                                       value="{{ old('min_qty') }}">
-
-                                @if ($errors->has('min_qty'))
-                                    <span class="help-block">
-                                <strong>{{ $errors->first('min_qty') }}</strong>
-                            </span>
-                                @endif
-
-                            </div>
-                            <div class="form-group{{ $errors->has('max_qty') ? ' has-error' : '' }}">
-                                <label for="max_qty" class="control-label ">Maximum Quantity</label>
-                                <input type="number" class="form-control input-lg" id="max_qty" name="max_qty"
-                                       value="{{ old('max_qty') }}">
-
-                                @if ($errors->has('max_qty'))
-                                    <span class="help-block">
-                                <strong>{{ $errors->first('max_qty') }}</strong>
-                            </span>
-                                @endif
-
-                            </div>
-
-                    <br>
-                    <div class="form-group">
-                        <input data-onstyle="success" data-offstyle="danger" data-toggle="toggle"
-                               data-on="With Warranty" data-off="Without Warranty"
-                               name="Warranty" value="1" type="checkbox" id="warranty_status" >
-                    </div>
-                <br>
-                <div class="form-group{{ $errors->has('warranty') ? ' has-error' : '' }}">
-                    <label for="warranty" class="control-label ">Warranty-Till</label>
-                    <input type="number" class="form-control input-lg" id="warranty" name="warranty"
-                           value="{{ old('warranty') }}">
-
-                    @if ($errors->has('warranty'))
-                        <span class="help-block">
-                                <strong>{{ $errors->first('warranty') }}</strong>
-                            </span>
-                    @endif
-                    <br>
-
-
                 <div>
                         <span class="input-group-btn">
                         <button class="btn btn-primary" type="submit">Save</button>
 					</span>
-                </div>
                 </div>
                         </div>
                     </div>

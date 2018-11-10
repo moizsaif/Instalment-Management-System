@@ -42,7 +42,26 @@ class ProductDetailsController extends Controller
      */
     public function store(Request $request)
     {
-        ProductDetail::create($request->all());
+        //ProductDetail::create($request->all());
+        $ProductDetail = ProductDetail::find($id);
+        $ProductDetail->pr_id=$request ->pr_id;
+        $ProductDetail->grn_id=$request ->grn_id;
+        $ProductDetail->v_id=$request ->v_id;
+        $ProductDetail->code=$request ->code;
+        $ProductDetail->description=$request ->description;
+        $ProductDetail->model=$request ->model;
+        $ProductDetail->color=$request ->color;
+        $ProductDetail->qty=$request ->qty;
+        $ProductDetail->warranty=$request ->warranty;
+        $ProductDetail->warranty_status=$request ->warranty_status;
+        $ProductDetail->min_qty=$request ->min_qty;
+        $ProductDetail->max_qty=$request ->max_qty;
+        $ProductDetail->purchase_price=$request ->purchase_price;
+        $ProductDetail->selling_price=$request ->selling_price;
+        $ProductDetail->discount=$request ->discount;
+        $ProductDetail->discounted_price=$request ->discounted_price;
+
+        $ProductDetail->save();
         return redirect('/ProductDetails');
     }
 
@@ -83,11 +102,18 @@ class ProductDetailsController extends Controller
         $ProductDetail->pr_id=$request ->pr_id;
         $ProductDetail->grn_id=$request ->grn_id;
         $ProductDetail->v_id=$request ->v_id;
+        $ProductDetail->code=$request ->code;
+        $ProductDetail->description=$request ->description;
+        $ProductDetail->model=$request ->model;
+        $ProductDetail->color=$request ->color;
         $ProductDetail->qty=$request ->qty;
-        $ProductDetail->sold=$request ->sold;
-        $ProductDetail->remaining=$request ->remaining;
+        $ProductDetail->warranty=$request ->warranty;
+        $ProductDetail->warranty_status=$request ->warranty_status;
+        $ProductDetail->min_qty=$request ->min_qty;
+        $ProductDetail->max_qty=$request ->max_qty;
         $ProductDetail->purchase_price=$request ->purchase_price;
         $ProductDetail->selling_price=$request ->selling_price;
+        $ProductDetail->discount=$request ->discount;
         $ProductDetail->discounted_price=$request ->discounted_price;
 
         $ProductDetail->save();

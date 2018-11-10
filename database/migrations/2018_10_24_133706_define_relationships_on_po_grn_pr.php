@@ -16,6 +16,15 @@ class DefineRelationshipsOnPoGrnPr extends Migration
             $table->foreign('v_id')
                 ->references('id')->on('vendors')
                 ->onDelete('cascade');
+            $table->foreign('gl_accounts_id')
+                ->references('id')->on('gl_accounts')
+                ->onDelete('cascade');
+            $table->foreign('grn_id')
+                ->references('id')->on('g_r_ns')
+                ->onDelete('cascade');
+            $table->foreign('pr_id')
+                ->references('id')->on('products')
+                ->onDelete('cascade');
         });
         Schema::table('g_r_ns', function (Blueprint $table) {
             $table->foreign('po_id')

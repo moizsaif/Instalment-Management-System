@@ -46,16 +46,10 @@ class ProductController extends Controller
 
         $product = new Product();
         $product->code=$request ->code;
-        $product->discount=$request ->discount;
         $product->name=$request ->name;
-        $product->description=$request ->description;
-        $product->model=$request ->model;
-        $product->color=$request ->color;
-        $product->warranty=$request ->warranty;
-        $product->warranty_status=$request->warranty_status=0;
-        $product->min_qty=$request ->min_qty;
-        $product->max_qty=$request ->max_qty;
-
+        $product->selling_price=$request ->selling_price;
+        $product->sold=$request ->sold;
+        $product->remaining=$request ->remaining;
         $product->save();
         return redirect('/products/');
     }
@@ -94,16 +88,12 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $product = Product::findOrFail($id);
+        $product = new Product();
         $product->code=$request ->code;
-        $product->discount=$request ->discount;
         $product->name=$request ->name;
-        $product->description=$request ->description;
-        $product->model=$request ->model;
-        $product->color=$request ->color;
-        $product->warranty=$request ->warranty;
-        $product->warranty_status=$request ->warranty_status;
-        $product->min_warranty=$request ->min_qty;
-        $product->max_warranty=$request ->max_qty;
+        $product->selling_price=$request ->selling_price;
+        $product->sold=$request ->sold;
+        $product->remaining=$request ->remaining;
 
         $product->save();
         return redirect('/products/');
