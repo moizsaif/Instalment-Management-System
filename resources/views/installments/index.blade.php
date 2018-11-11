@@ -37,7 +37,8 @@
                         <td>
                             @if($installment->total_months == $installment->paid_months)
                                 <text class="btn-group-sm btn-success">Completed
-                            @else <text class="btn-group-sm btn-warning">In-Complete
+                                    @else
+                                        <text class="btn-group-sm btn-warning">In-Progress
                             @endif
                         </td>
                     </tr>

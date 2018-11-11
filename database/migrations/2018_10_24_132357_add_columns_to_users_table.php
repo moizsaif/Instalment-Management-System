@@ -15,7 +15,7 @@ class AddColumnsToUsersTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('contact','12');
             $table->string('cnic','13');
-            $table->string('address');
+            $table->string('address')->nullable;
             $table->integer('user_role')->unsigned();
         });
     }

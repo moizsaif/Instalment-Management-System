@@ -17,7 +17,8 @@ class Product extends Model
     ];
 
 
-    public function productdetail(){
+    public function detail()
+    {
         return $this->hasMany('App\Product');
     }
 
