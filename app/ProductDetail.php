@@ -10,7 +10,9 @@ class ProductDetail extends Model
     //protected $table = 'productdetails';
 
     protected $fillable = [
-        'code',
+        'pr_id',
+        'grn_id',
+        'v_id',
         'description',
         'model',
         'color',
@@ -27,6 +29,6 @@ class ProductDetail extends Model
 
     public function product()
     {
-        return $this->belongsTo('App\ProductDetail');
+        return $this->belongsTo('App\Products');
     }
 }

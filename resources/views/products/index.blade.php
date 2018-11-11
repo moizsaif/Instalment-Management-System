@@ -2,7 +2,7 @@
 @section('content')
 @section('pageTitle','Products')
     <div class="section-heading">
-        <h1 class="page-title">Product List</h1>
+        <h1 class="page-title">Products List</h1>
         <a href="{{ url('/products/create') }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Add</a>
     </div>
     <div class="row">
@@ -11,21 +11,17 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th>Code</th>
                         <th>Name</th>
-                        <th>Price</th>
-                        <th>Sold</th>
-                        <th>Remaining</th>
+                        <th>Code</th>
+                        <th>Category</th>
                     </tr>
                     </thead>
-                    <tbody class="text-center">
+                    <tbody>
                     @foreach($products as $product)
                         <tr>
-                            <td><a href={{route('productdetails.index',$product->id)}}/>{{$product->code}}</td>
-                            <td>{{$product->name}}</td>
-                            <td>{{$product->selling_price}}</td>
-                            <td>{{$product->sold}}</td>
-                            <td>{{$product->remaining}}</td>
+                            <td><a href={{route('productdetails.index',$product->id)}}/>{{$product->name}}</td>
+                            <td>{{$product->code}}</td>
+                            <td>{{$product->type->name}}</td>
                         </tr>
                     @endforeach
 

@@ -1,0 +1,2 @@
+INSERT INTO ims.gl_vouchers (id, created_at, updated_at, no, type_id, voucher_date, year, month, amount, is_approved, created_by) VALUES (1, '2018-11-11 17:00:17', '2018-11-11 17:00:17', 40001, 4, '2018-11-01', 2018, 'Nov', 0, 1, 'Saad Akmal');
+INSERT INTO ims.gl_vouchers (id, created_at, updated_at, no, type_id, voucher_date, year, month, amount, is_approved, created_by) VALUES (2, '2018-11-11 17:00:50', '2018-11-11 17:00:50', 40002, 4, '2018-11-02', 2018, 'Nov', 0, 0, 'Saad Akmal');

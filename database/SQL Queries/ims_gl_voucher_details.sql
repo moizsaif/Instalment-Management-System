@@ -1,0 +1,4 @@
+INSERT INTO ims.gl_voucher_details (id, created_at, updated_at, voucher_id, acc_id, debit, credit, cheque_no, cheque_date, payee) VALUES (1, '2018-11-11 17:00:17', '2018-11-11 17:00:17', 1, 194, 1200, 0, '', '', '');
+INSERT INTO ims.gl_voucher_details (id, created_at, updated_at, voucher_id, acc_id, debit, credit, cheque_no, cheque_date, payee) VALUES (2, '2018-11-11 17:00:17', '2018-11-11 17:00:17', 1, 195, 0, 1200, '', '', '');
+INSERT INTO ims.gl_voucher_details (id, created_at, updated_at, voucher_id, acc_id, debit, credit, cheque_no, cheque_date, payee) VALUES (3, '2018-11-11 17:00:50', '2018-11-11 17:00:50', 2, 194, 3500, 0, '', '', '');
+INSERT INTO ims.gl_voucher_details (id, created_at, updated_at, voucher_id, acc_id, debit, credit, cheque_no, cheque_date, payee) VALUES (4, '2018-11-11 17:00:50', '2018-11-11 17:00:50', 2, 195, 0, 3500, '', '', '');

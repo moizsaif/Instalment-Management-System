@@ -50,9 +50,6 @@ class ProductController extends Controller
         $product->type_id=$request ->type;
         $product->code=$request ->code;
         $product->name=$request ->name;
-        $product->selling_price=$request ->selling_price;
-        $product->sold=$request ->sold;
-        $product->remaining=$request ->remaining;
         $product->save();
         return redirect('/products/');
     }

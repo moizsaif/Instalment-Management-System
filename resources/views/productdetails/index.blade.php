@@ -11,23 +11,14 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th>pr_id</th>
-                        <th>grn_id</th>
-                        <th>v_id</th>
-                        <th>Code</th>
                         <th>Description</th>
                         <th>Model</th>
                         <th>Color</th>
                         <th>Quantity</th>
-                        <th>Warranty</th>
                         <th>Warranty_status</th>
                         <th>Minimum Quantity</th>
                         <th>Maximum Quantity</th>
-                        <th>Purchase Price</th>
-                        <th>Selling Price</th>
                         <th>Discount</th>
-                        <th>Discounted Price</th>
-
                     </tr>
                     </thead>
                     <tbody class="text-center">

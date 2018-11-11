@@ -14,21 +14,29 @@ class DatabaseSeeder extends Seeder
         $this->call(UserTableSeeder::class);
         $this->call(VendorsTableSeeder::class);
         $this->call(VoucherTypeTableSeeder::class);
-        //$this->call(VoucherTableSeeder::class);
-        //$this->call(VoucherDetailsTableSeeder::class);
+        $this->call(ProductCategoriesTableSeeder::class);
 
         Eloquent::unguard();
         $path = 'database/SQL Queries/ims_gl_accounts.sql';
         DB::unprepared(file_get_contents($path));
         $this->command->info('Accounts table seeded');
 
-        $this->call(PurchaseOrdersTableSeeder::class);
-        $this->call(GRNsTableSeeder::class);
-        $this->call(ProductsTableSeeder::class);
-        $this->call(ProductDetailsTableSeeder::class);
+        $path = 'database/SQL Queries/ims_gl_vouchers.sql';
+        DB::unprepared(file_get_contents($path));
+        $this->command->info('Vouchers table seeded');
 
-        $this->call(InstallmentPlansTableSeeder::class);
-        $this->call(MonthlyInstallmentsTableSeeder::class);
+        $path = 'database/SQL Queries/ims_gl_voucher_details.sql';
+        DB::unprepared(file_get_contents($path));
+        $this->command->info('Voucher Details table seeded');
+
+        //$this->call(PurchaseOrdersTableSeeder::class);
+        //$this->call(GRNsTableSeeder::class);
+
+        //$this->call(ProductsTableSeeder::class);
+        //$this->call(ProductDetailsTableSeeder::class);
+
+        //$this->call(InstallmentPlansTableSeeder::class);
+        //$this->call(MonthlyInstallmentsTableSeeder::class);
 
 
 

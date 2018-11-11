@@ -27,6 +27,6 @@ class AddProductCategoryTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('product_categories');
     }
 }
