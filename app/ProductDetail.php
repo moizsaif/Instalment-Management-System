@@ -24,7 +24,9 @@ class ProductDetail extends Model
         'discount',
         'discounted_price',
     ];
-    public function productdetail(){
-        return $this->hasMany('App\ProductDetails');
+
+    public function product()
+    {
+        return $this->belongsTo('App\ProductDetail');
     }
 }

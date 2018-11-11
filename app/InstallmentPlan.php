@@ -12,14 +12,17 @@ class InstallmentPlan extends Model
         'no',
         'month',
         'amount',
-        'received_amount',
         'additional_amount',
         'total_amount',
         'down_payment',
         'total_months',
         'paid_months',
-        'start_year',
-        'start_month',
+        'start_date',
         'approved_status'
     ];
+
+    public function monthlyDetails()
+    {
+        return $this->hasMany('App\MonthlyInstallment', 'plan_no');
+    }
 }

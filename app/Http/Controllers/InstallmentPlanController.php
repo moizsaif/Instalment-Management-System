@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\InstallmentPlan;
+use App\Product;
+use App\ProductDetail;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -28,7 +30,8 @@ class InstallmentPlanController extends Controller
      */
     public function create()
     {
-        return view('installments.create');
+        $products = ProductDetail::all();
+        return view('installments.create', compact('products'));
     }
 
     /**
