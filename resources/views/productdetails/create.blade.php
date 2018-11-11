@@ -1,5 +1,14 @@
 @extends('layouts.app')
 @section('content')
+@section('page-style')
+    <link rel="stylesheet" href="{{ URL::asset('vendor/jquery-choosen/css/chosen.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('vendor/bootstrap/css/toggle.css') }}">
+@endsection
+@section('page-script')
+    <script src="{{ URL::asset('vendor/jquery-choosen/js/chosen.jquery.js') }}"></script>
+    <script src="{{ URL::asset('vendor/jquery-choosen/js/init.js') }}"></script>
+    {{--<script src="{{ URL::asset('vendor/jquery-choosen/js/prism.js') }}"></script>--}}
+@endsection
 @section('pageTitle','ProductDetails')
     <div class="section-heading">
         <h1 class="page-title">Product Detail Form</h1>
@@ -10,6 +19,17 @@
 
                 <div class="form-auth-small" role="form" method="POST" action="{{ url('/productdetail') }}">
                     {{ csrf_field() }}
+                    <select id='pr' class='chosen-select' name='type' required>
+                        <option value=''>Select Category</option>
+                        @foreach($ProductDetails as $productdetail)
+                            @if($productdetail->name)
+                                <option value={{$productdetail->id}}>{{$productdetail->name}}</option>
+                            @endif
+                        @endforeach
+
+                    </select>
+                    <br/>
+                    <br/>
 
                     <div class="form-group{{ $errors->has('product_id') ? ' has-error' : '' }}">
                         <label for="product_id" class="control-label">Product_ID</label>

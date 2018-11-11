@@ -42,6 +42,7 @@ class DefineRelationshipsOnPoGrnPr extends Migration
                 ->references('id')->on('vendors')
                 ->onDelete('cascade');
         });
+
     }
 
     /**

@@ -15,11 +15,10 @@ class AddProductTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->integer('type_id')->unsigned();
             $table->string('code','25')->unique();
             $table->char('name');
-            $table->double('selling_price','7','2');
-            $table->integer('sold');
-            $table->integer('remaining');
+
         });
     }
 

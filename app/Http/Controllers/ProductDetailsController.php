@@ -31,7 +31,8 @@ class ProductDetailsController extends Controller
      */
     public function create()
     {
-        return view('productdetails.create');
+        $productdetail = ProductDetail::all();
+        return view('productdetails.create', compact('productdetail'));
     }
 
     /**
@@ -43,7 +44,7 @@ class ProductDetailsController extends Controller
     public function store(Request $request)
     {
         //ProductDetail::create($request->all());
-        $ProductDetail = ProductDetail::find($id);
+        $ProductDetail = ProductDetail::findOrFail($request->type);
         $ProductDetail->pr_id=$request ->pr_id;
         $ProductDetail->grn_id=$request ->grn_id;
         $ProductDetail->v_id=$request ->v_id;
@@ -74,7 +75,7 @@ class ProductDetailsController extends Controller
     public function show($id)
     {
         $ProductDetail = ProductDetail::findOrFail($id);
-        return view('productdetails.show',compact('productdetail'));
+        return view('productdetails.show',compact('ProductDetail'));
     }
 
     /**
@@ -86,7 +87,7 @@ class ProductDetailsController extends Controller
     public function edit($id)
     {
         $ProductDetail = ProductDetail::findOrFail($id);
-        return view('productdetails.edit',compact('productdetail'));
+        return view('productdetails.edit',compact('ProductDetail'));
     }
 
     /**

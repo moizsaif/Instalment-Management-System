@@ -37,4 +37,5 @@ Route::resource('/productdetails','ProductDetailsController');
 Route::resource('/grns','GRNController');
 
 Route::resource('/purchaseOrders','PurchaseOrderController');
+Route::resource('/productCategories','productCategoriesController');
 

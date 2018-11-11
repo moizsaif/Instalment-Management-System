@@ -13,7 +13,7 @@
                     <tr>
                         <th>Code</th>
                         <th>Name</th>
-                        <th>Selling_price</th>
+                        <th>Price</th>
                         <th>Sold</th>
                         <th>Remaining</th>
                     </tr>

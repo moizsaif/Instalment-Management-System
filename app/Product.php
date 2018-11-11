@@ -20,4 +20,8 @@ class Product extends Model
     public function productdetail(){
         return $this->hasMany('App\Product');
     }
+
+    public function type(){
+        return $this->belongsTo('App\ProductCategories','type_id');
+    }
 }
