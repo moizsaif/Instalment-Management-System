@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call(VendorsTableSeeder::class);
         $this->call(VoucherTypeTableSeeder::class);
         $this->call(ProductCategoriesTableSeeder::class);
+        $this->call(ProductsTableSeeder::class);
 
         Eloquent::unguard();
         $path = 'database/SQL Queries/ims_gl_accounts.sql';
@@ -29,10 +30,12 @@ class DatabaseSeeder extends Seeder
         DB::unprepared(file_get_contents($path));
         $this->command->info('Voucher Details table seeded');
 
-        //$this->call(PurchaseOrdersTableSeeder::class);
-        //$this->call(GRNsTableSeeder::class);
+        $this->call(PurchaseOrdersTableSeeder::class);
+        $this->call(PurchaseOrderDetailsTableSeeder::class);
+        $this->call(GRNsTableSeeder::class);
+        $this->call(GRNDetailTableSeeder::class);
 
-        //$this->call(ProductsTableSeeder::class);
+
         //$this->call(ProductDetailsTableSeeder::class);
 
         //$this->call(InstallmentPlansTableSeeder::class);

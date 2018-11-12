@@ -49,7 +49,7 @@
         <div class="col-lg-4 col-md-5 col-sm-6">
             <div class="panel-content">
                 <div class="form-group">
-                    <label for="code" class="control-label">Product Category</label>
+                    <label for="code" class="control-label">Product Category</label><br>
                     <select id='pr' class='chosen-select' name='type' required>
                         <option value=''>Select Category</option>
                         @foreach($productCategories as $productcategory)

@@ -15,14 +15,18 @@ class AddPurchaseOrderTable extends Migration
         Schema::create('purchase_orders', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->Integer('v_id')->unsigned()->nullable();
-            $table->Integer('gl_accounts_id')->unsigned()->nullable();
-            $table->Integer('grn_id')->unsigned()->nullable();
-            $table->Integer('pr_id')->unsigned()->nullable();
+            $table->Integer('v_id')->unsigned();
             $table->Integer('no')->unique();
-            $table->double('amount','9','2');
-            $table->Integer('quantity');
-            $table->dateTime('date')->nullable();
+            $table->dateTime('due_date')->nullable();
+        });
+        Schema::create('purchase_order_details', function (Blueprint $table) {
+            $table->increments('id');
+            $table->timestamps();
+            $table->Integer('po_id')->unsigned();
+            $table->Integer('pr_id')->unsigned();
+            $table->double('rate', '9', '2');
+            $table->Integer('total_quantity');
+            $table->Integer('remaining_quantity')->default(0);
         });
     }
 
@@ -34,5 +38,6 @@ class AddPurchaseOrderTable extends Migration
     public function down()
     {
         Schema::drop('purchase_orders');
+        Schema::drop('purchase_order_details');
     }
 }

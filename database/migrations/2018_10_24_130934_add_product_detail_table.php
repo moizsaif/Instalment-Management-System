@@ -17,7 +17,6 @@ class AddProductDetailTable extends Migration
             $table->timestamps();
             $table->Integer('pr_id')->unsigned();
             $table->Integer('grn_id')->unsigned();
-            $table->Integer('v_id')->unsigned();
             $table->string('description')->nullable();
             $table->string('model','25');
             $table->char('color','15');

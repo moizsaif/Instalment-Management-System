@@ -9,12 +9,17 @@ class PurchaseOrder extends Model
     protected $table = 'purchase_orders';
 
     protected $fillable = [
+        'v_id',
         'no',
-        'amount',
-        'quantity',
-        'date',
+        'due_date',
         ];
+
     public function vouchers(){
-        return $this->hasMany('App\GRN');
+        return $this->hasMany('App\GRN', 'v_id');
+    }
+
+    public function detail()
+    {
+        return $this->hasMany('App\PurchaseOrderDetails', 'po_id');
     }
 }

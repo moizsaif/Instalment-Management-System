@@ -10,9 +10,7 @@ class PurchaseOrdersTableSeeder extends Seeder
             [
                 'v_id' => '1',
                 'no' => '1',
-                'amount' => '50000',
-                'quantity' => '10',
-                'date' => '01-01-2018'
+                'due_date' => '01-01-2018'
             ]
         ]);
     }

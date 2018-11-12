@@ -8,16 +8,19 @@ class ProductsTableSeeder extends Seeder
     {
         DB::table('products')->insert([
             [
-                'code' => '2',
-                'discount' => '0',
-                'name' => 'Laptop',
-                'description' => 'HP Envy 15 Core-i7 8GB 1TB',
-                'model' => 'j-132TX',
-                'color' => 'Silver',
-                'warranty' => '12',
-                'warranty_status' => '1',
-                'min_qty' => '2',
-                'max_qty' => '8'
+                'type_id' => '1',
+                'code' => '1-001',
+                'name' => 'Sony 32 inch'
+            ],
+            [
+                'type_id' => '2',
+                'code' => '2-001',
+                'name' => 'Samsung Inverter Smart Machine'
+            ],
+            [
+                'type_id' => '3',
+                'code' => '3-001',
+                'name' => 'Haier 1.5Ton Inverter'
             ]
         ]);
     }

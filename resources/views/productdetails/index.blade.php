@@ -1,9 +1,10 @@
 @extends('layouts.app')
 @section('content')
-@section('pageTitle','ProductDetails')
+@section('pageTitle','Product Details')
 <div class="section-heading">
         <h1 class="page-title">Product Details</h1>
-        <a href="{{ url('/productdetails/create') }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Add details to product</a>
+    <a href="{{ url('/productdetails/create') }}" class="btn btn-primary btn-lg" role="button"
+       aria-disabled="true">Add</a>
     </div>
     <div class="row">
         <div class="col-md-10">
@@ -15,7 +16,7 @@
                         <th>Model</th>
                         <th>Color</th>
                         <th>Quantity</th>
-                        <th>Warranty_status</th>
+                        <th>Warranty Status</th>
                         <th>Minimum Quantity</th>
                         <th>Maximum Quantity</th>
                         <th>Discount</th>
@@ -24,23 +25,16 @@
                     <tbody class="text-center">
                     @foreach($productdetail as $productdetail)
                         <tr>
-                            <td><a href={{route('productdetails.show',$productdetail->id)}}/>{{$productdetail->product_id}}</td>
-                            <td>{{$productdetail->grn_id}}</td>
-                            <td>{{$productdetail->v_id}}</td>
-                            <td>{{$productdetail->code}}</td>
-                            <td>{{$productdetail->description}}</td>
+                            <td>
+                                <a href={{route('productdetails.show',$productdetail->id)}}/>{{$productdetail->description}}
+                            </td>
                             <td>{{$productdetail->model}}</td>
                             <td>{{$productdetail->color}}</td>
                             <td>{{$productdetail->qty}}</td>
-                            <td>{{$productdetail->warranty}}</td>
                             <td>{{$productdetail->warranty_status}}</td>
                             <td>{{$productdetail->min_qty}}</td>
                             <td>{{$productdetail->max_qty}}</td>
-                            <td>{{$productdetail->purchase_price}}</td>
-                            <td>{{$productdetail->selling_price}}</td>
                             <td>{{$productdetail->discount}}</td>
-                            <td>{{$productdetail->discounted_price}}</td>
-
                         </tr>
                     @endforeach
 
