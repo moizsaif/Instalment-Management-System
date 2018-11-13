@@ -36,6 +36,7 @@
                         <th>Month</th>
                         <th>Approved</th>
                         <th>Created By</th>
+                        <th>Entries</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -53,6 +54,7 @@
                                     <p class="btn-danger data">No</p>
                                 @endif</td>
                             <td>{{$voucher->created_by}}</td>
+                            <td>{{$voucher->details->count()}}</td>
                         </tr>
                     @endforeach
 

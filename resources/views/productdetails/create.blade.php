@@ -16,7 +16,7 @@
                 <div class="panel-content">
                     <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
                         <label for="description" class="control-label">Description</label>
-                        <input type="text" class="form-control" name="description" required
+                        <input type="text" class="form-control" name="description"
                                id="description" value="{{ old('description') }}">
                         @if ($errors->has('description'))
                             <span class="help-block">
@@ -56,7 +56,7 @@
                     </div>
                     <div class="form-group{{ $errors->has('warranty') ? ' has-error' : '' }}">
                         <label for="warranty" class="control-label">Warranty</label>
-                        <input type="text" class="form-control" name="warranty" required
+                        <input type="text" class="form-control" name="warranty"
                                id="warranty" value="{{ old('warranty') }}">
                         @if ($errors->has('warranty'))
                             <span class="help-block">

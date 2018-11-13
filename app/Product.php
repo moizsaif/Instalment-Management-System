@@ -17,7 +17,7 @@ class Product extends Model
 
     public function detail()
     {
-        return $this->hasMany('App\Product');
+        return $this->hasMany('App\ProductDetail', 'pr_id');
     }
 
     public function type(){

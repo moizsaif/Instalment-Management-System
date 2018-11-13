@@ -29,6 +29,6 @@ class ProductDetail extends Model
 
     public function product()
     {
-        return $this->belongsTo('App\Products');
+        return $this->belongsTo('App\Product', 'pr_id');
     }
 }

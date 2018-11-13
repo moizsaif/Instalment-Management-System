@@ -49,22 +49,29 @@ class ProductDetailsController extends Controller
 
         $ProductDetail->pr_id = $request->product;
         $ProductDetail->grn_id = 1;
-        $ProductDetail->v_id = 1;
         $ProductDetail->description = $request->description;
         $ProductDetail->model = $request->model;
         $ProductDetail->color = $request->color;
         $ProductDetail->qty = $request->qty;
         $ProductDetail->warranty = $request->warranty;
-        $ProductDetail->warranty_status = $request->warranty_status;
+        if ($request->warranty_status == null) {
+            $ProductDetail->warranty_status = 0;
+        } else {
+            $ProductDetail->warranty_status = $request->warranty_status;
+        }
         $ProductDetail->min_qty = $request->min_qty;
         $ProductDetail->max_qty = $request->max_qty;
         $ProductDetail->purchase_price = $request->purchase_price;
         $ProductDetail->selling_price = $request->selling_price;
-        $ProductDetail->discount = $request->discount;
+        if ($request->discount == null) {
+            $ProductDetail->discount = 0;
+        } else {
+            $ProductDetail->discount = $request->discount;
+        }
         $ProductDetail->discounted_price=$request ->discounted_price;
 
         $ProductDetail->save();
-        return redirect('/ProductDetails');
+        return redirect('/productdetails');
     }
 
     /**
@@ -88,7 +95,8 @@ class ProductDetailsController extends Controller
     public function edit($id)
     {
         $ProductDetail = ProductDetail::findOrFail($id);
-        return view('productdetails.edit',compact('ProductDetail'));
+        $products = Product::all();
+        return view('productdetails.edit', compact('ProductDetail', 'products'));
     }
 
     /**
@@ -101,25 +109,26 @@ class ProductDetailsController extends Controller
     public function update(Request $request, $id)
     {
         $ProductDetail = ProductDetail::find($id);
-        $ProductDetail->pr_id=$request ->pr_id;
-        $ProductDetail->grn_id=$request ->grn_id;
-        $ProductDetail->v_id=$request ->v_id;
-        $ProductDetail->code=$request ->code;
-        $ProductDetail->description=$request ->description;
-        $ProductDetail->model=$request ->model;
-        $ProductDetail->color=$request ->color;
-        $ProductDetail->qty=$request ->qty;
-        $ProductDetail->warranty=$request ->warranty;
-        $ProductDetail->warranty_status=$request ->warranty_status;
-        $ProductDetail->min_qty=$request ->min_qty;
-        $ProductDetail->max_qty=$request ->max_qty;
-        $ProductDetail->purchase_price=$request ->purchase_price;
-        $ProductDetail->selling_price=$request ->selling_price;
-        $ProductDetail->discount=$request ->discount;
+
+        $ProductDetail->description = $request->description;
+        $ProductDetail->model = $request->model;
+        $ProductDetail->color = $request->color;
+        $ProductDetail->warranty = $request->warranty;
+        if ($request->warranty_status == null) {
+            $ProductDetail->warranty_status = 0;
+        } else {
+            $ProductDetail->warranty_status = $request->warranty_status;
+        }
+        $ProductDetail->selling_price = $request->selling_price;
+        if ($request->discount == null) {
+            $ProductDetail->discount = 0;
+        } else {
+            $ProductDetail->discount = $request->discount;
+        }
         $ProductDetail->discounted_price=$request ->discounted_price;
 
         $ProductDetail->save();
-        return redirect('/ProductDetails/');
+        return redirect('/productdetails');
     }
 
     /**
@@ -132,7 +141,7 @@ class ProductDetailsController extends Controller
     {
         //$ProductDetail::findOrFail($id)->delete();
         echo "Not Implemented !";
-        return redirect('/ProductDetails/');
+        return redirect('/productdetails');
 
     }
 }
