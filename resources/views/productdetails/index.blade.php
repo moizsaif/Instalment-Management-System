@@ -40,7 +40,11 @@
                             @endif
                             <td>{{$productdetail->min_qty}}</td>
                             <td>{{$productdetail->max_qty}}</td>
-                            <td>{{$productdetail->discount}}</td>
+                            @if($productdetail->discount == 0)
+                                <td><p class="btn-danger data">No Discount</p></td>
+                            @else
+                                <td><p class="btn-success data">Active</p></td>
+                            @endif
                         </tr>
                     @endforeach
 
