@@ -13,18 +13,13 @@ class ProductDetail extends Model
         'pr_id',
         'grn_id',
         'v_id',
-        'description',
-        'model',
-        'color',
         'qty',
+        'rem_qty',
+        'sold_qty',
         'warranty',
         'warranty_status',
-        'min_qty',
-        'max_qty',
         'purchase_price',
-        'selling_price',
         'discount',
-        'discounted_price',
     ];
 
     public function product()

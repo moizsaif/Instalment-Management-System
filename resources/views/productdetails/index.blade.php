@@ -14,37 +14,21 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th>Model</th>
-                        <th>Description</th>
-                        <th>Color</th>
-                        <th>Quantity</th>
-                        <th>Warranty Status</th>
-                        <th>Minimum Quantity</th>
-                        <th>Maximum Quantity</th>
-                        <th>Discount</th>
+                        <th>Product</th>
+                        <th>Batch Quantity</th>
+                        <th>Sold</th>
+                        <th>Purchasing</th>
+                        <th>Warranty</th>
                     </tr>
                     </thead>
-                    <tbody class="text-center">
-                    @foreach($productdetail as $productdetail)
+                    <tbody>
+                    @foreach($productdetail as $detail)
                         <tr>
-                            <td>
-                                <a href={{route('productdetails.show',$productdetail->id)}}/>{{$productdetail->model}}
-                            </td>
-                            <td>{{$productdetail->description}}</td>
-                            <td>{{$productdetail->color}}</td>
-                            <td>{{$productdetail->qty}}</td>
-                            @if($productdetail->warranty_status == 0)
-                                <td><p class="btn-danger data">No Warranty</p></td>
-                            @else
-                                <td><p class="btn-success data">Warranty Applied</p></td>
-                            @endif
-                            <td>{{$productdetail->min_qty}}</td>
-                            <td>{{$productdetail->max_qty}}</td>
-                            @if($productdetail->discount == 0)
-                                <td><p class="btn-danger data">No Discount</p></td>
-                            @else
-                                <td><p class="btn-success data">Active</p></td>
-                            @endif
+                            <td>{{$detail->product->name}}</td>
+                            <td>{{$detail->qty}}</td>
+                            <td>{{$detail->sold_qty}}</td>
+                            <td>{{$detail->purchase_price}}</td>
+                            <td>{{$detail->warranty}}</td>
                         </tr>
                     @endforeach
 

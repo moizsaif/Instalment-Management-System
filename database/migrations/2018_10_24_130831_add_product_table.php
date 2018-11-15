@@ -19,6 +19,13 @@ class AddProductTable extends Migration
             $table->string('code','25')->unique();
             $table->char('name');
 
+            $table->string('description')->nullable();
+            $table->string('model', '20');
+            $table->char('color', '15');
+            $table->integer('min_qty');
+            $table->integer('max_qty');
+            $table->double('selling_price', '7', '2');
+            $table->double('discounted_price', '7', '2')->nullable();
         });
     }
 

@@ -24,10 +24,19 @@
                             </span>
                     @endif
                 </div>
-                <div>
-                        <span class="input-group-btn">
-                        <button class="btn btn-primary" type="submit">Save</button>
-					</span>
+                <div class="form-group{{ $errors->has('code') ? ' has-error' : '' }}">
+                    <label for="code" class="control-label">Code</label>
+                    <input type="text" class="form-control" name="code"
+                           value="{{ old('code') }}" required>
+
+                    @if ($errors->has('name'))
+                        <span class="help-block">
+                                <strong>{{ $errors->first('name') }}</strong>
+                            </span>
+                    @endif
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary" type="submit">Save</button>
                 </div>
             </form>
         </div>

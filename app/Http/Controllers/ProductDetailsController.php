@@ -49,26 +49,22 @@ class ProductDetailsController extends Controller
 
         $ProductDetail->pr_id = $request->product;
         $ProductDetail->grn_id = 1;
-        $ProductDetail->description = $request->description;
-        $ProductDetail->model = $request->model;
-        $ProductDetail->color = $request->color;
+
         $ProductDetail->qty = $request->qty;
+        $ProductDetail->rem_qty = $request->rem_qty;
+        $ProductDetail->sold_qty = $request->sold_qty;
         $ProductDetail->warranty = $request->warranty;
         if ($request->warranty_status == null) {
             $ProductDetail->warranty_status = 0;
         } else {
             $ProductDetail->warranty_status = $request->warranty_status;
         }
-        $ProductDetail->min_qty = $request->min_qty;
-        $ProductDetail->max_qty = $request->max_qty;
         $ProductDetail->purchase_price = $request->purchase_price;
-        $ProductDetail->selling_price = $request->selling_price;
         if ($request->discount == null) {
             $ProductDetail->discount = 0;
         } else {
             $ProductDetail->discount = $request->discount;
         }
-        $ProductDetail->discounted_price=$request ->discounted_price;
 
         $ProductDetail->save();
         return redirect('/productdetails');
@@ -110,22 +106,20 @@ class ProductDetailsController extends Controller
     {
         $ProductDetail = ProductDetail::find($id);
 
-        $ProductDetail->description = $request->description;
-        $ProductDetail->model = $request->model;
-        $ProductDetail->color = $request->color;
+
         $ProductDetail->warranty = $request->warranty;
         if ($request->warranty_status == null) {
             $ProductDetail->warranty_status = 0;
         } else {
             $ProductDetail->warranty_status = $request->warranty_status;
         }
-        $ProductDetail->selling_price = $request->selling_price;
+
         if ($request->discount == null) {
             $ProductDetail->discount = 0;
         } else {
             $ProductDetail->discount = $request->discount;
         }
-        $ProductDetail->discounted_price=$request ->discounted_price;
+
 
         $ProductDetail->save();
         return redirect('/productdetails');

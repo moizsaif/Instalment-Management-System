@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\InstallmentPlan;
+use App\MonthlyInstallment;
 use App\Product;
 use App\ProductDetail;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\DB;
 use PhpParser\Node\Expr\Array_;
 
 class InstallmentPlanController extends Controller
@@ -30,7 +32,7 @@ class InstallmentPlanController extends Controller
      */
     public function create()
     {
-        $products = ProductDetail::all();
+        $products = Product::all();
         return view('installments.create', compact('products'));
     }
 
@@ -42,9 +44,51 @@ class InstallmentPlanController extends Controller
      */
     public function store(Request $request)
     {
+        DB::beginTransaction();
+        //DB::rollBack();
+        $months = $request->total_months;
+        $status = $request->approved_status;
+        $installmentPlan = new InstallmentPlan();
 
-        return view('installments.index');
+        $installmentPlan->no = $request->plan;
+        $installmentPlan->customer_no = 1;
+        $installmentPlan->pr_no = $request->pr_no;
+        $installmentPlan->amount = $request->amount;
+        $installmentPlan->additional_amount = $request->additional_amount;
+        $installmentPlan->total_amount = $request->total_amount;
+        $installmentPlan->down_payment = $request->down_payment;
+        $installmentPlan->total_months = $months;
+        $installmentPlan->paid_months = 0;
+        if ($status == null) {
+            $installmentPlan->approved_status = 0;
+            $installmentPlan->start_date = '0000-00-00';
+        } else {
+            $installmentPlan->approved_status = $status;
+            $installmentPlan->start_date = $request->start_date;
+        }
 
+        $installmentPlan->save();
+
+        if ($status != null) {
+            $date = strtotime($installmentPlan->start_date);
+            for ($i = 0; $i < $months; $i++) {
+                $monthlyInstallment = new MonthlyInstallment();
+
+                $monthlyInstallment->plan_no = $installmentPlan->id;
+                $monthlyInstallment->year = date("Y", $date);
+                $monthlyInstallment->month = date("M", $date);
+                $monthlyInstallment->due_date = date("Y-m-d", $date);
+                $monthlyInstallment->amount = $request->per_month;
+                $monthlyInstallment->received_amount = 0;
+                $monthlyInstallment->status = 0;
+
+                $monthlyInstallment->save();
+                $date = strtotime("+1 months", $date);
+            }
+        }
+
+        DB::commit();
+        return redirect('/installments/');
     }
 
     /**
@@ -67,8 +111,8 @@ class InstallmentPlanController extends Controller
      */
     public function edit($id)
     {
-        $installment = InstallmentPlan::findOrFail($id);
-        return view('installments.edit',compact('installment'));
+        //$installment = InstallmentPlan::findOrFail($id);
+        //return view('installments.edit',compact('installment'));
     }
 
     /**

@@ -11,14 +11,13 @@
             <table class="table table-striped">
                 <thead>
                     <th>Name</th>
-
-
+                    <th>Code</th>
                 </thead>
                 <tbody >
                 @foreach($productCategories as $productCategory)
                     <tr>
                         <td>{{$productCategory->name}}</td>
-
+                        <td>{{$productCategory->code}}</td>
                     </tr>
                 @endforeach
 

@@ -44,6 +44,7 @@ class productCategoriesController extends Controller
     {
         $productCategories=new productCategories();
         $productCategories->name=$request ->name;
+        $productCategories->code = $request->code;
         $productCategories->save();
         return redirect('/productCategories/');
     }
@@ -83,6 +84,7 @@ class productCategoriesController extends Controller
     {
         $productCategories=new productCategories();
         $productCategories->name=$request ->name;
+        $productCategories->code = $request->code;
         $productCategories->save();
         return redirect('/productCategories/');
     }

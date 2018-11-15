@@ -11,7 +11,15 @@ class Product extends Model
     protected $fillable = [
         'code',
         'name',
-        'type_id'
+        'type_id',
+
+        'description',
+        'model',
+        'color',
+        'min_qty',
+        'max_qty',
+        'selling_price',
+        'discounted_price',
     ];
 
 
@@ -22,5 +30,11 @@ class Product extends Model
 
     public function type(){
         return $this->belongsTo('App\ProductCategories','type_id');
+    }
+
+    public function data($id)
+    {
+        $product = Product::findOrFail($id);
+        return $product;
     }
 }

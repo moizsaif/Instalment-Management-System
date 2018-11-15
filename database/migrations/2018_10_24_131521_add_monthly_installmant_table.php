@@ -16,9 +16,8 @@ class AddMonthlyInstallmantTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->integer('plan_no')->unsigned();
-            $table->integer('no')->unique();
-            $table->date('year');
-            $table->date('month');
+            $table->string('year');
+            $table->string('month');
             $table->date('due_date');
             $table->double('amount','8','2');
             $table->double('received_amount','8','2');

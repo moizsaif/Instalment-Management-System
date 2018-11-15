@@ -47,9 +47,18 @@ class ProductController extends Controller
 //        return redirect('/product');
 
         $product = new Product();
-        $product->type_id=$request ->type;
-        $product->code=$request ->code;
-        $product->name=$request ->name;
+        $product->type_id = $request->type;
+        $product->code = $product->type->code . "-" . $request->model;
+        $product->name = $request->name;
+
+        $product->description = $request->description;
+        $product->model = $request->model;
+        $product->color = $request->color;
+        $product->min_qty = $request->min_qty;
+        $product->max_qty = $request->max_qty;
+        $product->selling_price = $request->selling_price;
+        $product->discounted_price = $request->discounted_price;
+
         $product->save();
         return redirect('/products/');
     }
@@ -89,11 +98,13 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
         $product = new Product();
-        $product->code=$request ->code;
-        $product->name=$request ->name;
-        $product->selling_price=$request ->selling_price;
-        $product->sold=$request ->sold;
-        $product->remaining=$request ->remaining;
+
+        $product->description = $request->description;
+        $product->color = $request->color;
+        $product->selling_price = $request->selling_price;
+        $product->discounted_price = $request->discounted_price;
+        $product->name = $request->name;
+        $product->selling_price = $request->selling_price;
 
         $product->save();
         return redirect('/products/');

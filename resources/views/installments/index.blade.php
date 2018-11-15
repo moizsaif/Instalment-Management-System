@@ -23,7 +23,6 @@
                     <th>Completed</th>
                 </tr>
                 </thead>
-                <tbody>installments
                 @foreach($installments as $installment)
                     <tr>
                         <td><a href={{route('installments.show',$installment->id)}}/>{{$installment->no}}</td>

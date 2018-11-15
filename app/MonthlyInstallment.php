@@ -12,7 +12,6 @@ class MonthlyInstallment extends Model
         'amount',
         'due_date',
         'month',
-        'no',
         'plan_no',
         'received_amount',
         'status',
