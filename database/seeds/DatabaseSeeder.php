@@ -44,9 +44,14 @@ class DatabaseSeeder extends Seeder
         DB::unprepared(file_get_contents($path));
         $this->command->info('Product Details table seeded');
 
+        $path = 'database/SQL Queries/ims_installment_plans.sql';
+        DB::unprepared(file_get_contents($path));
+        $this->command->info('Installment Plans table seeded');
 
-        //$this->call(InstallmentPlansTableSeeder::class);
-        //$this->call(MonthlyInstallmentsTableSeeder::class);
+        $path = 'database/SQL Queries/ims_monthly_installments.sql';
+        DB::unprepared(file_get_contents($path));
+        $this->command->info('Monthly Installments table seeded');
+
 
     }
 }
