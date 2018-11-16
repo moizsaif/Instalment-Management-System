@@ -1,13 +1,7 @@
 @extends('layouts.app')
 @section('page-style')
-    <style>
-        .data {
-            width: 70px;
-            text-align: center;
-            padding-top: 1px;
-        }
-    </style>
-@section('content')
+
+@endsection
 @section('pageTitle', 'Monthly Installments')
 @section('content')
 
@@ -31,13 +25,14 @@
             <td>{{$detail->received_amount}}</td>
             <td>
                 @if($detail->status)
-                    <p class="btn-success data">Paid</p>
+                    <span class="label label-success">Paid</span>
                 @else
-                    <p class="btn-danger data">Un-Paid</p>
+                    <span class="label label-warning">Un-Paid</span>
                 @endif
             </td>
         </tr>
     @endforeach
     </tbody>
+</table>
 
 @endsection

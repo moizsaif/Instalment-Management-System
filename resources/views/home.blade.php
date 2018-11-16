@@ -9,46 +9,6 @@
             <h2 class="section-title"><i class="fa fa-pie-chart"></i> Website Analytics</h2>
             <a href="#" class="right">View Full Analytics Reports</a>
         </div>
-        <div class="panel-content">
-            <div class="row">
-                <div class="col-md-3 col-sm-6">
-                    <div class="number-chart">
-                        <div class="mini-stat">
-                            <div id="number-chart1" class="inlinesparkline">23,65,89,32,67,38,63,12,34,22</div>
-                            <p class="text-muted"><i class="fa fa-caret-up text-success"></i> 19% compared to last week</p>
-                        </div>
-                        <div class="number"><span>$22,500</span> <span>EARNINGS</span></div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="number-chart">
-                        <div class="mini-stat">
-                            <div id="number-chart2" class="inlinesparkline">77,44,10,80,88,87,19,59,83,88</div>
-                            <p class="text-muted"><i class="fa fa-caret-up text-success"></i> 24% compared to last week</p>
-                        </div>
-                        <div class="number"><span>245</span> <span>SALES</span></div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="number-chart">
-                        <div class="mini-stat">
-                            <div id="number-chart3" class="inlinesparkline">99,86,31,72,62,94,50,18,74,18</div>
-                            <p class="text-muted"><i class="fa fa-caret-up text-success"></i> 44% compared to last week</p>
-                        </div>
-                        <div class="number"><span>561,724</span> <span>VISITS</span></div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="number-chart">
-                        <div class="mini-stat">
-                            <div id="number-chart4" class="inlinesparkline">28,44,70,21,86,54,90,25,83,42</div>
-                            <p class="text-muted"><i class="fa fa-caret-down text-danger"></i> 6% compared to last week</p>
-                        </div>
-                        <div class="number"><span>372,500</span> <span>LIKES</span></div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="row">
             <div class="col-md-4">
                 <!-- TRAFFIC SOURCES -->
@@ -208,54 +168,22 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="panel-content">
-                    <h3 class="heading"><i class="fa fa-square"></i> Recent Purchases</h3>
+                    <h3 class="heading"><i class="fa fa-square"></i> Upcoming Weeks Installment Payments</h3>
                     <div class="table-responsive">
                         <table class="table table-striped no-margin">
                             <thead>
                             <tr>
-                                <th>Order No.</th>
-                                <th>Name</th>
+                                <th>Due Date</th>
                                 <th>Amount</th>
-                                <th>Date &amp; Time</th>
-                                <th>Status</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td><a href="#">763648</a></td>
-                                <td>Steve</td>
-                                <td>$122</td>
-                                <td>Oct 21, 2016</td>
-                                <td><span class="label label-success">COMPLETED</span></td>
-                            </tr>
-                            <tr>
-                                <td><a href="#">763649</a></td>
-                                <td>Amber</td>
-                                <td>$62</td>
-                                <td>Oct 21, 2016</td>
-                                <td><span class="label label-warning">PENDING</span></td>
-                            </tr>
-                            <tr>
-                                <td><a href="#">763650</a></td>
-                                <td>Michael</td>
-                                <td>$34</td>
-                                <td>Oct 18, 2016</td>
-                                <td><span class="label label-danger">FAILED</span></td>
-                            </tr>
-                            <tr>
-                                <td><a href="#">763651</a></td>
-                                <td>Roger</td>
-                                <td>$186</td>
-                                <td>Oct 17, 2016</td>
-                                <td><span class="label label-success">SUCCESS</span></td>
-                            </tr>
-                            <tr>
-                                <td><a href="#">763652</a></td>
-                                <td>Smith</td>
-                                <td>$362</td>
-                                <td>Oct 16, 2016</td>
-                                <td><span class="label label-success">SUCCESS</span></td>
-                            </tr>
+                            @foreach($monthlyInstallments as $detail)
+                                <tr>
+                                    <td>{{$detail->due_date}}</td>
+                                    <td>{{$detail->amount}}</td>
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>

@@ -8,8 +8,8 @@
         }
     </style>
 @endsection
-@section('content')
 @section('pageTitle', 'Vouchers')
+@section('content')
     <div class="section-heading">
         <h1 class="page-title">Vouchers List</h1>
         <a href="{{ url('/vouchers/create') }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Add</a>
@@ -49,9 +49,9 @@
                             <td>{{$voucher->month}}</td>
                             <td>
                                 @if($voucher->is_approved==1)
-                                    <p class="btn-success data">Yes</p>
+                                    <span class="label label-success">Yes</span>
                                 @else
-                                    <p class="btn-danger data">No</p>
+                                    <span class="label label-danger">No</span>
                                 @endif</td>
                             <td>{{$voucher->created_by}}</td>
                             <td>{{$voucher->details->count()}}</td>

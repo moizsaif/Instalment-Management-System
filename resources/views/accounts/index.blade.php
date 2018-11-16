@@ -7,8 +7,9 @@
             padding-top: 1px;
         }
     </style>
-@section('content')
+@endsection
 @section('pageTitle', 'Accounts')
+@section('content')
     <div class="section-heading">
         <h1 class="page-title">Accounts List</h1>
         <a href="{{ url('/accounts/create') }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Add
@@ -38,9 +39,9 @@
                             <td class="text-center">{{$account->level_no}}</td>
                             <td>
                                 @if($account->allow_transac==1)
-                                    <p class="btn-success data">Yes</p>
+                                    <span class="label label-success">Yes</span>
                                 @else
-                                    <p class="btn-danger data">No</p>
+                                    <span class="label label-danger">No</span>
                                 @endif</td>
                             </td>
                         </tr>
