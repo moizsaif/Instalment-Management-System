@@ -15,15 +15,19 @@ use App\Role;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 
-if (!Auth::guest()) {
-    Route::get('/', function () {
-        return view('home');
-    });
-} else {
-    Route::get('/', function () {
-        return view('auth.login');
-    });
-}
+//if (Auth::user()) {
+//    Route::get('/', function () {
+//        return view('home');
+//    });
+//} else {
+//    Route::get('/', function () {
+//        return view('auth.login');
+//    });
+//}
+
+Route::get('/', function () {
+    return redirect('/home');
+});
 
 
 Route::auth();
@@ -37,24 +41,25 @@ Route::resource('purchaseorder','PurchaseOrderController');
 Route::resource('grn','GRNController');
 
 Route::resource('accounts','GLAccountController');
+
 Route::resource('/accounts','GLAccountController');
 
 Route::resource('vouchers','GLVoucherController');
+
 Route::resource('vouchersType','GLVoucherTypeController');
+
 Route::resource('/installments','InstallmentPlanController');
 
-Route::group(['middleware' => 'admin'], function () {
-
-    Route::resource('/products', 'ProductController');
-
-});
+Route::resource('/products', 'ProductController');
 
 Route::resource('/productdetails','ProductDetailsController');
 
 Route::resource('/grns','GRNController');
 
 Route::resource('/purchaseOrders','PurchaseOrderController');
+
 Route::resource('/productCategories','productCategoriesController');
+
 Route::resource('/productBrands', 'BrandController');
 
 
