@@ -1,6 +1,6 @@
 @extends('layouts.app')
-@section('content')
 @section('pageTitle','Products')
+@section('content')
     <div class="section-heading">
         <h1 class="page-title">Products List</h1>
         <a href="{{ url('/products/create') }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Add</a>
@@ -8,6 +8,8 @@
            aria-disabled="true">Product Details</a>
         <a href="{{ url('/productCategories/') }}" class="btn btn-warning btn-lg" role="button"
            aria-disabled="true">Product Categories</a>
+        <a href="{{ url('/productBrands/') }}" class="btn btn-danger btn-lg" role="button"
+           aria-disabled="true">Product Brands</a>
     </div>
     <div class="row">
         <div class="col-md-10">
@@ -15,10 +17,11 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
+                        <th>Brand</th>
+                        <th>Category</th>
                         <th>Name</th>
                         <th>Code</th>
                         <th>Price</th>
-                        <th>Category</th>
                         <th>Description</th>
                         <th>Batches in Stock</th>
                     </tr>
@@ -26,10 +29,13 @@
                     <tbody>
                     @foreach($products as $product)
                         <tr>
+                            <td><a href={{route('productBrands.show',$product->brand->id)}}/>{{$product->brand->name}}
+                            </td>
+                            <td><a href={{route('productCategories.show',$product->type->id)}}/>{{$product->type->name}}
+                            </td>
                             <td><a href={{route('products.show',$product->id)}}/>{{$product->name}}</td>
                             <td>{{$product->code}}</td>
                             <td>{{$product->selling_price}}</td>
-                            <td>{{$product->type->name}}</td>
                             <td>{{$product->description}}</td>
                             <td>{{$product->detail->count()}}</td>
                         </tr>

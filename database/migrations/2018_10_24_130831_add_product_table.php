@@ -16,6 +16,7 @@ class AddProductTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->integer('type_id')->unsigned();
+            $table->integer('brand_id')->unsigned();
             $table->string('code','25')->unique();
             $table->char('name');
 

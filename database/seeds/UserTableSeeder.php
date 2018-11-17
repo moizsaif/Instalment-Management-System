@@ -14,7 +14,8 @@ class UserTableSeeder extends Seeder
                 'password' => bcrypt('4942704'),
                 'contact' => '0333-4442262',
                 'cnic' => '3520212369859',
-                'address' => 'Lahore, Pakistan'
+                'address' => 'Lahore, Pakistan',
+                'role_id' => '1'
             ],
             [
                 'name' => 'Moiz Saif',
@@ -22,7 +23,8 @@ class UserTableSeeder extends Seeder
                 'password' => bcrypt('12345'),
                 'contact' => '0333-6525635',
                 'cnic' => '3520214520365',
-                'address' => 'Lahore, Pakistan'
+                'address' => 'Lahore, Pakistan',
+                'role_id' => '1'
             ],
             [
                 'name' => 'Adil Ashfaq',
@@ -30,7 +32,8 @@ class UserTableSeeder extends Seeder
                 'password' => bcrypt('12345'),
                 'contact' => '0323-5258416',
                 'cnic' => '3520236521985',
-                'address' => 'Lahore, Pakistan'
+                'address' => 'Lahore, Pakistan',
+                'role_id' => '2'
             ],
             [
                 'name' => 'Test',
@@ -38,7 +41,8 @@ class UserTableSeeder extends Seeder
                 'password' => bcrypt('12345'),
                 'contact' => '0333-9581596',
                 'cnic' => '3520269845262',
-                'address' => 'Lahore, Pakistan'
+                'address' => 'Lahore, Pakistan',
+                'role_id' => '3'
             ]
         ]);
     }

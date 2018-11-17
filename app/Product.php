@@ -32,6 +32,11 @@ class Product extends Model
         return $this->belongsTo('App\ProductCategories','type_id');
     }
 
+    public function brand()
+    {
+        return $this->belongsTo('App\Brand', 'brand_id');
+    }
+
     public function data($id)
     {
         $product = Product::findOrFail($id);

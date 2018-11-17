@@ -1,6 +1,6 @@
 @extends('layouts.app')
-@section('content')
 @section('pageTitle','Product Categories')
+@section('content')
 <div class="section-heading">
     <h1 class="page-title">Product Category list</h1>
     <a href="{{ url('/productCategories/create') }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Add</a>

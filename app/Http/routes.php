@@ -43,7 +43,11 @@ Route::resource('vouchers','GLVoucherController');
 Route::resource('vouchersType','GLVoucherTypeController');
 Route::resource('/installments','InstallmentPlanController');
 
-Route::resource('/products','ProductController');
+Route::group(['middleware' => 'admin'], function () {
+
+    Route::resource('/products', 'ProductController');
+
+});
 
 Route::resource('/productdetails','ProductDetailsController');
 
@@ -51,16 +55,6 @@ Route::resource('/grns','GRNController');
 
 Route::resource('/purchaseOrders','PurchaseOrderController');
 Route::resource('/productCategories','productCategoriesController');
+Route::resource('/productBrands', 'BrandController');
 
-route::get('/user', function () {
-
-    $user = User::find(1);
-    $role = Role::find(1);
-    $user->roles()->save($role);
-
-    $user = User::find(2);
-    $role = Role::find(2);
-    $user->roles()->save($role);
-
-});
 

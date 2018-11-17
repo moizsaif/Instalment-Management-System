@@ -4,3 +4,5 @@
 
 
 @endsection
+@section(page-script)
+@endsection

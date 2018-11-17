@@ -29,30 +29,22 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function roles()
+    public function role()
     {
-        return $this->belongsToMany('App\Role')->withTimestamps();
+        return $this->belongsTo('App\Role');
     }
 
-    public function hasAnyRole($roles)
-    {
-        if (is_array($roles)) {
-            foreach ($roles as $role) {
-                if ($this->hasRole($role)) {
-                    return true;
-                }
-            }
-        } else {
-            if ($this->hasRole($roles)) {
-                return true;
-            }
-        }
-        return false;
-    }
+//    public function hasAnyRole($role)
+//    {
+//        if ($this->hasRole($role)) {
+//            return true;
+//        }
+//        return false;
+//    }
 
     public function hasRole($role)
     {
-        if ($this->roles()->where('name', $role)->first()) {
+        if ($this->role->name == $role) {
             return true;
         }
         return false;

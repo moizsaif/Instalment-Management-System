@@ -1,8 +1,8 @@
 @extends('layouts.app')
+@section('pageTitle', 'Add Product Category')
 @section('page-style')
 @endsection
 @section('content')
-@section('pageTitle', 'Add Product Category')
 <div class="section-heading">
     <h1 class="page-title">Product Category Form</h1>
 </div>

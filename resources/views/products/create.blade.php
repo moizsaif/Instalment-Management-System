@@ -16,15 +16,26 @@
         <div class="col-lg-4 col-md-5 col-sm-6">
             <div class="panel-content">
                 <div class="form-group">
-                    <label for="code" class="control-label">Product Category</label><br>
+                    <label for="brand_id" class="control-label">Product Brand</label><br>
+                    <select id='brand_id' class='chosen-select' name='brand_id' required>
+                        <option value=''>Select Category</option>
+                        @foreach($brands as $brand)
+                            <option value={{$brand->id}}>{{$brand->name}}</option>
+                        @endforeach
+                    </select>
+                    <a href="{{ url('/productBrands/create') }}" class="btn btn-warning btn-xs" role="button"
+                       aria-disabled="true">Add</a>
+                </div>
+                <div class="form-group">
+                    <label for="type" class="control-label">Product Category</label><br>
                     <select id='pr' class='chosen-select' name='type' required>
                         <option value=''>Select Category</option>
                         @foreach($productCategories as $productcategory)
-                            @if($productcategory->name)
-                                <option value={{$productcategory->id}}>{{$productcategory->name}}</option>
-                            @endif
+                            <option value={{$productcategory->id}}>{{$productcategory->name}}</option>
                         @endforeach
                     </select>
+                    <a href="{{ url('/productCategories/create') }}" class="btn btn-warning btn-xs" role="button"
+                       aria-disabled="true">Add</a>
                 </div>
                 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                     <label for="name" class="control-label ">Name</label>

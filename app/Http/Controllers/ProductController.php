@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Brand;
 use App\Product;
 use App\ProductCategories;
 use Illuminate\Http\Request;
@@ -13,6 +14,7 @@ class ProductController extends Controller
     {
         $this->middleware('auth');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -32,7 +34,8 @@ class ProductController extends Controller
     public function create()
     {
         $productCategories = ProductCategories::all();
-        return view('products.create',compact('productCategories'));
+        $brands = Brand::all();
+        return view('products.create', compact('productCategories', 'brands'));
     }
 
     /**
@@ -48,7 +51,8 @@ class ProductController extends Controller
 
         $product = new Product();
         $product->type_id = $request->type;
-        $product->code = $product->type->code . "-" . $request->model;
+        $product->brand_id = $request->brand_id;
+        $product->code = $product->type->code . "-" . $product->brand->code . "-" . $request->model;
         $product->name = $request->name;
 
         $product->description = $request->description;
