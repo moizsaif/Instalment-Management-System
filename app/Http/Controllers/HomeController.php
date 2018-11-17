@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $date = strtotime('+10 days', strtotime(date("Y-m-d")));
+        $date = strtotime('+30 days', strtotime(date("Y-m-d")));
         $date = date("Y-m-d", $date);
 
 
@@ -33,6 +33,15 @@ class HomeController extends Controller
             ['due_date', '<=', $date],
             ['status', '=', 0]
         ])->get();
+
+        $date = strtotime(date("Y-m-d"));
+        $date = date("Y-m-d", $date);
+
+        foreach ($monthlyInstallments as $temp) {
+            if ($temp->due_date < $date) {
+                $temp->status = 1;
+            }
+        }
         return view('home', compact('monthlyInstallments'));
     }
 }

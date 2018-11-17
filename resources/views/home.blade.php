@@ -168,13 +168,14 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="panel-content">
-                    <h3 class="heading"><i class="fa fa-square"></i> Upcoming Weeks Installment Payments</h3>
+                    <h3 class="heading"><i class="fa fa-square"></i> Upcoming Months Installment Payments</h3>
                     <div class="table-responsive">
                         <table class="table table-striped no-margin">
                             <thead>
                             <tr>
                                 <th>Due Date</th>
                                 <th>Amount</th>
+                                <th>Status</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -182,6 +183,11 @@
                                 <tr>
                                     <td>{{$detail->due_date}}</td>
                                     <td>{{$detail->amount}}</td>
+                                    @if($detail->status)
+                                        <td><span class="label label-danger">Late</span></td>
+                                    @else
+                                        <td><span class="label label-warning">Up-Coming</span></td>
+                                    @endif
                                 </tr>
                             @endforeach
                             </tbody>

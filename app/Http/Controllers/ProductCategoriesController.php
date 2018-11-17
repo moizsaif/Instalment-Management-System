@@ -11,7 +11,7 @@ class productCategoriesController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth', 'admin', 'user']);
+        $this->middleware(['auth', 'user']);
     }
     /**
      * Display a listing of the resource.

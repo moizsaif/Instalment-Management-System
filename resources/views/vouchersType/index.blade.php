@@ -35,9 +35,9 @@
                             <td>{{$vouchersType->last_serial_no}}</td>
                             <td>
                                 @if($vouchersType->locked==1)
-                                    <p class="btn-danger data">Locked</p>
+                                    <span class="label label-danger">Locked</span>
                                 @else
-                                    <p class="btn-success data">Un-Locked</p>
+                                    <span class="label label-success">Un-Locked</span>
                                 @endif</td>
                         </tr>
                     @endforeach

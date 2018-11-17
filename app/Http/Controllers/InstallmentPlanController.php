@@ -16,7 +16,7 @@ class InstallmentPlanController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth', 'admin', 'user']);
+        $this->middleware(['auth', 'user']);
     }
 
     public function index()
