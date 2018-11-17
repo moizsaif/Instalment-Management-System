@@ -4,16 +4,6 @@
     <title>Login | IMS</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-    @if (!Auth::guest())
-        <div class="wrapper">
-            <h1>
-                <strong>Already Logged In !</strong>
-                <br>
-                Please wait you're being Redirected to HomePage
-            </h1>
-        </div>
-        <meta http-equiv="Refresh" content="4; url={{'/home'}}">
-    @endif
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">

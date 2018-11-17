@@ -11,13 +11,26 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+use App\Role;
+use App\User;
+use Illuminate\Support\Facades\Auth;
+
+if (!Auth::guest()) {
+    Route::get('/', function () {
+        return view('home');
+    });
+} else {
+    Route::get('/', function () {
+        return view('auth.login');
+    });
+}
+
 
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
+Route::get('/users', 'UserController@index');
 
 Route::resource('purchaseorder','PurchaseOrderController');
 
@@ -38,4 +51,16 @@ Route::resource('/grns','GRNController');
 
 Route::resource('/purchaseOrders','PurchaseOrderController');
 Route::resource('/productCategories','productCategoriesController');
+
+route::get('/user', function () {
+
+    $user = User::find(1);
+    $role = Role::find(1);
+    $user->roles()->save($role);
+
+    $user = User::find(2);
+    $role = Role::find(2);
+    $user->roles()->save($role);
+
+});
 

@@ -16,7 +16,6 @@ class AddColumnsToUsersTable extends Migration
             $table->string('contact','12');
             $table->string('cnic','13');
             $table->string('address')->nullable;
-            $table->integer('user_role')->unsigned();
         });
     }
 
@@ -31,7 +30,6 @@ class AddColumnsToUsersTable extends Migration
             $table->dropColumn('contact');
             $table->dropColumn('cnic');
             $table->dropColumn('address');
-            $table->dropColumn('user_role');
         });
     }
 }

@@ -32,11 +32,51 @@
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="control-label sr-only">Name</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Name" value="{{ old('name') }}">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Name"
+                                   value="{{ old('name') }}">
 
                             @if ($errors->has('name'))
                                 <span class="help-block">
                                         <strong>{{ $errors->first('name') }}</strong>
+                                </span>
+                            @endif
+
+                        </div>
+
+                        <div class="form-group{{ $errors->has('cnic') ? ' has-error' : '' }}">
+                            <label for="name" class="control-label sr-only">CNIC</label>
+                            <input type="text" class="form-control" id="cnic" name="cnic" placeholder="CNIC"
+                                   value="{{ old('cnic') }}">
+
+                            @if ($errors->has('cnic'))
+                                <span class="help-block">
+                                        <strong>{{ $errors->first('cnic') }}</strong>
+                                </span>
+                            @endif
+
+                        </div>
+
+                        <div class="form-group{{ $errors->has('number') ? ' has-error' : '' }}">
+                            <label for="contact" class="control-label sr-only">Number</label>
+                            <input type="text" class="form-control" id="contact" name="contact" placeholder="Number"
+                                   value="{{ old('contact') }}">
+
+                            @if ($errors->has('contact'))
+                                <span class="help-block">
+                                        <strong>{{ $errors->first('contact') }}</strong>
+                                </span>
+                            @endif
+
+                        </div>
+
+                        <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
+                            <label for="address" class="control-label sr-only">Address</label>
+                            <input type="text" class="form-control" id="address" name="address" placeholder="Address"
+                                   value="{{ old('address') }}">
+
+                            @if ($errors->has('address'))
+                                <span class="help-block">
+                                        <strong>{{ $errors->first('address') }}</strong>
                                 </span>
                             @endif
 

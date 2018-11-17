@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Role;
 use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
@@ -51,6 +52,9 @@ class AuthController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|max:255',
+            'contact' => 'required|min:11|max:12',
+            'cnic' => 'required|min:13|max:13',
+            'address' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
@@ -64,10 +68,16 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
+        $role = Role::find(2);//Assigning default role as User
+        $user = new User();
+        $user->name = $data['name'];
+        $user->contact = $data['contact'];
+        $user->cnic = $data['cnic'];
+        $user->address = $data['address'];
+        $user->email = $data['email'];
+        $user->password = bcrypt($data['password']);
+        $user->save();
+        $user->roles()->save($role);
+        return $user;
     }
 }
