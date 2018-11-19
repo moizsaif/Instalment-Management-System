@@ -18,7 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ProductCategoriesTableSeeder::class);
         $this->call(ProductBrandsTableSeeder::class);
 
-
         Eloquent::unguard();
         $path = 'database/SQL Queries/ims_gl_accounts.sql';
         DB::unprepared(file_get_contents($path));

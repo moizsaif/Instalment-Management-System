@@ -22,7 +22,7 @@
                 <div class="content">
 
                     <div class="header">
-                        <div class="logo text-center"><img src="" alt="IMS"></div>
+                        <div class="logo text-center"><img src="img/logo1.png" alt="IMS"></div>
                         <p class="lead">Login to your account</p>
                     </div>
 

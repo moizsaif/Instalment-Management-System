@@ -6,7 +6,7 @@
 @endsection
 @section('content')
 @section('pageTitle', 'Installments')
-<div style="border: #0b5b97 2px solid" class="section-heading">
+<div class="section-heading">
     <h1 class="page-title">Installments Form</h1>
 </div>
 <div class="row">

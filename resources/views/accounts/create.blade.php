@@ -14,8 +14,8 @@
         }
     </style>
 @endsection
-@section('content')
 @section('pageTitle', 'New Account')
+@section('content')
     <div class="section-heading">
         <h1 class="page-title">Accounts Form</h1>
     </div>

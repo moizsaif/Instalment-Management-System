@@ -79,8 +79,22 @@ class GLVoucherController extends Controller
         $debit = 0;
         $credit = 0;
 
-        foreach ($request->acc_id as $d) {
-            $accountIds[] = $d;
+        foreach ($request->acc_code as $d) {
+            $accountCode = substr($d, strpos($d, "|") + 2);
+
+            $tmp = Gl_Account::where('code', $accountCode)->pluck('id');
+            if (isset($tmp)) {
+                $reason = 'Account not found';
+                //Transaction failed
+                DB::rollBack();
+                $voucherTypes = GLVoucherType::all();
+                $accounts = Gl_Account::all();
+                return view('vouchers.create', compact('voucherTypes', 'accounts', 'reason'));
+            }
+
+            foreach ($tmp as $t)
+                $id = $t;
+            $accountIds[] = $id;
             $count++;
         }
         for ($i = 0; $i < $count; $i++) {
