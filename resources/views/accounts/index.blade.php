@@ -1,12 +1,7 @@
 @extends('layouts.app')
 @section('page-style')
-    <style>
-        .data{
-            width: 50px;
-            text-align: center;
-            padding-top: 1px;
-        }
-    </style>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+    <link rel="stylesheet" href="{{ URL::asset('css/treeCSS.css') }}">
 @endsection
 @section('pageTitle', 'Accounts')
 @section('content')
@@ -19,37 +14,71 @@
     </div>
     <div class="row">
         <div class="col-md-10">
-            <div class="panel-content">
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>Code</th>
-                        <th class="text-center">Current Balance</th>
-                        <th class="text-center">Name</th>
-                        <th class="text-center">Level Number</th>
-                        <th>Transaction Allowed</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($accounts as $account)
-                        <tr>
-                            <td><a href={{route('accounts.show',$account->id)}}/>{{$account->code}}</td>
-                            <td class="text-center">{{$account->current_balance}}</td>
-                            <td>{{$account->name}}</td>
-                            <td class="text-center">{{$account->level_no}}</td>
-                            <td>
-                                @if($account->allow_transac==1)
-                                    <span class="label label-success">Yes</span>
-                                @else
-                                    <span class="label label-danger">No</span>
-                                @endif</td>
-                            </td>
-                        </tr>
-                    @endforeach
 
-                    </tbody>
-                </table>
+            <div class="panel-content">
+                {{--@foreach($accountsL1 as $account)--}}
+                {{--@endforeach--}}
+
+                <div class="tree ">
+                    <ul>
+                        <li><span><a style="color:#000; text-decoration:none;" data-toggle="collapse" href="#Web"
+                                     aria-expanded="true" aria-controls="Web"><i class="collapsed"><i
+                                                class="fas fa-folder"></i></i><i class="expanded"><i
+                                                class="far fa-folder-open"></i></i> Accounts</a></span>
+                            <div id="Web" class="collapse">
+                                <ul>
+                                    @foreach($accountsL1 as $account)
+                                        <li><span><a style="color:#000; text-decoration:none;" data-toggle="collapse"
+                                                     href="#Level-{{ $loop->iteration }}" aria-expanded="false"
+                                                     aria-controls="Level1-{{ $loop->iteration }}"><i class="collapsed"><i
+                                                                class="fas fa-folder"></i></i><i class="expanded"><i
+                                                                class="far fa-folder-open"></i></i> {{$account->name}}</a></span>
+                                            <ul>
+                                                <div id="Level1-{{ $loop->iteration }}" class="collapse">
+                                                    <li><span><a style="color:#000; text-decoration:none;"
+                                                                 data-toggle="collapse" href="#Level2"
+                                                                 aria-expanded="false" aria-controls="Level2"><i
+                                                                        class="collapsed"><i class="fas fa-folder"></i></i><i
+                                                                        class="expanded"><i
+                                                                            class="far fa-folder-open"></i></i>Level 2</a></span>
+                                                        <ul>
+                                                            <div id="Level2" class="collapse">
+                                                            </div>
+                                                        </ul>
+                                                    </li>
+                                                </div>
+                                            </ul>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+
             </div>
         </div>
     </div>
 @endsection
+
+
+{{--<div id="Level1" class="collapse">--}}
+{{--<li><span><a style="color:#000; text-decoration:none;" data-toggle="collapse" href="#Level2" aria-expanded="false" aria-controls="Level2"><i class="collapsed"><i class="fas fa-folder"></i></i><i class="expanded"><i class="far fa-folder-open"></i></i>Level 2</a></span>--}}
+{{--<ul>--}}
+{{--<div id="Level2" class="collapse">--}}
+{{--<li><span><a style="color:#000; text-decoration:none;" data-toggle="collapse" href="#Level3" aria-expanded="false" aria-controls="Level3"><i class="collapsed"><i class="fas fa-folder"></i></i><i class="expanded"><i class="far fa-folder-open"></i></i>Level 3</a></span>--}}
+{{--<ul>--}}
+{{--<div id="Level3" class="collapse">--}}
+{{--<li><span><i class="far fa-file"></i><a href="#!"> Level 4</a></span></li>--}}
+{{--<li><span><i class="far fa-file"></i><a href="#!"> Level 4</a></span></li>--}}
+{{--</div>--}}
+{{--</ul>--}}
+{{--</li>--}}
+{{--</div>--}}
+{{--</ul>--}}
+{{--</li>--}}
+{{--</div>--}}
+
+
+

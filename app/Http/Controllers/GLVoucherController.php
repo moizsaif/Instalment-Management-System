@@ -76,6 +76,7 @@ class GLVoucherController extends Controller
         $accountIds = Array();
         $amount = Array();
         $transac = Array();
+        $description = Array();
         $count = 0;
         $debit = 0;
         $credit = 0;
@@ -101,6 +102,7 @@ class GLVoucherController extends Controller
         for ($i = 0; $i < $count; $i++) {
             $amount[$i] = $request->amount[$i];
             $transac[$i] = $request->transac_type[$i];
+            $description[$i] = $request->description[$i];
         }
         // Subtracting in Debit & Adding in Credit
         for ($i = 0; $i < $count; $i++) {
@@ -147,6 +149,7 @@ class GLVoucherController extends Controller
                 // Posting to ledger
                 $account->save();
                 $voucherDetail->cheque_no = "";
+                $voucherDetail->description = $description[$i];
                 $voucherDetail->cheque_date = "";
                 $voucherDetail->payee = "";
                 $i++;

@@ -1,6 +1,6 @@
 @extends('layouts.app')
-@section('content')
 @section('pageTitle','Product Details')
+@section('content')
 <div class="section-heading">
         <h1 class="page-title">Product Details</h1>
     <a href="{{ url('/productdetails/create') }}" class="btn btn-primary btn-lg" role="button"

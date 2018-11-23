@@ -22,6 +22,7 @@ class AddGlVoucherDetailTable extends Migration
             $table->char('cheque_no','20');
             $table->date('cheque_date');
             $table->char('payee','20');
+            $table->char('description', '20');
         });
     }
 

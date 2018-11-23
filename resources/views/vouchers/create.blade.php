@@ -95,6 +95,7 @@
                         <thead>
                         <tr>
                             <th>Account</th>
+                            <th>Description</th>
                             <th>Transaction</th>
                             <th>Amount</th>
                             <th>Select</th>
@@ -104,6 +105,9 @@
                         <tr>
                             <td>
                                 <input name="acc_code[]" class="acc" required>
+                            </td>
+                            <td>
+                                <input name="description[]" class="" required>
                             </td>
                             <td>
                                 <select id='' class='amount chosen' name='transac_type[]' required>
@@ -165,6 +169,7 @@
                 var markup = "<tr><td>" +
                     "<input name='acc_code[]' class='acc' required>" +
                     "</td>" +
+                    "<td><input name=\"description[]\" class=\"\" required></td>" +
                     "<td><select id='acc' class='amount chosen' name='transac_type[]' required>" +
                     "<option value=''>Select Transaction</option>" +
                     "<option value='0'>Debit</option>" +

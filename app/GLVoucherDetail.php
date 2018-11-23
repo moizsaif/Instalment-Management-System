@@ -15,7 +15,8 @@ class GLVoucherDetail extends Model
         'credit',
         'cheque_no',
         'cheque_date',
-        'payee'
+        'payee',
+        'description'
     ];
 
     public function voucher(){

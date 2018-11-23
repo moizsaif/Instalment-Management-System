@@ -16,8 +16,11 @@ class GLAccountController extends Controller
 
     public function index()
     {
-        $accounts = Gl_Account::orderBy('code')->get();
-        return view('accounts.index',compact('accounts'));
+        $accountsL1 = Gl_Account::where('level_no', 1)->orderBy('code')->get();
+        $accountsL2 = Gl_Account::where('level_no', 2)->orderBy('code')->get();
+        $accountsL3 = Gl_Account::where('level_no', 3)->orderBy('code')->get();
+        $accountsL4 = Gl_Account::where('level_no', 4)->orderBy('code')->get();
+        return view('accounts.index', compact('accountsL1', 'accountsL2', 'accountsL3', 'accountsL4'));
     }
 
     /**
