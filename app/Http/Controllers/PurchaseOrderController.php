@@ -11,7 +11,7 @@ class PurchaseOrderController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth', 'user']);
+        $this->middleware('user');
     }
 
     /**

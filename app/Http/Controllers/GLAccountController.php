@@ -11,12 +11,12 @@ class GLAccountController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth', 'admin']);
+        $this->middleware('admin');
     }
 
     public function index()
     {
-        $accounts = Gl_Account::all();
+        $accounts = Gl_Account::orderBy('code')->get();
         return view('accounts.index',compact('accounts'));
     }
 

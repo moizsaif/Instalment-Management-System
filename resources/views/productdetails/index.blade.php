@@ -19,6 +19,7 @@
                         <th>Sold</th>
                         <th>Purchasing</th>
                         <th>Warranty</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -29,6 +30,11 @@
                             <td>{{$detail->sold_qty}}</td>
                             <td>{{$detail->purchase_price}}</td>
                             <td>{{$detail->warranty}}</td>
+                            <td>
+                            <td>
+                                <button type="submit"><i class="lnr lnr-cross-circle btn"></i></button>
+                            </td>
+                            </td>
                         </tr>
                     @endforeach
 

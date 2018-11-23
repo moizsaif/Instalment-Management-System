@@ -17,7 +17,7 @@ class GLVoucherController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth', 'user']);
+        $this->middleware('user');
     }
     /**
      * Display a listing of the resource.
@@ -26,7 +26,8 @@ class GLVoucherController extends Controller
      */
     public function index()
     {
-        $vouchers = Gl_Voucher::all();
+        $vouchers = Gl_Voucher::orderBy('voucher_date')->orderBy('is_approved')->get();
+        //$vouchers = Gl_Voucher::orderBy('voucher_date')->get();
         $reason = null;
         return view('vouchers.index', compact('vouchers', 'reason'));
     }
@@ -174,7 +175,7 @@ class GLVoucherController extends Controller
         //Transaction completed
         DB::commit();
         $reason = 'Voucher Added';
-        $vouchers = Gl_Voucher::all();
+        $vouchers = Gl_Voucher::orderBy('voucher_date')->orderBy('is_approved')->get();
         return view('vouchers.index', compact('vouchers', 'reason'));
     }
 
@@ -248,8 +249,6 @@ class GLVoucherController extends Controller
      */
     public function destroy($id)
     {
-        //Gl_Voucher::findOrFail($id)->delete();
-        echo "Not Implemented !";
-        return redirect('/vouchers/');
+
     }
 }

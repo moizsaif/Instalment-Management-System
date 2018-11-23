@@ -11,7 +11,7 @@ class GLVoucherTypeController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth', 'user']);
+        $this->middleware('admin', ['only' => 'delete']);
     }
 
     /**
@@ -19,7 +19,7 @@ class GLVoucherTypeController extends Controller
      */
     public function index()
     {
-        $vouchersTypes = GlVoucherType::all();
+        $vouchersTypes = GlVoucherType::orderBy('code')->get();
         return view('vouchersType.index',compact('vouchersTypes'));
     }
 
@@ -114,8 +114,7 @@ class GLVoucherTypeController extends Controller
      */
     public function destroy($id)
     {
-        //GlVoucherType::findOrFail($id)->delete();
-        echo "Not Implemented !";
-        return redirect('/vouchersType/');
+        GLVoucherType::find($id)->delete();
+        return redirect('/VoucherType');
     }
 }

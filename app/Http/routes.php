@@ -25,41 +25,45 @@ use Illuminate\Support\Facades\Auth;
 //    });
 //}
 
-Route::get('/', function () {
-    return redirect('/home');
-});
-
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
+Route::group(['middleware' => ['auth', 'user']], function () {
+    Route::get('/', function () {
+        return redirect('/home');
+    });
 
-Route::get('/users', 'UserController@index');
+    Route::get('/home', 'HomeController@index');
 
-Route::resource('purchaseorder','PurchaseOrderController');
+    Route::resource('/users', 'UserController');
 
-Route::resource('grn','GRNController');
+    Route::resource('purchaseorder', 'PurchaseOrderController');
 
-Route::resource('accounts','GLAccountController');
+    Route::resource('grn', 'GRNController');
 
-Route::resource('/accounts','GLAccountController');
+    Route::resource('accounts', 'GLAccountController');
 
-Route::resource('vouchers','GLVoucherController');
+    Route::resource('/accounts', 'GLAccountController');
 
-Route::resource('vouchersType','GLVoucherTypeController');
+    Route::resource('vouchers', 'GLVoucherController');
 
-Route::resource('/installments','InstallmentPlanController');
+    Route::resource('vouchersType', 'GLVoucherTypeController');
 
-Route::resource('/products', 'ProductController');
+    Route::resource('/installments', 'InstallmentPlanController');
 
-Route::resource('/productdetails','ProductDetailsController');
+    Route::resource('/products', 'ProductController');
 
-Route::resource('/grns','GRNController');
+    Route::resource('/productdetails', 'ProductDetailsController');
 
-Route::resource('/purchaseOrders','PurchaseOrderController');
+    Route::resource('/grns', 'GRNController');
 
-Route::resource('/productCategories','productCategoriesController');
+    Route::resource('/purchaseOrders', 'PurchaseOrderController');
 
-Route::resource('/productBrands', 'BrandController');
+    Route::resource('/productCategories', 'productCategoriesController');
+
+    Route::resource('/productBrands', 'BrandController');
+});
+
+
 
 

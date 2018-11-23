@@ -10,7 +10,8 @@
     <div class="col-lg-4 col-md-5 col-sm-6">
         <div class="panel-content">
 
-            <form class="form-auth-small" role="form" method="POST" action="{{ url('/productCategories') }}" data-parsley-validate novalidate>
+            <form class="form-auth-small" role="form" method="POST" action="{{ url('/productCategories') }}"
+                  data-parsley-validate novalidate>
                 {{ csrf_field() }}
 
                 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">

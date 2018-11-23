@@ -2,7 +2,6 @@
 @section('page-style')
     <link rel="stylesheet" href="{{ URL::asset('vendor/bootstrap/css/toggle.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('vendor/jquery-choosen/css/chosen.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('vendor/bootstrap/css/toggle.css') }}">
     <style>
         .input {
             width: 75%;
