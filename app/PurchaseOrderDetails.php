@@ -20,4 +20,10 @@ class PurchaseOrderDetails extends Model
     {
         return $this->belongsTo('App\PurchaseOrder', 'po_id');
     }
+    public function product(){
+        return $this->belongsTo('App\Product', 'code');
+    }
+    public function productCategory(){
+        return $this->belongsTo('App\ProductCategories');
+    }
 }

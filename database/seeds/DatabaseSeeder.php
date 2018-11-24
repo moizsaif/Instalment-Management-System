@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call(VendorsTableSeeder::class);
         $this->call(VoucherTypeTableSeeder::class);
         $this->call(ProductCategoriesTableSeeder::class);
-        $this->call(ProductBrandsTableSeeder::class);
+      // $this->call(ProductBrandsTableSeeder::class);
 
 
         Eloquent::unguard();

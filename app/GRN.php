@@ -15,9 +15,7 @@ class GRN extends Model
         'checked_by',
     ];
 
-    public function type(){
-        return $this->belongsTo('App\PurchaseOrder', 'po_id');
-    }
+
 
     public function detail()
     {

@@ -62,4 +62,9 @@ Route::resource('/productCategories','productCategoriesController');
 
 Route::resource('/productBrands', 'BrandController');
 
+Route::resource('/vendors', 'VendorsController');
+
+Route::resource('/invoices', 'InvoiceController');
+
+
 

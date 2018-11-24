@@ -34,7 +34,7 @@
                 <li class="">
                     <a href="#uiElements" class="has-arrow" aria-expanded="false"><i class="lnr lnr-printer"></i> <span>Sales</span></a>
                     <ul aria-expanded="true">
-                        <li class=""><a href="{{ url('/accounts/') }}"><i class="lnr lnr-tag"></i><span>Cash Sales</span></a></li>
+                        <li class=""><a href="{{ url('/invoices/') }}"><i class="lnr lnr-tag"></i><span>Cash Sales</span></a></li>
                         <li class=""><a href="{{ url('/accounts/') }}"><i class="lnr lnr-cart"></i><span>Installment Sales</span></a></li>
                     </ul>
                 </li>
@@ -61,6 +61,15 @@
                         <li class=""><a href="{{ url('/installments/') }}"><i class="lnr lnr-pencil"></i><span>Generate Plan</span></a>
                         </li>
                         <li class=""><a href="#"><i class="lnr lnr-user"></i><span>Customer Profile</span></a></li>
+                        <li class=""><a href="#"><i class="lnr lnr-chart-bars"></i><span>Reporting</span></a></li>
+                    </ul>
+                </li>
+                <li class="">
+                    <a href="#uiElements" class="has-arrow" aria-expanded="false"><i class="fa fa-truck"></i> <span>Vendors</span></a>
+                    <ul aria-expanded="true">
+                        <li class=""><a href="{{ url('/vendors/create') }}"><i class="lnr lnr-pencil"></i><span>Add Vendor</span></a>
+                        </li>
+                        <li class=""><a href="{{ url('/vendors/') }}"><i class="lnr lnr-user"></i><span>Vendors</span></a></li>
                         <li class=""><a href="#"><i class="lnr lnr-chart-bars"></i><span>Reporting</span></a></li>
                     </ul>
                 </li>

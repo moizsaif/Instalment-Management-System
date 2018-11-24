@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\GRNDetails;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use phpDocumentor\Reflection\Types\Integer;
+use PhpParser\Node\Expr\Array_;
 
 class GRNDetailsController extends Controller
 {
@@ -15,7 +18,8 @@ class GRNDetailsController extends Controller
      */
     public function index()
     {
-        //
+        $grnd=GRNDetails::all();
+        return view('grns.index',compact('grnd'));
     }
 
     /**
@@ -25,7 +29,7 @@ class GRNDetailsController extends Controller
      */
     public function create()
     {
-        //
+        return view('grns.create');
     }
 
     /**
@@ -36,7 +40,13 @@ class GRNDetailsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $grnd= GRNDetails::all();
+        $grnd->po_id=$request->po_id;
+        $grnd->accepted_qty=$request->accepted_qty;
+        $grnd->rejected_qty=$request->rejected_qty;
+        $grnd->save();
+        return redirect('/grns/');
+
     }
 
     /**
@@ -47,7 +57,8 @@ class GRNDetailsController extends Controller
      */
     public function show($id)
     {
-        //
+        $grnd = GRNDetails::findOrFail($id);
+        return view('grns.show', compact('grnd'));
     }
 
     /**
@@ -58,7 +69,8 @@ class GRNDetailsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $grnd = GRNDetails::findOrFail($id);
+        return view('grns.edit',compact('grnd'));
     }
 
     /**
@@ -70,7 +82,12 @@ class GRNDetailsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $grnd= GRNDetails::all();
+        $grnd->po_id=$request->po_id;
+        $grnd->accepted_qty=$request->accepted_qty;
+        $grnd->rejected_qty=$request->rejected_qty;
+        $grnd->save();
+        return redirect('/grns/');
     }
 
     /**

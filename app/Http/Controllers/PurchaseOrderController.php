@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
+use App\Gl_Account;
 use App\PurchaseOrder;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests;
+use PhpParser\Node\Expr\Array_;
 
 class PurchaseOrderController extends Controller
 {
@@ -32,7 +35,9 @@ class PurchaseOrderController extends Controller
      */
     public function create()
     {
-        return view('purchaseOrders.create');
+        $accounts = Gl_Account::all();
+        $products = Product::all();
+        return view('purchaseOrders.create', compact('accounts', 'products'));
     }
 
     /**
@@ -43,16 +48,49 @@ class PurchaseOrderController extends Controller
      */
     public function store(Request $request)
     {
+        DB::beginTransaction();
+
         $PO = new PurchaseOrder();
         $PO->no=$request ->get('no');
         $PO->amount=$request ->get('amount');
+        $PO->purchasing_price=$request ->get('purchasing_price');
         $PO->quantity=$request ->get('quantity');
+        $PO->net_cost=$request->get('net_cost');
         $date=date_create($request ->get('date'));
         $format = date_format($date,"Y-m-d");
         $PO->date=strtotime($format);
         $PO->save();
+        //$accounts = new Gl_Account();
+       // $voucherDetail = new GLVoucherDetail();
+       // $products = new Product();
+        $no[] = Array();
+        $price[]= Array();
+        $cost[] = Array();
+        $qty[] = Array();
+        $count = 0;
 
-        return redirect('/purchaseOrders/');
+        foreach($request->code as $a)
+         {
+            $no[]=$a;
+            $count++;
+         }
+        for ($i = 0; $i < $count; $i++) {
+
+            $price[$i] = $request->price[$i];
+            $cost[$i] = $request->cost[$i];
+            $qty[$i] = $request->qty[$i];
+        }
+
+
+        //$PO->pr_id = $product->code;
+        //$PO->save();
+
+        DB::commit();
+
+        $PO=PurchaseOrder::all();
+
+        return redirect('/purchaseOrders/', compact('PO'));
+
     }
 
     /**
@@ -91,6 +129,8 @@ class PurchaseOrderController extends Controller
         $PO= PurchaseOrder::findorFail($id);
         $PO->no=$request->get('no');
         $PO->amount=$request->get('amount');
+        $PO->purchasing_price=$request->get('purchasing_price');
+        $PO->net_cost=$request->get('net_cost');
         $PO->quantity=$request->get('quantity');
         $date=date_create($request ->get('date'));
         $format = date_format($date,"Y-m-d");

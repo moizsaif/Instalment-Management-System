@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
 @section('page-style')
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ URL::asset('vendor/jquery-choosen/css/prism.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('vendor/jquery-choosen/css/chosen.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('vendor/bootstrap/css/toggle.css') }}">
@@ -35,9 +36,17 @@
                 {{ csrf_field() }}
                 <div class="col-lg-4 col-md-5 col-sm-6">
                     <div class="panel-header">
+                        <label for="grn_date" class="control-label">GRN Date</label>
+                        <div class="form-group input-group">
+                            <input data-provide="datepicker" data-date-autoclose="true" class="form-control"
+                                   data-date-format="yyyy-mm-dd" name="grn_date" required>
+                            <span class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </span>
+                        </div>
                     <div class="form-group{{ $errors->has('no') ? ' has-error' : '' }}">
             <label for="no" class="control-label">NO</label>
-            <input type="text" class="form-control input-lg" id="no" name="no" placeholder="-Add No-"
+            <input type="text" class="form-control input-lg" id="no" name="no"
                    value="{{ old('no') }}">
 
             @if ($errors->has('no'))
@@ -50,7 +59,8 @@
 
                 <div class="form-group{{ $errors->has('rcv_frm') ? ' has-error' : '' }}">
                     <label for="rcv_frm" class="control-label">Received From</label>
-                    <input type="text" class="form-control input-lg" id="rcv_frm" name="rcv_frm" placeholder="-Enter Name-" value="{{ old('rcv_frm') }}">
+                    <input type="text" class="form-control input-lg" id="rcv_frm" name="rcv_frm"
+                            placeholder="-Enter Name-" value="{{ old('rcv_frm') }}">
 
                     @if ($errors->has('rcv_frm'))
                         <span class="help-block">
@@ -61,7 +71,8 @@
                 </div>
                 <div class="form-group{{ $errors->has('vhcl_no') ? ' has-error' : '' }}">
                     <label for="vhcl_no" class="control-label">Vehicle No</label>
-                    <input type="text" class="form-control input-lg" id="vhcl_no" name="vhcl_no" placeholder="-Add No-" value="{{ old('vhcl_no') }}">
+                    <input type="text" class="form-control input-lg" id="vhcl_no" name="vhcl_no"
+                           data-parsley-type="alphanum" placeholder="LEBXXXX" value="{{ old('vhcl_no') }}">
 
                     @if ($errors->has('vhcl_no'))
                         <span class="help-block">
@@ -84,7 +95,7 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>Decription:</th>
+                <th>Description:</th>
                 <th>Unit Price</th>
                 <th>Ordered Quantity</th>
                 <th>Accepted Quantity</th>
@@ -94,7 +105,8 @@
             <tbody>
             <tr>
                  <div class="form-group{{ $errors->has('dsc') ? ' has-error' : '' }}">
-                <td><input type="text"  class="form-control input-lg" id="dsc" name="dsc" placeholder="Product Description" value="{{ old('dsc') }}"/></td>
+                <td><input type="text"  class="form-control input-lg" id="dsc" name="dsc"
+                           data-parsley-type="alphanum" placeholder="Product Description" value="{{ old('dsc') }}"/></td>
                  @if ($errors->has('dsc'))
                  <span class="help-block">
                  <strong>{{ $errors->first('dsc') }}</strong>
@@ -103,7 +115,8 @@
                  </div>
 
                  <div class="form-group{{ $errors->has('u_price') ? ' has-error' : '' }}">
-                     <td><input type="number" class="form-control input-lg" id="u_price" name="u_price" placeholder="-type-" value="{{ old('u_price') }}"></td>
+                     <td><input type="number" class="form-control input-lg" id="u_price" name="u_price" min="0"
+                                data-parsley-type="number" placeholder="-type-" value="{{ old('u_price') }}"></td>
                  @if ($errors->has('u_price'))
                  <span class="help-block">
                  <strong>{{ $errors->first('u_price') }}</strong>
@@ -112,7 +125,8 @@
                  </div>
 
                 <div class="form-group{{ $errors->has('u_qty') ? ' has-error' : '' }}">
-                    <td><input type="number" class="form-control input-lg" id="u_qty" name="u_qty" placeholder="-type-" value="{{ old('u_qty') }}"></td>
+                    <td><input type="number" class="form-control input-lg" id="u_qty" name="u_qty"
+                               min="0" data-parsley-type="number" placeholder="-type-" value="{{ old('u_qty') }}"></td>
                 @if ($errors->has('u_qty'))
                 <span class="help-block">
                 <strong>{{ $errors->first('u_qty') }}</strong>
@@ -121,7 +135,8 @@
                 </div>
 
                  <div class="form-group{{ $errors->has('accepted_qty') ? ' has-error' : '' }}">
-                <td><input type="number" class="form-control input-lg" id="accepted_qty" name="accepted_qty" placeholder="-type-" value="{{ old('accepted_qty') }}"></td>
+                <td><input type="number" class="form-control input-lg" id="accepted_qty" name="accepted_qty"
+                             min="1" data-parsley-type="number"  placeholder="-type-" value="{{ old('accepted_qty') }}"></td>
                  @if ($errors->has('accepted_qty'))
                  <span class="help-block">
                  <strong>{{ $errors->first('accepted_qty') }}</strong>
@@ -130,7 +145,8 @@
                  </div>
 
                  <div class="form-group{{ $errors->has('rejected_qty') ? ' has-error' : '' }}">
-                 <td><input type="number" class="form-control input-lg" id="rejected_qty" name="rejected_qty" placeholder="-type-" value="{{ old('rejected_qty') }}"></td>
+                 <td><input type="number" class="form-control input-lg" id="rejected_qty" name="rejected_qty"
+                          min="0"  data-parsley-type="number" placeholder="-type-" value="{{ old('rejected_qty') }}"></td>
                  @if ($errors->has('rejected_qty'))
                  <span class="help-block">
                  <strong>{{ $errors->first('rejected_qty') }}</strong>
@@ -154,9 +170,9 @@
              <div class="col-lg-4 col-md-5 col-sm-6">
                  <div class="panel-footer">
                 <div class="form-group{{ $errors->has('received_by') ? ' has-error' : '' }}">
-                    <label for="rcvby" class="control-label">Received By:</label>
-                    <input type="text" class="form-control input-lg" id="rcvby" name="rcvby" placeholder="Add Name"
-                           value="{{ old('received_by') }}">
+                    <label for="received_by" class="control-label">Received By:</label>
+                    <input type="text" class="form-control input-lg" id="received_by" name="received_by"
+                           data-parsley-type="alphanum" placeholder="Add Name" value="{{ old('received_by') }}">
 
                     @if ($errors->has('received_by'))
                         <span class="help-block">
@@ -166,9 +182,10 @@
 
                 </div>
                 <div class="form-group{{ $errors->has('checked_by') ? ' has-error' : '' }}">
-                    <label for="chkby" class="control-label">Checked By:</label>
-                    <input type="text" class="form-control input-lg" id="chkby" name="chkby" placeholder="Add name"
-                           value="{{ old('checked_by') }}">
+                    <label for="checked_by" class="control-label">Checked By:</label>
+                    <input type="text" class="form-control input-lg" id="checked_by" name="checked_by"
+
+                           data-parsley-type="alphanum" placeholder="Add name" value="{{ old('checked_by') }}">
 
                     @if ($errors->has('checked_by'))
                         <span class="help-block">
@@ -193,26 +210,28 @@
     <script src="{{ URL::asset('vendor/jquery-choosen/js/chosen.jquery.js') }}"></script>
     <script src="{{ URL::asset('vendor/jquery-choosen/js/init.js') }}"></script>
     <script src="{{ URL::asset('vendor/jquery-choosen/js/prism.js') }}"></script>
+    <script src="{{ URL::asset('vendor/bootstrap/js/parsley.min.js') }}"></script>
     <script>
+
 
 
             $(".add-row").click(function(){
                 var r = "<tr>" +
                     "<td id='Desc'>" +
-                    "<input type='text' class='form-control' name='Description[]' placeholder='type' required " +
-                    "                                   value='{{ old('dsc') }}'></td>" +
+                    "<input type='text' class='form-control' name='dsc[]' placeholder='type' required " +
+                    "                       data-parsley-type=\"alphanum\"            value='{{ old('dsc') }}'></td>" +
                     "<td id='Uni.Price'>" +
                     "<input type='text' class='form-control' name='u_price[]' placeholder='type' required" +
-                    "                                   value='{{ old('u_price') }}'></td>" +
+                    "                          data-parsley-type=\"number\"         value='{{ old('u_price') }}'></td>" +
                     "<td id='Ordrd.Qty'>" +
                     "<input type='text' class='form-control' name='u_qty[]' placeholder='type' required" +
-                    "                                   value='{{ old('u_qty') }}'></td>" +
+                    "                       data-parsley-type=\"number\"            value='{{ old('u_qty') }}'></td>" +
                     "<td id='Acc.Qty'>" +
-                    "<input type='text' class='form-control' name='Acc.Qty[]' placeholder='type' required" +
-                    "                                   value='{{ old('accepted_qty') }}'></td>" +
+                    "<input type='text' class='form-control' name='accepted_qty[]' placeholder='type' required" +
+                    "                          data-parsley-type=\"number\"         value='{{ old('accepted_qty') }}'></td>" +
                     "<td id='Rej.Qty'>" +
-                    "<input type='text' class='form-control' name='Rej.Qty[]' placeholder='type' required" +
-                    "                                   value='{{ old('rejected_qty') }}'></td>" +
+                    "<input type='text' class='form-control' name='rejected_qty[]' placeholder='type' required" +
+                    "                               data-parsley-type=\"number\"    value='{{ old('rejected_qty') }}'></td>" +
                     "<td><input type='checkbox' name='chk'></td></tr>";
                 $("table tbody").append(r);
             });

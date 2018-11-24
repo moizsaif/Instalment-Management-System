@@ -152,7 +152,7 @@
                 @if($voucherType->locked==0)
                 serials.push('{{ $voucherType->last_serial_no }}');
                 @else
-                serials.push('0')
+                serials.push('0');
                         @endif
                         @endforeach
 

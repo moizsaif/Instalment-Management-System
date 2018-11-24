@@ -155,10 +155,11 @@
 
             var productD = [];
             var productP = [];
-            //var productC = [];
+            var productC = [];
             @foreach ($products as $product)
                 productD['{{$product->id}}'] = '{{$product->description}}';
             productP['{{$product->id}}'] = '{{$product->selling_price}}';
+            productC['{{$product->id}}'] = '{{$product->code}}';
             @endforeach
 
             $('#pr_no').on('change', function () {
@@ -169,6 +170,7 @@
                 price.innerHTML = productP[$('#pr_no').val()];
                 document.getElementById('amount').value = productP[$('#pr_no').val()];
                 description.innerHTML = productD[$('#pr_no').val()];
+                code.innerHTML = productC[$('#pr_no').val()];
             })
         });
 

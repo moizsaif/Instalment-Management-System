@@ -15,10 +15,13 @@ class AddInvoiceTable extends Migration
         Schema::create('invoices', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->integer('no');
+            $table->integer('no')->unique();
             $table->date('date');
+            $table->string('item_code');
+            $table->date('qty');
             $table->double('total_amount','8','2');
         });
+
     }
 
     /**
