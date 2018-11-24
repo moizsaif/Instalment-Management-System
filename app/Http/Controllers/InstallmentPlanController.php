@@ -16,7 +16,7 @@ class InstallmentPlanController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth', 'user']);
+        $this->middleware('user');
     }
 
     public function index()
@@ -135,7 +135,6 @@ class InstallmentPlanController extends Controller
      */
     public function destroy($id)
     {
-        echo "Not Implemented !";
-        return redirect('/installments/');
+
     }
 }

@@ -29,19 +29,23 @@
                     </thead>
                     <tbody class="">
                     @foreach($vouchersTypes as $vouchersType)
-                        <tr>
-                            <td><a href={{route('vouchersType.show',$vouchersType->id)}}/>{{$vouchersType->code}}</td>
-                            <td>{{$vouchersType->name}}</td>
-                            <td>{{$vouchersType->last_serial_no}}</td>
-                            <td>
-                                @if($vouchersType->locked==1)
-                                    <span class="label label-danger">Locked</span>
-                                @else
-                                    <span class="label label-success">Un-Locked</span>
-                                @endif</td>
-                        </tr>
+                        <form method="post" action="/vouchersType/{{ $vouchersType->id}}">
+                            {{ method_field('DELETE') }}
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <tr>
+                                <td><a href={{route('vouchersType.show',$vouchersType->id)}}/>{{$vouchersType->code}}
+                                </td>
+                                <td>{{$vouchersType->name}}</td>
+                                <td>{{$vouchersType->last_serial_no}}</td>
+                                <td>
+                                    @if($vouchersType->locked==1)
+                                        <span class="label label-danger">Locked</span>
+                                    @else
+                                        <span class="label label-success">Un-Locked</span>
+                                    @endif</td>
+                            </tr>
+                        </form>
                     @endforeach
-
                     </tbody>
                 </table>
             </div>

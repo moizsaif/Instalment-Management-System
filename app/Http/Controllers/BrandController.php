@@ -11,7 +11,7 @@ class BrandController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth', 'user']);
+        $this->middleware('admin', ['only' => 'delete']);
     }
 
     /**
@@ -21,7 +21,7 @@ class BrandController extends Controller
      */
     public function index()
     {
-        $productBrands = Brand::all();
+        $productBrands = Brand::orderBy('code')->get();
         return view('brands.index', compact('productBrands'));
     }
 
@@ -98,7 +98,7 @@ class BrandController extends Controller
      */
     public function destroy($id)
     {
-        echo "Not Implemented !";
-        return redirect('/productBrands/');
+        Brand::find($id)->delete();
+        return redirect('/productBrands');
     }
 }

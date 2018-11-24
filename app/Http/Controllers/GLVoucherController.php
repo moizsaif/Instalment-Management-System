@@ -17,7 +17,7 @@ class GLVoucherController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth', 'user']);
+        $this->middleware('user');
     }
     /**
      * Display a listing of the resource.
@@ -26,7 +26,8 @@ class GLVoucherController extends Controller
      */
     public function index()
     {
-        $vouchers = Gl_Voucher::all();
+        $vouchers = Gl_Voucher::orderBy('voucher_date')->orderBy('is_approved')->get();
+        //$vouchers = Gl_Voucher::orderBy('voucher_date')->get();
         $reason = null;
         return view('vouchers.index', compact('vouchers', 'reason'));
     }
@@ -75,17 +76,33 @@ class GLVoucherController extends Controller
         $accountIds = Array();
         $amount = Array();
         $transac = Array();
+        $description = Array();
         $count = 0;
         $debit = 0;
         $credit = 0;
 
-        foreach ($request->acc_id as $d) {
-            $accountIds[] = $d;
+        foreach ($request->acc_code as $d) {
+            $accountCode = substr($d, strpos($d, "|") + 2);
+
+            $tmp = Gl_Account::where('code', $accountCode)->pluck('id');
+            if (isset($tmp)) {
+                $reason = 'Account not found';
+                //Transaction failed
+                DB::rollBack();
+                $voucherTypes = GLVoucherType::all();
+                $accounts = Gl_Account::all();
+                return view('vouchers.create', compact('voucherTypes', 'accounts', 'reason'));
+            }
+
+            foreach ($tmp as $t)
+                $id = $t;
+            $accountIds[] = $id;
             $count++;
         }
         for ($i = 0; $i < $count; $i++) {
             $amount[$i] = $request->amount[$i];
             $transac[$i] = $request->transac_type[$i];
+            $description[$i] = $request->description[$i];
         }
         // Subtracting in Debit & Adding in Credit
         for ($i = 0; $i < $count; $i++) {
@@ -132,6 +149,7 @@ class GLVoucherController extends Controller
                 // Posting to ledger
                 $account->save();
                 $voucherDetail->cheque_no = "";
+                $voucherDetail->description = $description[$i];
                 $voucherDetail->cheque_date = "";
                 $voucherDetail->payee = "";
                 $i++;
@@ -160,7 +178,7 @@ class GLVoucherController extends Controller
         //Transaction completed
         DB::commit();
         $reason = 'Voucher Added';
-        $vouchers = Gl_Voucher::all();
+        $vouchers = Gl_Voucher::orderBy('voucher_date')->orderBy('is_approved')->get();
         return view('vouchers.index', compact('vouchers', 'reason'));
     }
 
@@ -234,8 +252,6 @@ class GLVoucherController extends Controller
      */
     public function destroy($id)
     {
-        //Gl_Voucher::findOrFail($id)->delete();
-        echo "Not Implemented !";
-        return redirect('/vouchers/');
+
     }
 }

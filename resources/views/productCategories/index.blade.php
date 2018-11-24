@@ -12,15 +12,22 @@
                 <thead>
                     <th>Name</th>
                     <th>Code</th>
+                    <th></th>
                 </thead>
                 <tbody >
                 @foreach($productCategories as $productCategory)
-                    <tr>
-                        <td>{{$productCategory->name}}</td>
-                        <td>{{$productCategory->code}}</td>
-                    </tr>
+                    <form method="post" action="/productCategories/{{ $productCategory->id}}">
+                        {{ method_field('DELETE') }}
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <tr>
+                            <td>{{$productCategory->name}}</td>
+                            <td>{{$productCategory->code}}</td>
+                            <td>
+                                <button type="submit"><i class="lnr lnr-cross-circle btn"></i></button>
+                            </td>
+                        </tr>
+                    </form>
                 @endforeach
-
                 </tbody>
             </table>
         </div>

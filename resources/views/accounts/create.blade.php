@@ -2,7 +2,6 @@
 @section('page-style')
     <link rel="stylesheet" href="{{ URL::asset('vendor/bootstrap/css/toggle.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('vendor/jquery-choosen/css/chosen.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('vendor/bootstrap/css/toggle.css') }}">
     <style>
         .input {
             width: 75%;
@@ -14,8 +13,8 @@
         }
     </style>
 @endsection
-@section('content')
 @section('pageTitle', 'New Account')
+@section('content')
     <div class="section-heading">
         <h1 class="page-title">Accounts Form</h1>
     </div>

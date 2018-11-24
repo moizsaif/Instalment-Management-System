@@ -12,7 +12,7 @@ class ProductDetailsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth', 'user']);
+        $this->middleware('admin', ['only' => 'delete']);
     }
 
     /**
@@ -133,8 +133,7 @@ class ProductDetailsController extends Controller
      */
     public function destroy($id)
     {
-        //$ProductDetail::findOrFail($id)->delete();
-        echo "Not Implemented !";
+        ProductDetail::find($id)->delete();
         return redirect('/productdetails');
 
     }

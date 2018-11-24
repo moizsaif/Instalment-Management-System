@@ -6,7 +6,7 @@
         </div>
         <!-- logo -->
         <div class="navbar-brand">
-            <a href="{{ url('/home') }}"><img src="img/logo.png" alt="IMS Logo" class="img-responsive logo"></a>
+            <a href="#"><img src="img/logo1.png" alt="IMS"></a>
         </div>
         <!-- end logo -->
         <div class="navbar-right">

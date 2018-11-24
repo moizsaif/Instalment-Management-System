@@ -11,7 +11,7 @@ class productCategoriesController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth', 'user']);
+        $this->middleware('admin', ['only' => 'delete']);
     }
     /**
      * Display a listing of the resource.
@@ -20,7 +20,7 @@ class productCategoriesController extends Controller
      */
     public function index()
     {
-        $productCategories = productCategories::all();
+        $productCategories = productCategories::orderBy('code')->get();
         return view('productCategories.index',compact('productCategories'));
     }
 
@@ -97,7 +97,7 @@ class productCategoriesController extends Controller
      */
     public function destroy($id)
     {
-        echo "Not Implemented !";
+        ProductCategories::find($id)->delete();
         return redirect('/productCategories/');
     }
 }

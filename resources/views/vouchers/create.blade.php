@@ -1,13 +1,13 @@
 @extends('layouts.app')
 @section('page-style')
-    {{--<link rel="stylesheet" href="{{ URL::asset('vendor/jquery-choosen/css/prism.css') }}">--}}
+    <link rel="stylesheet" href="{{ URL::asset('vendor/jquery-choosen/css/prism.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('vendor/jquery-choosen/css/chosen.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('vendor/bootstrap/css/toggle.css') }}">
-<style>
-    #acc{
-        width: 90%;
-    }
-    .amount{
+    <link rel="stylesheet" href="{{ URL::asset('css/autoComplete.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/jquery.css') }}">
+    <style>
+
+        .sel {
         width: 75%;
     }
 </style>
@@ -95,6 +95,7 @@
                         <thead>
                         <tr>
                             <th>Account</th>
+                            <th>Description</th>
                             <th>Transaction</th>
                             <th>Amount</th>
                             <th>Select</th>
@@ -103,17 +104,13 @@
                         <tbody>
                         <tr>
                             <td>
-                                <select id='acc' class='chosen-select' name='acc_id[]' required>
-                                    <option value=''>Select Account</option>
-                                       @foreach($accounts as $account)
-                                           @if($account->allow_transac==1)
-                                              <option value={{$account->id}}>{{$account->name}}</option>
-                                           @endif
-                                       @endforeach
-                                </select>
+                                <input name="acc_code[]" class="acc" required>
                             </td>
                             <td>
-                                <select id='' class='amount chosen-select' name='transac_type[]' required>
+                                <input name="description[]" class="" required>
+                            </td>
+                            <td>
+                                <select id='' class='amount chosen' name='transac_type[]' required>
                                     <option value=''>Select Transaction</option>
                                     <option value='0'>Debit</option>
                                     <option value='1'>Credit</option></select></td>
@@ -134,16 +131,21 @@
 @endsection
 
 @section('page-script')
-    <script src="{{ URL::asset('vendor/bootstrap/js/toggle.js') }}"></script>
+
+    <script src="{{ URL::asset('js/autoComplete.js') }}"></script>
     <script src="{{ URL::asset('vendor/jquery-choosen/js/chosen.jquery.js') }}"></script>
     <script src="{{ URL::asset('vendor/jquery-choosen/js/init.js') }}"></script>
-    {{--<script src="{{ URL::asset('vendor/jquery-choosen/js/prism.js') }}"></script>--}}
-    <script>
-        // function check(){
-        //     alert("Hi");
-        // }
+    <script src="{{ URL::asset('vendor/bootstrap/js/toggle.js') }}"></script>
+    <script src="{{ URL::asset('js/jquery.js') }}"></script>
 
+    <script>
         $(document).ready(function(){
+            var availableTags = ["", ""];
+            @foreach($accounts as $account)
+            @if($account->allow_transac==1)
+            availableTags.push('{{$account->name}} | {{$account->code}} ');
+            @endif
+            @endforeach
 
             document.getElementById("type_id").onclick=function () {
                 var serials = [];
@@ -160,17 +162,15 @@
                 document.getElementById("no").value = serials[type_id-1];
             };
 
-            $("#add-row").on("click", function () {
-                var markup = "<tr><td><select id='acc' class='chosen-select' name='acc_id[]' required>" +
-                    "   @foreach($accounts as $account)" +
-                    "       @if($account->allow_transac==1)" +
-                    "           <option value={{$account->id}}>{{$account->name}}</option>" +
-                    "       @endif" +
-                    "   @endforeach" +
-                    "</select>" +
+            $(".chosen").chosen();
+            $("#add-row").on('click', function () {
+
+                $(".chosen").chosen("destroy");
+                var markup = "<tr><td>" +
+                    "<input name='acc_code[]' class='acc' required>" +
                     "</td>" +
-                    "<td>" +
-                    "<select id='acc' class='chosen-select' name='transac_type[]' required>" +
+                    "<td><input name=\"description[]\" class=\"\" required></td>" +
+                    "<td><select id='acc' class='amount chosen' name='transac_type[]' required>" +
                     "<option value=''>Select Transaction</option>" +
                     "<option value='0'>Debit</option>" +
                     "<option value='1'>Credit</option></select></td>" +
@@ -178,7 +178,18 @@
                     "       value='{{ old('amount') }}'></td>" +
                     "<td><input type='checkbox' name='record'></td></tr>";
                 $("table tbody").append(markup);
+
+                $(".chosen").chosen();
             });
+
+            //event binding with Autocomplete
+            $('body').on('focus', '.acc', function (event) {
+
+                $(".acc").autocomplete({
+                    source: availableTags
+                });
+            });
+
 
 
             // Find and remove selected table rows
@@ -194,4 +205,3 @@
         
     </script>
 @endsection
-

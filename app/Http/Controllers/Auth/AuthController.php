@@ -66,18 +66,18 @@ class AuthController extends Controller
      * @param  array  $data
      * @return User
      */
-    protected function create(array $data)
-    {
-        $role = Role::find(2);//Assigning default role as User
-        $user = new User();
-        $user->name = $data['name'];
-        $user->contact = $data['contact'];
-        $user->cnic = $data['cnic'];
-        $user->address = $data['address'];
-        $user->email = $data['email'];
-        $user->password = bcrypt($data['password']);
-        $user->save();
-        $user->roles()->save($role);
-        return $user;
-    }
+//    protected function create(array $data)
+//    {
+//        $role = Role::find(2);//Assigning default role as User
+//        $user = new User();
+//        $user->name = $data['name'];
+//        $user->contact = $data['contact'];
+//        $user->cnic = $data['cnic'];
+//        $user->address = $data['address'];
+//        $user->email = $data['email'];
+//        $user->password = bcrypt($data['password']);
+//        $user->save();
+//        $user->roles()->save($role);
+//        return $user;
+//    }
 }

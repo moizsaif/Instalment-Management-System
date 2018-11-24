@@ -49,8 +49,6 @@
                     <a href="#uiElements" class="has-arrow" aria-expanded="false"><i class="fa fa-database"></i> <span>Inventory</span></a>
                     <ul aria-expanded="true">
                         <li class=""><a href="{{ url('/products/') }}"><i class="lnr lnr-list"></i><span>Products</span></a></li>
-                        <li class=""><a href="{{ url('/productdetails/') }}"><i class="lnr lnr-list"></i><span>Product Details</span></a>
-                        </li>
                         <li class=""><a href="{{ url('/purchaseOrders/') }}"><i class="lnr lnr-pencil"></i><span>Order Placement</span></a></li>
                         <li class=""><a href="{{ url('/grns/') }}"><i class="lnr lnr-pencil"></i><span>Receive Note</span></a></li>
                     </ul>
@@ -74,15 +72,10 @@
                     </ul>
                 </li>
                 <li class="">
-                    <a href="#uiElements" class="has-arrow" aria-expanded="false"><i class="lnr lnr-user"></i> <span>Admin</span></a>
-                    <ul aria-expanded="true">
-                        <li class=""><a href="#">Add Retailers</a></li>
-                        <li class=""><a href="#">Edit Retailers</a></li>
-                        <li class=""><a href="#">Delete GRN</a></li>
-                        <li class=""><a href="#">Delete PO</a></li>
-                        <li class=""><a href="#">Delete Product</a></li>
-                        <li class=""><a href="#">Delete Voucher</a></li>
-                    </ul>
+                    <a href="{{ url('/users/') }}" class="" aria-expanded="false">
+                        <i class="lnr lnr-user"></i>
+                        <span>Users</span>
+                    </a>
                 </li>
             </ul>
         </nav>
