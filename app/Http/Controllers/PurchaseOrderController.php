@@ -59,7 +59,7 @@ class PurchaseOrderController extends Controller
         $date=date_create($request ->get('date'));
         $format = date_format($date,"Y-m-d");
         $PO->date=strtotime($format);
-        $PO->save();
+      //  $PO->save();
         //$accounts = new Gl_Account();
        // $voucherDetail = new GLVoucherDetail();
        // $products = new Product();

@@ -7,6 +7,9 @@ use App\Product;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
+use PhpParser\Node\Scalar\String_;
 
 class InvoiceController extends Controller
 {
@@ -42,24 +45,24 @@ class InvoiceController extends Controller
      */
     public function store(Request $request)
     {
+
         DB::beginTransaction();
         $inv = new Invoice();
         $inv->no = $request->no;
-        $inv->qty = $request->qty;
-        $inv->item_code = $request->item_code;
-        $inv->total_amount= $request->total_amount;
+        //$inv->qty = $request->qty;
+        //$inv->total_amount= $request->total_amount;
         $inv->date =$request->date;
-        $inv->save();
 
-        $item_code[] = Array();
+
+        $item_code[]= Array();
         $total_amount[]= Array();
         $qty[] = Array();
 
         $count = 0;
 
-        foreach($request->code as $a)
+        foreach($request->item_code as $a)
         {
-            $item_code[]=$a;
+            $item_code[] = $a;
             $count++;
         }
         for ($i = 0; $i < $count; $i++) {
@@ -69,10 +72,9 @@ class InvoiceController extends Controller
         }
 
 
-
+       // $inv->save();
         DB::commit();
-        $inv=Invoice::all();
-        return redirect('/invoices/',compact('inv' ));
+        return redirect('/invoices/');
     }
 
     /**
